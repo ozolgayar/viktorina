@@ -55,7 +55,24 @@ select {
   -webkit-backdrop-filter: blur(10px);
 }
 
-@media (min-width: 640px) {
+@media (max-width: 767px) {
+  .app-header--stacked {
+    min-height: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .app-header--stacked .logo-container img {
+    max-width: 96px;
+  }
+
+  .app-header--stacked .header-quiz-title {
+    font-size: 0.6875rem;
+    opacity: 0.9;
+  }
+}
+
+@media (min-width: 768px) {
   .app-header {
     min-height: 64px;
   }
@@ -359,15 +376,13 @@ select {
   box-sizing: border-box;
   flex-direction: column;
   gap: 12px;
-  margin: 0 1rem;
+  margin: 0;
   padding: 1.25rem;
   border-radius: 1rem;
 }
 
 @media (min-width: 640px) {
   .quiz-card--intro {
-    margin: 0 auto;
-    max-width: 32rem;
     padding: 2rem;
     border-radius: 16px;
   }
@@ -972,7 +987,13 @@ select {
 }
 
 .quiz-question-actions--last-only {
-  justify-content: flex-end;
+  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .quiz-question-actions--last-only {
+    justify-content: flex-start;
+  }
 }
 
 .quiz-question-actions__next {

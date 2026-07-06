@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { getSupabaseServerConfig } from "./env";
 
 /**
  * Серверный клиент Supabase с service role key.
@@ -6,16 +7,9 @@ import { createClient } from "@supabase/supabase-js";
  * Никогда не импортировать в клиентские компоненты.
  */
 export function createServiceClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const { url, serviceRoleKey } = getSupabaseServerConfig();
 
-  if (!url || !key) {
-    throw new Error(
-      "Не заданы NEXT_PUBLIC_SUPABASE_URL или SUPABASE_SERVICE_ROLE_KEY"
-    );
-  }
-
-  return createClient(url, key, {
+  return createClient(url, serviceRoleKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,

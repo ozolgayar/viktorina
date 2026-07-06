@@ -234,17 +234,6 @@ export default function QuizPage() {
             <div
               className={`quiz-question-actions${isLastQuestion ? " quiz-question-actions--last-only" : ""}`}
             >
-              {!isLastQuestion && (
-                <button
-                  type="button"
-                  className="quiz-question-actions__next"
-                  onClick={handleNext}
-                  disabled={finishing || animPhase !== "idle"}
-                >
-                  Следующий вопрос
-                </button>
-              )}
-
               <button
                 type="button"
                 className={`quiz-question-actions__finish ${
@@ -257,6 +246,17 @@ export default function QuizPage() {
               >
                 Завершить викторину
               </button>
+
+              {!isLastQuestion && (
+                <button
+                  type="button"
+                  className="quiz-question-actions__next"
+                  onClick={handleNext}
+                  disabled={finishing || animPhase !== "idle"}
+                >
+                  Следующий вопрос
+                </button>
+              )}
             </div>
           </div>
         </div>
