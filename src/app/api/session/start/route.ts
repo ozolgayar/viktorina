@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import {
   QUIZ_CONFIG,
+  getEmailValidationError,
+  isGeropharmEmail,
   isQuizAvailable,
   isValidEmail,
   isValidFullName,
@@ -46,6 +48,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Укажите корректный email" },
         { status: 400 }
+      );
+    }
+
+    if (!isGeropharmEmail(email)) {
+      return NextResponse.json(
+        {
+          error:
+            getEmailValidationError(email) ??
+            "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm)",
+        },
+        { status: 403 }
       );
     }
 

@@ -4,7 +4,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
-import { isValidEmail, isValidFullName } from "@/lib/quiz-config";
+import {
+  getEmailValidationError,
+  isGeropharmEmail,
+  isValidFullName,
+} from "@/lib/quiz-config";
 import type { AvailabilityResponse, SessionStartResponse } from "@/types/quiz";
 
 /** Стартовый экран — регистрация участника */
@@ -19,7 +23,8 @@ export default function StartPage() {
   );
   const [visible, setVisible] = useState(false);
 
-  const isFormValid = isValidFullName(fullName) && isValidEmail(email);
+  const emailError = getEmailValidationError(email);
+  const isFormValid = isValidFullName(fullName) && isGeropharmEmail(email);
 
   useEffect(() => {
     fetch("/api/quiz/availability")
@@ -131,15 +136,16 @@ export default function StartPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="example@mail.ru"
+                placeholder="ivanov@geropharm.ru"
                 className="quiz-input"
                 autoComplete="email"
               />
-              {email && !isValidEmail(email) && (
-                <p className="mt-1.5 text-xs text-red-500">
-                  Введите корректный email
-                </p>
+              {emailError && (
+                <p className="mt-1.5 text-xs text-red-500">{emailError}</p>
               )}
+              <p className="mt-1.5 text-xs text-brand-dark/50">
+                Укажите корпоративную почту ГЕРОФАРМ (@geropharm.ru)
+              </p>
             </div>
           </div>
 

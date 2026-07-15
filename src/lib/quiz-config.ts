@@ -100,6 +100,29 @@ export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
+const CORPORATE_EMAIL_MESSAGE =
+  "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm)";
+
+/**
+ * Только корпоративные адреса: @geropharm.ru, @geropharm.com
+ * и поддомены (например, @mail.geropharm.ru).
+ */
+export function isGeropharmEmail(email: string): boolean {
+  const normalized = email.trim().toLowerCase();
+  if (!isValidEmail(normalized)) return false;
+
+  const domain = normalized.split("@")[1] ?? "";
+  return /(^|\.)geropharm\.(ru|com)$/.test(domain);
+}
+
+export function getEmailValidationError(email: string): string | null {
+  const normalized = email.trim();
+  if (!normalized) return null;
+  if (!isValidEmail(normalized)) return "Введите корректный email";
+  if (!isGeropharmEmail(normalized)) return CORPORATE_EMAIL_MESSAGE;
+  return null;
+}
+
 /** Валидация ФИО — минимум 2 слова */
 export function isValidFullName(name: string): boolean {
   return name.trim().split(/\s+/).filter(Boolean).length >= 2;
