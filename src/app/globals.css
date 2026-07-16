@@ -207,13 +207,7 @@ select {
   flex: 1;
   min-width: 0;
   width: 100%;
-  text-align: center;
-}
-
-@media (min-width: 640px) {
-  .quiz-intro-screen__hero-text {
-    text-align: left;
-  }
+  text-align: left;
 }
 
 .quiz-intro-screen__subtitle {
@@ -287,8 +281,7 @@ select {
   font-size: 1.875rem;
   font-weight: 900;
   line-height: 1.1;
-  text-align: center;
-  padding: 0 1rem;
+  text-align: left;
   background: linear-gradient(
     90deg,
     #ffffff 0%,
@@ -307,8 +300,6 @@ select {
 @media (min-width: 640px) {
   .quiz-hero-title {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
-    text-align: left;
-    padding: 0;
   }
 }
 
