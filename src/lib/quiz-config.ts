@@ -101,18 +101,18 @@ export function isValidEmail(email: string): boolean {
 }
 
 const CORPORATE_EMAIL_MESSAGE =
-  "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm)";
+  "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm.com)";
 
 /**
- * Только корпоративные адреса: @geropharm.ru, @geropharm.com
- * и поддомены (например, @mail.geropharm.ru).
+ * Только корпоративные адреса: @geropharm.com
+ * и поддомены (например, @mail.geropharm.com).
  */
 export function isGeropharmEmail(email: string): boolean {
   const normalized = email.trim().toLowerCase();
   if (!isValidEmail(normalized)) return false;
 
   const domain = normalized.split("@")[1] ?? "";
-  return /(^|\.)geropharm\.(ru|com)$/.test(domain);
+  return /(^|\.)geropharm\.com$/.test(domain);
 }
 
 export function getEmailValidationError(email: string): string | null {

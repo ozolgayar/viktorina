@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         {
           error:
             getEmailValidationError(email) ??
-            "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm)",
+            "Доступ только по корпоративной почте ГЕРОФАРМ (@geropharm.com)",
         },
         { status: 403 }
       );

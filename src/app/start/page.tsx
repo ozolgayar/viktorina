@@ -136,7 +136,7 @@ export default function StartPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="ivanov@geropharm.ru"
+                placeholder="ivanov@geropharm.com"
                 className="quiz-input"
                 autoComplete="email"
               />
@@ -144,7 +144,7 @@ export default function StartPage() {
                 <p className="mt-1.5 text-xs text-red-500">{emailError}</p>
               )}
               <p className="mt-1.5 text-xs text-brand-dark/50">
-                Укажите корпоративную почту ГЕРОФАРМ (@geropharm.ru)
+                Укажите корпоративную почту ГЕРОФАРМ (@geropharm.com)
               </p>
             </div>
           </div>
