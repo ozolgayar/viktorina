@@ -41,16 +41,24 @@ export function QuizNavigation({
               if (isCurrent) stateClass = "quiz-nav__num--current";
               else if (isAnswered) stateClass = "quiz-nav__num--answered";
 
+              const digit = index + 1;
+
               return (
                 <button
                   key={id}
                   type="button"
                   className={`quiz-nav__num ${stateClass}`}
                   onClick={() => onNavigate(index)}
-                  aria-label={`Вопрос ${index + 1}`}
+                  aria-label={`Вопрос ${digit}`}
                   aria-current={isCurrent ? "step" : undefined}
                 >
-                  {index + 1}
+                  <span
+                    className={
+                      digit === 1 ? "quiz-nav__num-digit--1" : undefined
+                    }
+                  >
+                    {digit}
+                  </span>
                 </button>
               );
             })}

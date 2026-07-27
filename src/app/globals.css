@@ -746,11 +746,11 @@ select {
 }
 
 .quiz-nav__num {
-  display: flex;
+  display: grid;
   width: 1.75rem;
   height: 1.75rem;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
+  padding: 0;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.2);
@@ -758,8 +758,14 @@ select {
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+/* Цифра «1» в Inter визуально смещена вправо — оптическая коррекция */
+.quiz-nav__num-digit--1 {
+  transform: translateX(-0.5px);
 }
 
 @media (min-width: 640px) {
