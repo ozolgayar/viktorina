@@ -128,7 +128,7 @@ export default function QuizIntroPage() {
               </div>
             )}
 
-            <div className="quiz-intro-start-btn block w-full sm:mx-auto sm:max-w-sm">
+            <div className="quiz-intro-start-btn block w-full sm:mx-auto sm:max-w-[284px]">
               <Button
                 fullWidth
                 className="!min-h-[44px] !py-4 !text-base !font-bold"
