@@ -167,7 +167,7 @@ export default function StartPage() {
               }
               loading={loading}
             >
-              Начать викторину
+              Регистрация
             </Button>
           </div>
         </div>

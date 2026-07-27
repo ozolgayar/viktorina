@@ -137,7 +137,7 @@ export default function QuizIntroPage() {
                 }
                 onClick={handleStartClick}
               >
-                Начать викторину
+                Регистрация
               </Button>
             </div>
 
