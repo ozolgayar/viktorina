@@ -29,21 +29,19 @@ body {
 }
 
 button,
-input,
-textarea,
-select,
 .btn-primary,
 .welcome-btn,
 .results-home-btn,
 .quiz-question-actions__prev,
 .quiz-question-actions__next,
 .quiz-question-actions__finish {
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: var(--font-roboto), Roboto, Arial, sans-serif;
 }
 
 input,
 textarea,
 select {
+  font-family: Verdana, Geneva, sans-serif;
   font-size: 16px !important;
 }
 

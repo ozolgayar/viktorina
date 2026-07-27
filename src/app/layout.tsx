@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Roboto } from "next/font/google";
 import "./globals.css";
+
+const roboto = Roboto({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   title: "Викторина ГЕРОФАРМ 25 лет",
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="antialiased">{children}</body>
+      <body className={`${roboto.variable} antialiased`}>{children}</body>
     </html>
   );
 }
