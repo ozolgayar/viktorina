@@ -36,6 +36,7 @@ export default function QuizPage() {
   const [remainingSeconds, setRemainingSeconds] = useState(25 * 60);
   const [timeExpiredModal, setTimeExpiredModal] = useState(false);
   const [finishing, setFinishing] = useState(false);
+  const [finishHint, setFinishHint] = useState("");
   const [animPhase, setAnimPhase] = useState<AnimPhase>("idle");
   const [slideDir, setSlideDir] = useState<SlideDirection>("right");
   const [enterVisible, setEnterVisible] = useState(false);
@@ -153,12 +154,31 @@ export default function QuizPage() {
 
     const question = quizData.questions[currentIndex];
     setAnswers((prev) => ({ ...prev, [question.id]: index }));
+    setFinishHint("");
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      navigateTo(currentIndex - 1);
+    }
   };
 
   const handleNext = () => {
     if (currentIndex < TOTAL_QUESTIONS - 1) {
       navigateTo(currentIndex + 1);
     }
+  };
+
+  const handleFinishClick = () => {
+    if (!quizData) return;
+
+    const complete = quizData.questions.every((q) => answers[q.id] !== undefined);
+    if (!complete) {
+      setFinishHint("Чтобы завершить викторину, ответь на все вопросы");
+      return;
+    }
+    setFinishHint("");
+    finishQuiz(answers);
   };
 
   const handleTimeExpired = () => {
@@ -180,6 +200,7 @@ export default function QuizPage() {
   const allAnswered = quizData.questions.every((q) => answers[q.id] !== undefined);
   const isWarning = remainingSeconds <= 60;
   const isLastQuestion = currentIndex === TOTAL_QUESTIONS - 1;
+  const isFirstQuestion = currentIndex === 0;
 
   const cardAnimClass = [
     animPhase === "exit" && `quiz-question-card--exit-${slideDir}`,
@@ -239,28 +260,46 @@ export default function QuizPage() {
             <div
               className={`quiz-question-actions${isLastQuestion ? " quiz-question-actions--last-only" : ""}`}
             >
-              <button
-                type="button"
-                className={`quiz-question-actions__finish ${
-                  allAnswered && !finishing
-                    ? "quiz-question-actions__finish--active"
-                    : "quiz-question-actions__finish--inactive"
-                }`}
-                disabled={!allAnswered || finishing}
-                onClick={() => allAnswered && finishQuiz(answers)}
-              >
-                Завершить викторину
-              </button>
+              {!isLastQuestion ? (
+                <>
+                  <button
+                    type="button"
+                    className="quiz-question-actions__prev"
+                    onClick={handlePrev}
+                    disabled={isFirstQuestion || finishing || animPhase !== "idle"}
+                  >
+                    Предыдущий вопрос
+                  </button>
 
-              {!isLastQuestion && (
-                <button
-                  type="button"
-                  className="quiz-question-actions__next"
-                  onClick={handleNext}
-                  disabled={finishing || animPhase !== "idle"}
-                >
-                  Следующий вопрос
-                </button>
+                  <button
+                    type="button"
+                    className="quiz-question-actions__next"
+                    onClick={handleNext}
+                    disabled={finishing || animPhase !== "idle"}
+                  >
+                    Следующий вопрос
+                  </button>
+                </>
+              ) : (
+                <div className="quiz-question-actions__finish-wrap">
+                  <button
+                    type="button"
+                    className={`quiz-question-actions__finish ${
+                      allAnswered && !finishing
+                        ? "quiz-question-actions__finish--active"
+                        : "quiz-question-actions__finish--inactive"
+                    }`}
+                    disabled={finishing}
+                    onClick={handleFinishClick}
+                  >
+                    Завершить викторину
+                  </button>
+                  {finishHint && (
+                    <p className="quiz-question-actions__finish-hint" role="status">
+                      {finishHint}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
