@@ -1040,7 +1040,15 @@ select {
   transform: translateY(-1px);
 }
 
-.quiz-question-actions__prev:disabled,
+.quiz-question-actions__prev:disabled {
+  background: #9ca3af;
+  color: #f3f4f6;
+  opacity: 1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .quiz-question-actions__next:disabled {
   opacity: 0.45;
   cursor: not-allowed;
