@@ -8,7 +8,8 @@
   --color-brand-dark: #1a2b3c;
   --color-brand-light: #f8f9fa;
   --color-brand-border: #e5e7eb;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: Verdana, Geneva, sans-serif;
+  --font-button: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --breakpoint-xs: 23.4375rem;
 }
 
@@ -25,6 +26,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   min-height: 100%;
+}
+
+/* Кнопки оставляем на Inter / системном шрифте */
+button,
+.btn-primary,
+.welcome-btn,
+.results-home-btn,
+.quiz-question-actions__prev,
+.quiz-question-actions__next,
+.quiz-question-actions__finish {
+  font-family: var(--font-button);
 }
 
 input,

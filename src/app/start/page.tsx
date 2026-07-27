@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
 import {
@@ -9,7 +9,40 @@ import {
   isGeropharmEmail,
   isValidFullName,
 } from "@/lib/quiz-config";
+import {
+  getValidParticipant,
+  saveParticipant,
+} from "@/lib/participant";
 import type { AvailabilityResponse, SessionStartResponse } from "@/types/quiz";
+
+async function startQuizSession(
+  fullName: string,
+  email: string
+): Promise<{ ok: true; session: SessionStartResponse } | { ok: false; error: string }> {
+  const res = await fetch("/api/session/start", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ fullName, email }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { ok: false, error: data.error ?? "Ошибка при создании сессии" };
+  }
+
+  const session = data as SessionStartResponse;
+  sessionStorage.setItem(
+    `quiz_${session.sessionId}`,
+    JSON.stringify({
+      questions: session.questions,
+      startedAt: session.startedAt,
+      timeLimitMinutes: session.timeLimitMinutes,
+    })
+  );
+
+  return { ok: true, session };
+}
 
 /** Стартовый экран — регистрация участника */
 export default function StartPage() {
@@ -22,6 +55,8 @@ export default function StartPage() {
     null
   );
   const [visible, setVisible] = useState(false);
+  const [autoStarting, setAutoStarting] = useState(true);
+  const autoStartTried = useRef(false);
 
   const emailError = getEmailValidationError(email);
   const isFormValid = isValidFullName(fullName) && isGeropharmEmail(email);
@@ -37,6 +72,53 @@ export default function StartPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (autoStartTried.current) return;
+    autoStartTried.current = true;
+
+    const participant = getValidParticipant();
+    if (!participant) {
+      setAutoStarting(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      setLoading(true);
+      try {
+        const result = await startQuizSession(
+          participant.fullName,
+          participant.email
+        );
+        if (cancelled) return;
+
+        if (!result.ok) {
+          setError(result.error);
+          setFullName(participant.fullName);
+          setEmail(participant.email);
+          setAutoStarting(false);
+          setLoading(false);
+          return;
+        }
+
+        saveParticipant(participant.fullName, participant.email);
+        router.push(`/quiz/${result.session.sessionId}`);
+      } catch {
+        if (cancelled) return;
+        setFullName(participant.fullName);
+        setEmail(participant.email);
+        setError("Не удалось подключиться к серверу");
+        setAutoStarting(false);
+        setLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [router]);
+
   const handleStart = async () => {
     if (!isFormValid) return;
 
@@ -44,37 +126,29 @@ export default function StartPage() {
     setError("");
 
     try {
-      const res = await fetch("/api/session/start", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName, email }),
-      });
+      const result = await startQuizSession(fullName, email);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error ?? "Ошибка при создании сессии");
+      if (!result.ok) {
+        setError(result.error);
         setLoading(false);
         return;
       }
 
-      const session = data as SessionStartResponse;
-
-      sessionStorage.setItem(
-        `quiz_${session.sessionId}`,
-        JSON.stringify({
-          questions: session.questions,
-          startedAt: session.startedAt,
-          timeLimitMinutes: session.timeLimitMinutes,
-        })
-      );
-
-      router.push(`/quiz/${session.sessionId}`);
+      saveParticipant(fullName, email);
+      router.push(`/quiz/${result.session.sessionId}`);
     } catch {
       setError("Не удалось подключиться к серверу");
       setLoading(false);
     }
   };
+
+  if (autoStarting) {
+    return (
+      <div className="app-gradient flex min-h-dvh items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white" />
+      </div>
+    );
+  }
 
   return (
     <AppShell centered background="particles" mainClassName="!p-0">

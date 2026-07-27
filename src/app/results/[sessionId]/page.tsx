@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
-import { Modal } from "@/components/Modal";
 import {
   PerfectResultCard,
   ResultsFestiveBackground,
@@ -18,14 +17,11 @@ export default function ResultsPage() {
   const sessionId = params.sessionId as string;
 
   const [result, setResult] = useState<SessionFinishResponse | null>(null);
-  const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem(`result_${sessionId}`);
     if (stored) {
-      const data = JSON.parse(stored) as SessionFinishResponse;
-      setResult(data);
-      if (data.isPerfect) setShowThankYou(true);
+      setResult(JSON.parse(stored) as SessionFinishResponse);
     }
   }, [sessionId]);
 
@@ -41,6 +37,7 @@ export default function ResultsPage() {
     return (
       <AppShell
         centered
+        hideHeader
         background="none"
         gradient="sky"
         mainClassName="!p-0 overflow-y-auto"
@@ -52,26 +49,17 @@ export default function ResultsPage() {
             totalQuestions={result.totalQuestions}
           />
         </div>
-
-        <Modal
-          open={showThankYou}
-          onClose={() => setShowThankYou(false)}
-          title="Спасибо!"
-          subtitle="Поздравляем!"
-          actionLabel="Отлично"
-          onAction={() => setShowThankYou(false)}
-        >
-          <p>
-            Ваш результат сохранён. Организаторы свяжутся с победителями по
-            указанному email.
-          </p>
-        </Modal>
       </AppShell>
     );
   }
 
   return (
-    <AppShell centered background="none" mainClassName="!p-0 min-h-screen overflow-y-auto px-4 py-8">
+    <AppShell
+      centered
+      hideHeader
+      background="none"
+      mainClassName="!p-0 min-h-screen overflow-y-auto px-4 py-8"
+    >
       <div className="page-enter w-full max-w-lg mx-auto">
         <div className="quiz-card mx-auto rounded-2xl p-6 text-center shadow-xl sm:p-8">
           <h1 className="mb-2 text-2xl font-bold text-brand-accent md:text-3xl lg:text-4xl">

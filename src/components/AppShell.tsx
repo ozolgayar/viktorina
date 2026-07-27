@@ -11,6 +11,8 @@ interface AppShellProps {
   belowHeader?: React.ReactNode;
   /** Контент по центру шапки (например, таймер) */
   headerCenter?: React.ReactNode;
+  /** Скрыть шапку (например, на экране результатов) */
+  hideHeader?: boolean;
   /** Декоративный фон */
   background?: "pattern" | "particles" | "quiz-particles" | "none";
   /** Градиент оболочки */
@@ -27,6 +29,7 @@ export function AppShell({
   centered = false,
   belowHeader,
   headerCenter,
+  hideHeader = false,
   background = "pattern",
   gradient = "default",
   overlay,
@@ -44,7 +47,7 @@ export function AppShell({
       {background === "particles" && <RegisterFloatingParticles />}
       {background === "quiz-particles" && <QuizFloatingParticles />}
       <div className="relative z-10 flex min-h-dvh flex-col">
-        <Header center={headerCenter} />
+        {!hideHeader && <Header center={headerCenter} />}
         {belowHeader}
         <main
           className={

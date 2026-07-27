@@ -1,3 +1,7 @@
+"use client";
+
+import Link from "next/link";
+
 const COLORS = [
   "#F7941D",
   "#2dd4bf",
@@ -165,9 +169,9 @@ export function PerfectResultCard({
         с победителями по указанному email.
       </p>
 
-      <a href="/" className="results-home-btn">
+      <Link href="/" className="results-home-btn">
         На главную
-      </a>
+      </Link>
     </div>
   );
 }
