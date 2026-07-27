@@ -1,4 +1,3 @@
-import { Timer } from "./Timer";
 import type { UserAnswers } from "@/types/quiz";
 
 interface QuizNavigationProps {
@@ -6,26 +5,18 @@ interface QuizNavigationProps {
   total: number;
   questionIds: string[];
   answers: UserAnswers;
-  remainingSeconds: number;
-  warning: boolean;
   onNavigate: (index: number) => void;
 }
 
-/** Навигация по вопросам: стрелки, номера, таймер, прогресс-бар */
+/** Навигация по вопросам: стрелки, номера, прогресс-бар */
 export function QuizNavigation({
   currentIndex,
   total,
   questionIds,
   answers,
-  remainingSeconds,
-  warning,
   onNavigate,
 }: QuizNavigationProps) {
   const progress = ((currentIndex + 1) / total) * 100;
-
-  const timer = (
-    <Timer remainingSeconds={remainingSeconds} warning={warning} inline />
-  );
 
   return (
     <nav className="quiz-nav w-full max-w-2xl" aria-label="Навигация по вопросам">
@@ -74,11 +65,7 @@ export function QuizNavigation({
           >
             ›
           </button>
-
-          <div className="quiz-nav__timer quiz-nav__timer--inline">{timer}</div>
         </div>
-
-        <div className="quiz-nav__timer quiz-nav__timer--mobile">{timer}</div>
       </div>
 
       <div className="quiz-nav__progress" aria-hidden>

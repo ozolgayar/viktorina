@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { AnswerOption } from "@/components/AnswerOption";
 import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
+import { Timer } from "@/components/Timer";
 import type {
   PublicQuestion,
   SessionFinishResponse,
@@ -189,7 +190,13 @@ export default function QuizPage() {
     .join(" ");
 
   return (
-    <AppShell background="quiz-particles" mainClassName="!p-0">
+    <AppShell
+      background="quiz-particles"
+      mainClassName="!p-0"
+      headerCenter={
+        <Timer remainingSeconds={remainingSeconds} warning={isWarning} inline />
+      }
+    >
       <div className="quiz-question-screen">
         <div className="quiz-question-screen__inner">
           <QuizNavigation
@@ -197,8 +204,6 @@ export default function QuizPage() {
             total={TOTAL_QUESTIONS}
             questionIds={questionIds}
             answers={answers}
-            remainingSeconds={remainingSeconds}
-            warning={isWarning}
             onNavigate={navigateTo}
           />
 

@@ -9,6 +9,8 @@ interface AppShellProps {
   centered?: boolean;
   /** Дополнительный контент под шапкой (прогресс-бар викторины) */
   belowHeader?: React.ReactNode;
+  /** Контент по центру шапки (например, таймер) */
+  headerCenter?: React.ReactNode;
   /** Декоративный фон */
   background?: "pattern" | "particles" | "quiz-particles" | "none";
   /** Градиент оболочки */
@@ -24,6 +26,7 @@ export function AppShell({
   children,
   centered = false,
   belowHeader,
+  headerCenter,
   background = "pattern",
   gradient = "default",
   overlay,
@@ -41,7 +44,7 @@ export function AppShell({
       {background === "particles" && <RegisterFloatingParticles />}
       {background === "quiz-particles" && <QuizFloatingParticles />}
       <div className="relative z-10 flex min-h-dvh flex-col">
-        <Header />
+        <Header center={headerCenter} />
         {belowHeader}
         <main
           className={
