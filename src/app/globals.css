@@ -1667,6 +1667,7 @@ select {
   z-index: 1;
   margin-right: -12%;
   margin-bottom: 4%;
+  translate: -100px 0;
   animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
 
@@ -1674,6 +1675,7 @@ select {
   position: relative;
   z-index: 2;
   margin-left: -4%;
+  translate: 100px 0;
   animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
 
@@ -1689,7 +1691,7 @@ select {
 
 .welcome-cake {
   width: auto;
-  height: clamp(130px, 20vh, 210px);
+  height: clamp(230px, calc(20vh + 100px), 310px);
   object-fit: contain;
   mix-blend-mode: screen;
   filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.4));
@@ -1797,10 +1799,12 @@ select {
   .welcome-balloon--2 {
     margin-right: -14%;
     margin-bottom: 5%;
+    translate: -100px 0;
   }
 
   .welcome-balloon--5 {
     margin-left: -5%;
+    translate: 100px 0;
   }
 
   .welcome-cake-wrap {
@@ -1808,7 +1812,7 @@ select {
   }
 
   .welcome-cake {
-    height: min(24vh, 230px);
+    height: calc(min(24vh, 230px) + 100px);
   }
 
   .welcome-copy {
@@ -1842,7 +1846,7 @@ select {
   }
 
   .welcome-cake {
-    height: min(20vh, 190px);
+    height: calc(min(20vh, 190px) + 100px);
   }
 
   .welcome-decor__img,
@@ -1862,6 +1866,11 @@ select {
 
   .welcome-balloon--2 {
     margin-right: -10%;
+    translate: -60px 0;
+  }
+
+  .welcome-balloon--5 {
+    translate: 60px 0;
   }
 
   .welcome-cake-wrap {
@@ -1869,7 +1878,7 @@ select {
   }
 
   .welcome-cake {
-    height: clamp(110px, 16vh, 150px);
+    height: clamp(180px, calc(16vh + 80px), 230px);
   }
 
   .welcome-copy {
