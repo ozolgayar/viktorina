@@ -317,21 +317,33 @@ select {
   position: absolute;
   object-fit: contain;
   mix-blend-mode: screen;
-  opacity: 0.42;
+  opacity: 0.38;
   transform: rotate(var(--decor-rotate, 0deg)) scaleX(var(--decor-flip, 1));
   animation: quiz-intro-decor-float 5.5s ease-in-out infinite;
 }
 
+.quiz-intro-decor__spiral--sm {
+  opacity: 0.32;
+}
+
 .quiz-intro-decor__spiral--lg,
 .quiz-intro-decor__star--xl {
+  opacity: 0.34;
+}
+
+.quiz-intro-decor__star--sm {
+  opacity: 0.4;
+}
+
+.quiz-intro-decor__star--md {
   opacity: 0.36;
 }
 
 .quiz-intro-decor__confetti {
   position: absolute;
   border-radius: 2px;
-  opacity: 0.4;
-  box-shadow: 0 0 8px rgba(140, 200, 255, 0.25);
+  opacity: 0.28;
+  box-shadow: 0 0 6px rgba(140, 200, 255, 0.2);
   transform: rotate(var(--decor-rotate, 0deg));
   animation: quiz-intro-decor-float 4.6s ease-in-out infinite;
 }
