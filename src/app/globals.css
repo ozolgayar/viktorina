@@ -1562,20 +1562,19 @@ select {
 }
 
 
-/* ── WelcomePage — праздничный экран 25 лет ── */
+/* ── WelcomePage — композиция строго по фото 2 ── */
 .welcome-page {
   position: relative;
-  display: flex;
+  display: grid;
+  place-items: center;
   height: 100vh;
   height: 100dvh;
   max-height: 100dvh;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 58% at 50% 36%, #6b3bc7 0%, transparent 62%),
-    radial-gradient(ellipse 90% 80% at 50% 50%, #3d1a7a 0%, transparent 75%),
-    linear-gradient(180deg, #2a1060 0%, #2f1470 45%, #14082e 100%);
+    radial-gradient(ellipse 62% 52% at 50% 38%, #6e42c9 0%, transparent 58%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, #3a1a78 0%, transparent 70%),
+    linear-gradient(180deg, #27105c 0%, #2a1268 42%, #12072c 100%);
 }
 
 .welcome-decor {
@@ -1590,22 +1589,29 @@ select {
   position: absolute;
   object-fit: contain;
   mix-blend-mode: screen;
-  opacity: 0.95;
+  opacity: 0.96;
+  transform: rotate(var(--decor-rotate, 0deg));
 }
 
+.welcome-decor__spiral,
 .welcome-decor__star {
-  animation: welcome-float 5s ease-in-out infinite;
+  animation: welcome-float 5.5s ease-in-out infinite;
 }
 
-.welcome-decor__spiral {
-  animation: welcome-float 6.5s ease-in-out infinite reverse;
+.welcome-decor__spiral--lg {
+  z-index: 2;
+}
+
+.welcome-decor__star--xl {
+  z-index: 2;
 }
 
 .welcome-decor__confetti {
   position: absolute;
-  border-radius: 3px;
-  box-shadow: 0 0 8px rgba(140, 200, 255, 0.4);
-  animation: welcome-float 4.8s ease-in-out infinite;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(140, 200, 255, 0.35);
+  transform: rotate(var(--decor-rotate, 0deg));
+  animation: welcome-float 4.6s ease-in-out infinite;
 }
 
 @keyframes welcome-float {
@@ -1614,20 +1620,19 @@ select {
     translate: 0 0;
   }
   50% {
-    translate: 0 -8px;
+    translate: 0 -7px;
   }
 }
 
-.welcome-content {
+/* Центральная открытка: 25 → торт → текст → кнопка */
+.welcome-stack {
   position: relative;
-  z-index: 20;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 720px;
-  padding: 8px 16px 28px;
+  width: min(100%, 760px);
+  padding: 0 16px 20px;
   text-align: center;
 }
 
@@ -1635,84 +1640,105 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 4px;
+  width: 100%;
 }
 
 .welcome-balloons {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 0;
-  margin-bottom: -42px;
+  width: 100%;
+  margin: 0;
+  line-height: 0;
 }
 
 .welcome-balloon {
   width: auto;
-  height: clamp(170px, 32vh, 290px);
+  height: clamp(150px, 28vh, 250px);
   object-fit: contain;
   mix-blend-mode: screen;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
 }
 
 .welcome-balloon--2 {
-  margin-right: -36px;
-  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+  margin-right: -12%;
+  margin-bottom: 4%;
   animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
 
 .welcome-balloon--5 {
-  margin-left: -18px;
+  position: relative;
+  z-index: 2;
+  margin-left: -4%;
   animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
 
-.welcome-cake {
+.welcome-cake-wrap {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: -6vh;
+  line-height: 0;
+}
+
+.welcome-cake {
   width: auto;
-  height: clamp(120px, 18vh, 190px);
+  height: clamp(130px, 20vh, 210px);
   object-fit: contain;
   mix-blend-mode: screen;
-  margin-top: 0;
-  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.38));
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes welcome-balloon-a {
   0%,
   100% {
-    transform: translateY(0) rotate(-3deg);
+    transform: translateY(0) rotate(-2.5deg);
   }
   50% {
-    transform: translateY(-10px) rotate(2deg);
+    transform: translateY(-8px) rotate(1.5deg);
   }
 }
 
 @keyframes welcome-balloon-b {
   0%,
   100% {
-    transform: translateY(-4px) rotate(2deg);
+    transform: translateY(-3px) rotate(2deg);
   }
   50% {
-    transform: translateY(6px) rotate(-2deg);
+    transform: translateY(5px) rotate(-1.5deg);
   }
+}
+
+.welcome-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.4rem;
 }
 
 .welcome-title {
-  margin: 22px 0 10px;
+  margin: 0;
   color: #ffffff;
   font-family: Verdana, Geneva, sans-serif !important;
-  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
 .welcome-subtitle {
-  margin: 0 0 36px;
-  color: rgba(255, 255, 255, 0.92);
+  margin: 0.55rem 0 0;
+  color: rgba(255, 255, 255, 0.94);
   font-family: Verdana, Geneva, sans-serif !important;
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-size: clamp(0.98rem, 2.3vw, 1.3rem);
   font-weight: 400;
 }
 
@@ -1720,15 +1746,16 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1.75rem;
   min-width: min(320px, 78vw);
-  min-height: 56px;
-  padding: 16px 44px;
+  min-height: 54px;
+  padding: 15px 42px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.34) 0%,
       rgba(255, 255, 255, 0) 42%
     ),
     linear-gradient(90deg, #6a2cf0 0%, #9b7cff 48%, #6e3af5 100%);
@@ -1755,45 +1782,50 @@ select {
     inset 0 -2px 6px rgba(40, 10, 100, 0.35);
 }
 
-/* Desktop — строго как фото 2 */
+/* Desktop — точное повторение фото 2 */
 @media (min-width: 1024px) {
-  .welcome-content {
-    max-width: 820px;
-    padding: 12px 24px 40px;
+  .welcome-stack {
+    width: min(100%, 860px);
+    padding-bottom: 28px;
+    transform: translateY(-1vh);
   }
 
   .welcome-balloon {
-    height: clamp(260px, 36vh, 340px);
-  }
-
-  .welcome-cake {
-    height: clamp(170px, 20vh, 210px);
-  }
-
-  .welcome-balloons {
-    margin-bottom: -52px;
+    height: min(38vh, 340px);
   }
 
   .welcome-balloon--2 {
-    margin-right: -44px;
-    margin-bottom: 22px;
+    margin-right: -14%;
+    margin-bottom: 5%;
   }
 
   .welcome-balloon--5 {
-    margin-left: -22px;
+    margin-left: -5%;
+  }
+
+  .welcome-cake-wrap {
+    margin-top: -7.5vh;
+  }
+
+  .welcome-cake {
+    height: min(24vh, 230px);
+  }
+
+  .welcome-copy {
+    margin-top: 1.75rem;
   }
 
   .welcome-title {
-    margin-top: 28px;
-    font-size: 3.25rem;
+    font-size: 3.15rem;
   }
 
   .welcome-subtitle {
-    margin-bottom: 40px;
-    font-size: 1.35rem;
+    margin-top: 0.65rem;
+    font-size: 1.3rem;
   }
 
   .welcome-btn {
+    margin-top: 2rem;
     min-width: 360px;
     min-height: 60px;
     font-size: 1.125rem;
@@ -1802,59 +1834,63 @@ select {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .welcome-balloon {
-    height: clamp(200px, 30vh, 270px);
+    height: min(32vh, 280px);
+  }
+
+  .welcome-cake-wrap {
+    margin-top: -6vh;
   }
 
   .welcome-cake {
-    height: clamp(140px, 16vh, 170px);
-  }
-
-  .welcome-balloons {
-    margin-bottom: -40px;
-  }
-
-  .welcome-btn {
-    min-width: 340px;
-    min-height: 58px;
-  }
-}
-
-@media (max-width: 767px) {
-  .welcome-balloon {
-    height: clamp(140px, 26vh, 200px);
-  }
-
-  .welcome-cake {
-    height: clamp(100px, 14vh, 140px);
-  }
-
-  .welcome-balloons {
-    margin-bottom: -30px;
-  }
-
-  .welcome-balloon--2 {
-    margin-right: -24px;
-    margin-bottom: 12px;
-  }
-
-  .welcome-title {
-    margin-top: 16px;
-  }
-
-  .welcome-subtitle {
-    margin-bottom: 28px;
+    height: min(20vh, 190px);
   }
 
   .welcome-decor__img,
   .welcome-decor__confetti {
-    scale: 0.72;
+    scale: 0.88;
+  }
+}
+
+@media (max-width: 767px) {
+  .welcome-stack {
+    padding-inline: 12px;
+  }
+
+  .welcome-balloon {
+    height: clamp(130px, 26vh, 200px);
+  }
+
+  .welcome-balloon--2 {
+    margin-right: -10%;
+  }
+
+  .welcome-cake-wrap {
+    margin-top: -4.5vh;
+  }
+
+  .welcome-cake {
+    height: clamp(110px, 16vh, 150px);
+  }
+
+  .welcome-copy {
+    margin-top: 1rem;
+  }
+
+  .welcome-btn {
+    margin-top: 1.35rem;
+    min-width: min(280px, 82vw);
+  }
+
+  .welcome-decor__img,
+  .welcome-decor__confetti {
+    scale: 0.62;
   }
 }
 
 @media (max-width: 480px) {
   .welcome-decor__img,
   .welcome-decor__confetti {
-    scale: 0.58;
-    opacity: 0.8;
+    scale: 0.5;
+    opacity: 0.82;
   }
 }

@@ -11,30 +11,32 @@ type DecorPos = {
   right?: string;
   size: number;
   rotate?: number;
+  className?: string;
 };
 
-/** 4 звезды как на фото 2 */
-const DECOR_STARS: DecorPos[] = [
-  { bottom: "6%", left: "4%", size: 150, rotate: -10 }, // крупная снизу слева
-  { top: "48%", left: "8%", size: 58, rotate: 12 }, // средняя слева ближе к центру
-  { top: "40%", right: "7%", size: 64, rotate: -8 }, // средняя справа ближе к центру
-  { bottom: "18%", right: "9%", size: 44, rotate: 16 }, // маленькая справа снизу
-];
-
-/** 4 спирали как на фото 2 */
+/**
+ * Декор строго по фото 2:
+ * 4 серпантина, 4 звезды, 4 конфетти.
+ */
 const DECOR_SPIRALS: DecorPos[] = [
-  { top: "8%", left: "7%", size: 48, rotate: -20 }, // маленькая верх слева
-  { top: "30%", left: "3%", size: 145, rotate: -32 }, // крупная слева
-  { top: "34%", right: "5%", size: 52, rotate: 18 }, // маленькая справа
-  { bottom: "10%", right: "3%", size: 130, rotate: 28 }, // крупная справа снизу
+  { top: "7%", left: "9%", size: 42, rotate: -18, className: "welcome-decor__spiral--sm" },
+  { top: "26%", left: "2%", size: 168, rotate: -38, className: "welcome-decor__spiral--lg" },
+  { top: "22%", right: "6%", size: 50, rotate: 22, className: "welcome-decor__spiral--sm" },
+  { bottom: "8%", right: "2%", size: 155, rotate: 30, className: "welcome-decor__spiral--lg" },
 ];
 
-/** 4 конфетти-ромбика как на фото 2 */
+const DECOR_STARS: DecorPos[] = [
+  { bottom: "5%", left: "3%", size: 168, rotate: -8, className: "welcome-decor__star--xl" },
+  { top: "46%", left: "9%", size: 52, rotate: 14, className: "welcome-decor__star--md" },
+  { top: "38%", right: "8%", size: 70, rotate: -10, className: "welcome-decor__star--md" },
+  { bottom: "22%", right: "11%", size: 40, rotate: 18, className: "welcome-decor__star--sm" },
+];
+
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  { top: "10%", left: "28%", size: 14, rotate: 28, color: "#8ec8ff" },
-  { top: "36%", left: "14%", size: 12, rotate: -18, color: "#a8d8ff" },
-  { bottom: "28%", left: "18%", size: 13, rotate: 40, color: "#7eb6f5" },
-  { top: "14%", right: "16%", size: 12, rotate: -24, color: "#9fd0ff" },
+  { top: "9%", left: "26%", size: 13, rotate: 28, color: "#8ec8ff" },
+  { top: "5%", left: "48%", size: 11, rotate: -20, color: "#a8d8ff" },
+  { top: "11%", right: "18%", size: 12, rotate: 35, color: "#7eb6f5" },
+  { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff" },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -45,29 +47,16 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
     right: item.right,
     width: item.size,
     height: item.size,
-    transform: item.rotate != null ? `rotate(${item.rotate}deg)` : undefined,
+    ["--decor-rotate" as string]: item.rotate != null ? `${item.rotate}deg` : "0deg",
     ...extra,
   };
 }
 
-/** Заставка — праздничный экран к 25-летию */
+/** Заставка — праздничный экран к 25-летию (композиция как на фото 2) */
 export function WelcomePage() {
   return (
     <div className="welcome-page">
       <div className="welcome-decor" aria-hidden>
-        {DECOR_STARS.map((item, i) => (
-          <Image
-            key={`star-${i}`}
-            src="/welcome/star.png"
-            alt=""
-            width={item.size}
-            height={item.size}
-            className="welcome-decor__img welcome-decor__star"
-            style={decorStyle(item, { animationDelay: `${i * 0.35}s` })}
-            unoptimized
-          />
-        ))}
-
         {DECOR_SPIRALS.map((item, i) => (
           <Image
             key={`spiral-${i}`}
@@ -75,8 +64,21 @@ export function WelcomePage() {
             alt=""
             width={item.size}
             height={item.size}
-            className="welcome-decor__img welcome-decor__spiral"
-            style={decorStyle(item, { animationDelay: `${i * 0.45}s` })}
+            className={`welcome-decor__img welcome-decor__spiral ${item.className ?? ""}`}
+            style={decorStyle(item, { animationDelay: `${i * 0.4}s` })}
+            unoptimized
+          />
+        ))}
+
+        {DECOR_STARS.map((item, i) => (
+          <Image
+            key={`star-${i}`}
+            src="/welcome/star.png"
+            alt=""
+            width={item.size}
+            height={item.size}
+            className={`welcome-decor__img welcome-decor__star ${item.className ?? ""}`}
+            style={decorStyle(item, { animationDelay: `${i * 0.35}s` })}
             unoptimized
           />
         ))}
@@ -87,20 +89,20 @@ export function WelcomePage() {
             className="welcome-decor__confetti"
             style={decorStyle(item, {
               background: item.color,
-              animationDelay: `${i * 0.3}s`,
+              animationDelay: `${i * 0.25}s`,
             })}
           />
         ))}
       </div>
 
-      <div className="welcome-content">
+      <div className="welcome-stack">
         <div className="welcome-hero">
-          <div className="welcome-balloons">
+          <div className="welcome-balloons" aria-hidden={false}>
             <Image
               src="/welcome/balloon-2.png"
               alt="2"
-              width={320}
-              height={400}
+              width={360}
+              height={440}
               className="welcome-balloon welcome-balloon--2"
               priority
               unoptimized
@@ -108,31 +110,34 @@ export function WelcomePage() {
             <Image
               src="/welcome/balloon-5.png"
               alt="5"
-              width={320}
-              height={400}
+              width={360}
+              height={440}
               className="welcome-balloon welcome-balloon--5"
               priority
               unoptimized
             />
           </div>
 
-          <Image
-            src="/welcome/cake.png"
-            alt=""
-            width={240}
-            height={240}
-            className="welcome-cake"
-            priority
-            unoptimized
-          />
+          <div className="welcome-cake-wrap">
+            <Image
+              src="/welcome/cake.png"
+              alt=""
+              width={280}
+              height={280}
+              className="welcome-cake"
+              priority
+              unoptimized
+            />
+          </div>
         </div>
 
-        <h1 className="welcome-title">ГЕРОФАРМ</h1>
-        <p className="welcome-subtitle">25 лет вместе с вами</p>
-
-        <Link href="/quiz" className="welcome-btn">
-          открыть викторину
-        </Link>
+        <div className="welcome-copy">
+          <h1 className="welcome-title">ГЕРОФАРМ</h1>
+          <p className="welcome-subtitle">25 лет вместе с вами</p>
+          <Link href="/quiz" className="welcome-btn">
+            открыть викторину
+          </Link>
+        </div>
       </div>
     </div>
   );
