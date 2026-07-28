@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
-import { FestiveScreenDecor } from "@/components/FestiveScreenDecor";
+import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { RuleItem } from "@/components/RuleItem";
 import { useQuizStats } from "@/hooks/useQuizStats";
 import { declension, formatTime } from "@/lib/utils";
@@ -39,7 +39,7 @@ export default function QuizIntroPage() {
 
   return (
     <AppShell background="none" gradient="festive">
-      <FestiveScreenDecor />
+      <RegisterFestiveDecor />
 
       <section
         className={`quiz-intro-screen page-enter${isLeaving ? " quiz-intro-screen--leaving" : ""}`}

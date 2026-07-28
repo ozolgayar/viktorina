@@ -153,7 +153,7 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
   };
 }
 
-/** Декор регистрации строго по схеме с номерами */
+/** Декор карточных экранов (регистрация и экран перед регистрацией) */
 export function RegisterFestiveDecor() {
   return (
     <div className="quiz-intro-decor" aria-hidden>
