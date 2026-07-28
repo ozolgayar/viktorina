@@ -30,7 +30,6 @@ body {
 
 button,
 .btn-primary,
-.welcome-btn,
 .results-home-btn,
 .quiz-question-actions__prev,
 .quiz-question-actions__next,
@@ -1574,7 +1573,7 @@ select {
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 35%, #5a2db8 0%, transparent 70%),
+    radial-gradient(ellipse 75% 55% at 50% 32%, #5a2db8 0%, transparent 68%),
     linear-gradient(180deg, #2a1060 0%, #3b1a7a 40%, #1a0a40 100%);
 }
 
@@ -1601,43 +1600,13 @@ select {
   animation: welcome-float 6.5s ease-in-out infinite reverse;
 }
 
-.welcome-decor__square {
-  position: absolute;
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(140, 200, 255, 0.45);
-  animation: welcome-float 4.5s ease-in-out infinite;
-}
-
-.welcome-decor__squiggle {
-  position: absolute;
-  width: 22px;
-  height: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.85) transparent transparent transparent;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: welcome-float 5.5s ease-in-out infinite;
-}
-
-.welcome-decor__squiggle::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 4px;
-  width: 14px;
-  height: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  border-color: transparent transparent rgba(255, 255, 255, 0.7) transparent;
-  border-radius: 50%;
-}
-
 @keyframes welcome-float {
   0%,
   100% {
     translate: 0 0;
   }
   50% {
-    translate: 0 -10px;
+    translate: 0 -8px;
   }
 }
 
@@ -1649,7 +1618,7 @@ select {
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  padding: 16px 20px;
+  padding: 12px 16px 24px;
   text-align: center;
 }
 
@@ -1657,81 +1626,84 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .welcome-balloons {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 0;
-  margin-bottom: -8px;
+  margin-bottom: -28px;
 }
 
 .welcome-balloon {
   width: auto;
-  height: clamp(110px, 22vh, 180px);
+  height: clamp(160px, 30vh, 260px);
   object-fit: contain;
   mix-blend-mode: screen;
 }
 
 .welcome-balloon--2 {
-  margin-right: -18px;
-  margin-bottom: 10px;
+  margin-right: -28px;
+  margin-bottom: 14px;
   animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
 
 .welcome-balloon--5 {
-  margin-left: -10px;
+  margin-left: -14px;
   animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
 
 .welcome-cake {
+  position: relative;
+  z-index: 1;
   width: auto;
-  height: clamp(100px, 18vh, 160px);
+  height: clamp(72px, 11vh, 110px);
   object-fit: contain;
   mix-blend-mode: screen;
-  margin-top: -6px;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+  margin-top: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
 }
 
 @keyframes welcome-balloon-a {
   0%,
   100% {
-    transform: translateY(0) rotate(-4deg);
+    transform: translateY(0) rotate(-3deg);
   }
   50% {
-    transform: translateY(-12px) rotate(2deg);
+    transform: translateY(-10px) rotate(2deg);
   }
 }
 
 @keyframes welcome-balloon-b {
   0%,
   100% {
-    transform: translateY(-6px) rotate(3deg);
+    transform: translateY(-4px) rotate(2deg);
   }
   50% {
-    transform: translateY(8px) rotate(-2deg);
+    transform: translateY(6px) rotate(-2deg);
   }
 }
 
 .welcome-title {
-  margin: 12px 0 6px;
+  margin: 18px 0 8px;
   color: #ffffff;
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-family: Verdana, Geneva, sans-serif !important;
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .welcome-subtitle {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   color: rgba(255, 255, 255, 0.92);
-  font-family: Verdana, Geneva, sans-serif;
-  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  font-family: Verdana, Geneva, sans-serif !important;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
   font-weight: 400;
 }
 
@@ -1739,9 +1711,9 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: min(280px, 78vw);
-  min-height: 52px;
-  padding: 14px 36px;
+  min-width: min(300px, 78vw);
+  min-height: 54px;
+  padding: 14px 40px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background:
@@ -1756,7 +1728,7 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.55),
     inset 0 -2px 6px rgba(40, 10, 100, 0.35);
   color: #ffffff;
-  font-family: var(--font-roboto), Roboto, Arial, sans-serif;
+  font-family: Verdana, Geneva, sans-serif !important;
   font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -1776,16 +1748,31 @@ select {
 
 @media (min-width: 768px) {
   .welcome-balloon {
-    height: clamp(140px, 24vh, 210px);
+    height: clamp(200px, 34vh, 300px);
   }
 
   .welcome-cake {
-    height: clamp(130px, 20vh, 190px);
+    height: clamp(90px, 12vh, 120px);
+  }
+
+  .welcome-balloons {
+    margin-bottom: -36px;
   }
 
   .welcome-btn {
-    min-width: 320px;
-    min-height: 56px;
+    min-width: 340px;
+    min-height: 58px;
     font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-decor__spiral {
+    opacity: 0.75;
+    scale: 0.85;
+  }
+
+  .welcome-decor__star {
+    opacity: 0.85;
   }
 }
