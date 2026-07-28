@@ -76,15 +76,6 @@ const DECOR_SPIRALS: DecorPos[] = [
 ];
 
 const DECOR_STARS: DecorPos[] = [
-  // #1 — слева у верхней части карточки (уменьшен по правке)
-  {
-    top: "28%",
-    left: "15%",
-    size: 78,
-    rotate: -12,
-    opacity: 0.38,
-    className: "quiz-intro-decor__star--md",
-  },
   // #2 — слева у нижней части карточки
   {
     top: "58%",
@@ -134,7 +125,7 @@ const DECOR_STARS: DecorPos[] = [
 
 /** Квадратики в точках схемы как лёгкие связки рядом с крупными акцентами */
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  // рядом с #1 — сдвинут вправо от звезды
+  // левая верхняя зона
   { top: "34%", left: "24%", size: 22, rotate: 28, color: "#8ec8ff", opacity: 0.32 },
   // рядом с #2 — сдвинут вправо от звезды
   { top: "66%", left: "23%", size: 18, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
