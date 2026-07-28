@@ -44,12 +44,13 @@ const DECOR_SPIRALS: DecorPos[] = [
     opacity: 0.34,
     className: "quiz-intro-decor__spiral--lg",
   },
-  // #9 — верхний правый угол (уменьшен по правке)
+  // #9 — верхний правый угол (+100px вниз, отражена слева направо)
   {
-    top: "8%",
+    top: "calc(8% + 100px)",
     right: "4%",
     size: 68,
     rotate: 28,
+    flipX: true,
     opacity: 0.36,
     className: "quiz-intro-decor__spiral--sm",
   },
@@ -112,14 +113,14 @@ const DECOR_STARS: DecorPos[] = [
     opacity: 0.36,
     className: "quiz-intro-decor__star--md",
   },
-  // #11 — справа у нижней/средней части карточки
+  // #11 — справа у средней части карточки (уменьшена)
   {
     top: "52%",
     right: "13%",
-    size: 128,
+    size: 78,
     rotate: -18,
     opacity: 0.36,
-    className: "quiz-intro-decor__star--xl",
+    className: "quiz-intro-decor__star--md",
   },
 ];
 
