@@ -57,6 +57,14 @@ select {
   min-height: 100dvh;
 }
 
+.app-gradient--festive {
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 38%, #6e42c9 0%, transparent 58%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, #3a1a78 0%, transparent 70%),
+    linear-gradient(180deg, #27105c 0%, #2a1268 42%, #12072c 100%);
+}
+
 /* Шапка */
 .app-header {
   position: relative;
@@ -151,6 +159,7 @@ select {
 /* Экран викторины — layout */
 .quiz-intro-screen {
   position: relative;
+  z-index: 1;
   display: flex;
   width: 100%;
   min-height: 100vh;
@@ -201,17 +210,8 @@ select {
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .quiz-intro-screen__hero {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
 }
 
 .quiz-intro-screen__hero-text {
@@ -293,19 +293,9 @@ select {
   font-weight: 900;
   line-height: 1.1;
   text-align: left;
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,
-    #cbedea 25%,
-    #ffffff 50%,
-    #cbedea 75%,
-    #ffffff 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
 }
 
 @media (min-width: 640px) {
@@ -314,62 +304,59 @@ select {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 0% center;
-  }
+/* Декор вокруг контента на экране перед регистрацией */
+.quiz-intro-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.quiz-intro-decor__img {
+  position: absolute;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  transform: rotate(var(--decor-rotate, 0deg)) scaleX(var(--decor-flip, 1));
+  animation: quiz-intro-decor-float 5.5s ease-in-out infinite;
+}
+
+.quiz-intro-decor__spiral--lg,
+.quiz-intro-decor__star--xl {
+  opacity: 0.36;
+}
+
+.quiz-intro-decor__confetti {
+  position: absolute;
+  border-radius: 2px;
+  opacity: 0.4;
+  box-shadow: 0 0 8px rgba(140, 200, 255, 0.25);
+  transform: rotate(var(--decor-rotate, 0deg));
+  animation: quiz-intro-decor-float 4.6s ease-in-out infinite;
+}
+
+@keyframes quiz-intro-decor-float {
+  0%,
   100% {
-    background-position: 200% center;
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
   }
 }
 
-/* Праздничный круг «25 лет успеха» */
-.quiz-anniversary-badge {
-  display: flex;
-  width: 7rem;
-  height: 7rem;
-  flex-shrink: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 50%, #e55a00 100%);
-  box-shadow:
-    0 0 0 4px rgba(255, 140, 0, 0.3),
-    0 0 0 8px rgba(255, 140, 0, 0.15),
-    0 8px 32px rgba(255, 100, 0, 0.4);
-  animation: float-circle 5s ease-in-out infinite;
-}
-
-@media (min-width: 640px) {
-  .quiz-anniversary-badge {
-    width: 9rem;
-    height: 9rem;
+@media (max-width: 768px) {
+  .quiz-intro-decor__spiral--lg,
+  .quiz-intro-decor__star--xl {
+    display: none;
   }
-}
 
-.quiz-anniversary-badge__number {
-  margin: 0;
-  padding: 0;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1;
-  color: white;
-}
-
-@media (min-width: 640px) {
-  .quiz-anniversary-badge__number {
-    font-size: 28px;
+  .quiz-intro-decor__img,
+  .quiz-intro-decor__confetti {
+    opacity: 0.32;
+    scale: 0.7;
   }
-}
-
-.quiz-anniversary-badge__label {
-  margin-top: 2px;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .quiz-card--intro {

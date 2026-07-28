@@ -16,7 +16,7 @@ interface AppShellProps {
   /** Декоративный фон */
   background?: "pattern" | "particles" | "quiz-particles" | "none";
   /** Градиент оболочки */
-  gradient?: "default" | "sky";
+  gradient?: "default" | "sky" | "festive";
   /** Декоративный слой под контентом */
   overlay?: React.ReactNode;
   /** Дополнительные классы для main */
@@ -36,7 +36,11 @@ export function AppShell({
   mainClassName = "",
 }: AppShellProps) {
   const shellClass =
-    gradient === "sky" ? "results-sky-gradient" : "app-gradient";
+    gradient === "sky"
+      ? "results-sky-gradient"
+      : gradient === "festive"
+        ? "app-gradient--festive"
+        : "app-gradient";
 
   return (
     <div
