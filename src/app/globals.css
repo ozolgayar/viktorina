@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --color-brand-primary: #00a88e;
@@ -1562,182 +1562,85 @@ select {
   }
 }
 
-/* ── WelcomePage — заставка ── */
+
+/* ── WelcomePage — праздничный экран 25 лет ── */
 .welcome-page {
   position: relative;
   display: flex;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-    #87ceeb 0%,
-    #b0d9ee 30%,
-    #c8e8f5 55%,
-    #dff2fa 75%,
-    #ffffff 100%
-  );
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 35%, #5a2db8 0%, transparent 70%),
+    linear-gradient(180deg, #2a1060 0%, #3b1a7a 40%, #1a0a40 100%);
 }
 
-/* Плывущие облака */
-.welcome-drift-cloud {
+.welcome-decor {
   position: absolute;
+  inset: 0;
+  z-index: 1;
   pointer-events: none;
-  z-index: 3;
-  filter: drop-shadow(0 6px 12px rgba(150, 200, 220, 0.3));
+  overflow: hidden;
 }
 
-.welcome-drift-cloud__part {
+.welcome-decor__img {
   position: absolute;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+.welcome-decor__star {
+  animation: welcome-float 5s ease-in-out infinite;
+}
+
+.welcome-decor__spiral {
+  animation: welcome-float 6.5s ease-in-out infinite reverse;
+}
+
+.welcome-decor__square {
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(140, 200, 255, 0.45);
+  animation: welcome-float 4.5s ease-in-out infinite;
+}
+
+.welcome-decor__squiggle {
+  position: absolute;
+  width: 22px;
+  height: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.85) transparent transparent transparent;
   border-radius: 50%;
+  opacity: 0.8;
+  animation: welcome-float 5.5s ease-in-out infinite;
 }
 
-.welcome-drift-cloud--1 {
-  animation: drift-cloud-1 28s linear -8s infinite;
-}
-
-.welcome-drift-cloud--2 {
-  animation: drift-cloud-2 22s linear -3s infinite;
-}
-
-.welcome-drift-cloud--3 {
-  animation: drift-cloud-3 35s linear -15s infinite;
-}
-
-.welcome-drift-cloud--4 {
-  animation: drift-cloud-4 25s linear -20s infinite;
-}
-
-@keyframes drift-cloud-1 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(calc(100vw + 300px));
-  }
-}
-
-@keyframes drift-cloud-2 {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(calc(-100vw - 300px));
-  }
-}
-
-@keyframes drift-cloud-3 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(calc(100vw + 250px));
-  }
-}
-
-@keyframes drift-cloud-4 {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(calc(-100vw - 250px));
-  }
-}
-
-/* Конфетти */
-.welcome-confetti {
+.welcome-decor__squiggle::before {
+  content: "";
   position: absolute;
-  top: -20px;
-  opacity: 0.85;
-  animation: confetti-fall linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.welcome-confetti--rect {
-  width: 4px;
-  height: 14px;
-  border-radius: 2px;
-}
-
-.welcome-confetti--square {
-  width: 8px;
+  left: 4px;
+  top: 4px;
+  width: 14px;
   height: 8px;
-  border-radius: 1px;
-}
-
-.welcome-confetti--circle {
-  width: 7px;
-  height: 7px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-color: transparent transparent rgba(255, 255, 255, 0.7) transparent;
   border-radius: 50%;
 }
 
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-20px) translateX(0) rotate(0deg);
-    opacity: 0.9;
-  }
-  25% {
-    transform: translateY(25vh) translateX(15px) rotate(180deg);
+@keyframes welcome-float {
+  0%,
+  100% {
+    translate: 0 0;
   }
   50% {
-    transform: translateY(50vh) translateX(-10px) rotate(360deg);
-  }
-  75% {
-    transform: translateY(75vh) translateX(20px) rotate(540deg);
-  }
-  100% {
-    transform: translateY(110vh) translateX(0) rotate(720deg);
-    opacity: 0;
+    translate: 0 -10px;
   }
 }
 
-/* Искры */
-.welcome-spark {
-  position: absolute;
-  line-height: 1;
-  pointer-events: none;
-  animation: sparkle-twinkle ease-in-out infinite;
-}
-
-@keyframes sparkle-twinkle {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3) rotate(180deg);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.3) rotate(360deg);
-  }
-}
-
-.welcome-after-hero {
-  background: white;
-}
-
-/* Туман снизу */
-.welcome-fog {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* Контент */
 .welcome-content {
   position: relative;
   z-index: 20;
@@ -1745,188 +1648,144 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  max-width: 100%;
+  padding: 16px 20px;
   text-align: center;
 }
 
-/* Шарики */
+.welcome-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
 .welcome-balloons {
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 0;
+  margin-bottom: -8px;
 }
 
-.welcome-balloon-wrap--2 {
-  margin-right: -12px;
-  margin-bottom: 16px;
-}
-
-.welcome-balloon-wrap--5 {
-  margin-left: -8px;
-}
-
-.welcome-balloon-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.welcome-balloon-float1 {
-  animation: balloon-float1 3s ease-in-out infinite;
-}
-
-.welcome-balloon-float2 {
-  animation: balloon-float2 3.5s ease-in-out infinite;
-}
-
-.welcome-balloon-img {
-  height: 160px;
+.welcome-balloon {
   width: auto;
+  height: clamp(110px, 22vh, 180px);
   object-fit: contain;
+  mix-blend-mode: screen;
 }
 
-@media (min-width: 1024px) {
-  .welcome-balloon-img {
-    height: 220px;
-  }
+.welcome-balloon--2 {
+  margin-right: -18px;
+  margin-bottom: 10px;
+  animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
 
-.welcome-balloon-string-svg {
-  display: block;
-  margin: 0 auto;
+.welcome-balloon--5 {
+  margin-left: -10px;
+  animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
 
-.welcome-balloon-shadow {
-  width: 80px;
-  height: 20px;
-  margin-top: 4px;
-  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.15) 0%, transparent 70%);
-  filter: blur(4px);
+.welcome-cake {
+  width: auto;
+  height: clamp(100px, 18vh, 160px);
+  object-fit: contain;
+  mix-blend-mode: screen;
+  margin-top: -6px;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
 }
 
-@media (min-width: 1024px) {
-  .welcome-balloon-shadow {
-    width: 100px;
-    height: 24px;
-  }
-}
-
-@keyframes balloon-float1 {
+@keyframes welcome-balloon-a {
   0%,
   100% {
-    transform: translateY(0) rotate(-3deg);
+    transform: translateY(0) rotate(-4deg);
   }
   50% {
-    transform: translateY(-20px) rotate(3deg);
+    transform: translateY(-12px) rotate(2deg);
   }
 }
 
-@keyframes balloon-float2 {
+@keyframes welcome-balloon-b {
   0%,
   100% {
-    transform: translateY(-10px) rotate(2deg);
+    transform: translateY(-6px) rotate(3deg);
   }
   50% {
-    transform: translateY(10px) rotate(-2deg);
+    transform: translateY(8px) rotate(-2deg);
   }
 }
 
-/* Надписи */
 .welcome-title {
-  font-weight: 900;
-  color: #1a2b3c;
-  font-size: 32px;
-  letter-spacing: 4px;
-  margin: 16px 0 8px;
-  text-shadow: 0 2px 10px rgba(0, 168, 142, 0.2);
-}
-
-@media (min-width: 1024px) {
-  .welcome-title {
-    font-size: 48px;
-  }
+  margin: 12px 0 6px;
+  color: #ffffff;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .welcome-subtitle {
-  color: #00a88e;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 32px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  font-weight: 400;
 }
 
-@media (min-width: 1024px) {
-  .welcome-subtitle {
-    font-size: 20px;
-  }
-}
-
-/* Кнопка */
 .welcome-btn {
-  display: inline-block;
-  background: #f5821f;
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 16px 40px;
-  border-radius: 50px;
-  box-shadow: 0 8px 24px rgba(245, 130, 31, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(280px, 78vw);
+  min-height: 52px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 42%
+    ),
+    linear-gradient(90deg, #6a2cf0 0%, #9b7cff 48%, #6e3af5 100%);
+  box-shadow:
+    0 10px 28px rgba(60, 20, 140, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2px 6px rgba(40, 10, 100, 0.35);
+  color: #ffffff;
+  font-family: var(--font-roboto), Roboto, Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-transform: lowercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .welcome-btn:hover {
-  background: #f7941d;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(245, 130, 31, 0.5);
+  filter: brightness(1.08);
+  box-shadow:
+    0 14px 32px rgba(60, 20, 140, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -2px 6px rgba(40, 10, 100, 0.35);
 }
 
-/* Анимации появления */
-.welcome-enter-balloons {
-  animation: welcome-drop-in 0.8s ease-out both;
-}
-
-.welcome-enter-title {
-  animation: welcome-rise-in 0.6s ease-out 0.3s both;
-}
-
-.welcome-enter-subtitle {
-  animation: welcome-fade-in 0.6s ease-out 0.5s both;
-}
-
-.welcome-enter-btn {
-  animation: welcome-fade-in 0.6s ease-out 0.7s both;
-}
-
-@keyframes welcome-drop-in {
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
+@media (min-width: 768px) {
+  .welcome-balloon {
+    height: clamp(140px, 24vh, 210px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes welcome-rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  .welcome-cake {
+    height: clamp(130px, 20vh, 190px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes welcome-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+  .welcome-btn {
+    min-width: 320px;
+    min-height: 56px;
+    font-size: 1.125rem;
   }
 }

@@ -1,69 +1,160 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
-/** Заставка — первый экран приложения */
+const DECOR_STARS = [
+  { top: "6%", left: "8%", size: 56, rotate: -18 },
+  { top: "18%", right: "6%", size: 72, rotate: 12 },
+  { bottom: "22%", left: "10%", size: 48, rotate: 28 },
+  { bottom: "14%", right: "12%", size: 64, rotate: -8 },
+] as const;
+
+const DECOR_SPIRALS = [
+  { top: "10%", left: "18%", size: 70, rotate: -35 },
+  { top: "28%", right: "14%", size: 90, rotate: 20 },
+  { bottom: "28%", left: "6%", size: 60, rotate: 45 },
+  { bottom: "18%", right: "22%", size: 78, rotate: -15 },
+] as const;
+
+const DECOR_SQUARES = [
+  { top: "12%", left: "28%", size: 14, rotate: 18, color: "#8ec8ff" },
+  { top: "22%", right: "24%", size: 12, rotate: -22, color: "#a8d8ff" },
+  { top: "42%", left: "8%", size: 16, rotate: 35, color: "#7eb6f5" },
+  { bottom: "30%", right: "8%", size: 13, rotate: -12, color: "#9fd0ff" },
+  { bottom: "38%", left: "22%", size: 11, rotate: 48, color: "#b8e0ff" },
+  { top: "55%", right: "18%", size: 15, rotate: -30, color: "#86c2f8" },
+] as const;
+
+const DECOR_SQUIGGLES = [
+  { top: "16%", left: "42%" },
+  { top: "36%", right: "28%" },
+  { bottom: "34%", left: "30%" },
+  { bottom: "24%", right: "36%" },
+] as const;
+
+/** Заставка — праздничный экран к 25-летию */
 export function WelcomePage() {
   return (
     <div className="welcome-page">
-      <div className="welcome-content">
-        <h1 className="welcome-title">ГЕРОФАРМ</h1>
-        <p className="welcome-subtitle">25 лет вместе с вами</p>
-        <Link href="/quiz" className="welcome-btn">
-          Открыть викторину
-        </Link>
+      <div className="welcome-decor" aria-hidden>
+        {DECOR_STARS.map((item, i) => (
+          <Image
+            key={`star-${i}`}
+            src="/welcome/star.png"
+            alt=""
+            width={item.size}
+            height={item.size}
+            className="welcome-decor__img welcome-decor__star"
+            style={{
+              top: "top" in item ? item.top : undefined,
+              bottom: "bottom" in item ? item.bottom : undefined,
+              left: "left" in item ? item.left : undefined,
+              right: "right" in item ? item.right : undefined,
+              width: item.size,
+              height: item.size,
+              transform: `rotate(${item.rotate}deg)`,
+              animationDelay: `${i * 0.4}s`,
+            }}
+            unoptimized
+          />
+        ))}
+
+        {DECOR_SPIRALS.map((item, i) => (
+          <Image
+            key={`spiral-${i}`}
+            src="/welcome/spiral.png"
+            alt=""
+            width={item.size}
+            height={item.size}
+            className="welcome-decor__img welcome-decor__spiral"
+            style={{
+              top: "top" in item ? item.top : undefined,
+              bottom: "bottom" in item ? item.bottom : undefined,
+              left: "left" in item ? item.left : undefined,
+              right: "right" in item ? item.right : undefined,
+              width: item.size,
+              height: item.size,
+              transform: `rotate(${item.rotate}deg)`,
+              animationDelay: `${i * 0.55}s`,
+            }}
+            unoptimized
+          />
+        ))}
+
+        {DECOR_SQUARES.map((item, i) => (
+          <span
+            key={`sq-${i}`}
+            className="welcome-decor__square"
+            style={{
+              top: "top" in item ? item.top : undefined,
+              bottom: "bottom" in item ? item.bottom : undefined,
+              left: "left" in item ? item.left : undefined,
+              right: "right" in item ? item.right : undefined,
+              width: item.size,
+              height: item.size,
+              background: item.color,
+              transform: `rotate(${item.rotate}deg)`,
+              animationDelay: `${i * 0.35}s`,
+            }}
+          />
+        ))}
+
+        {DECOR_SQUIGGLES.map((item, i) => (
+          <span
+            key={`sqg-${i}`}
+            className="welcome-decor__squiggle"
+            style={{
+              top: "top" in item ? item.top : undefined,
+              bottom: "bottom" in item ? item.bottom : undefined,
+              left: "left" in item ? item.left : undefined,
+              right: "right" in item ? item.right : undefined,
+              animationDelay: `${i * 0.5}s`,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Мягкий туман снизу */}
-      <div className="welcome-fog" aria-hidden />
+      <div className="welcome-content">
+        <div className="welcome-hero">
+          <div className="welcome-balloons">
+            <Image
+              src="/welcome/balloon-2.png"
+              alt="2"
+              width={180}
+              height={220}
+              className="welcome-balloon welcome-balloon--2"
+              priority
+              unoptimized
+            />
+            <Image
+              src="/welcome/balloon-5.png"
+              alt="5"
+              width={180}
+              height={220}
+              className="welcome-balloon welcome-balloon--5"
+              priority
+              unoptimized
+            />
+          </div>
 
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "120px",
-          overflow: "hidden",
-          lineHeight: 0,
-          zIndex: 5,
-          pointerEvents: "none",
-        }}
-        aria-hidden
-      >
-        <svg
-          viewBox="0 0 1440 120"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          style={{
-            display: "block",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <path
-            d="
-        M0,120
-        L0,90
-        Q80,40 160,75
-        Q200,90 240,70
-        Q290,45 340,65
-        Q380,80 420,60
-        Q480,30 560,65
-        Q600,80 640,60
-        Q700,30 780,70
-        Q820,85 870,65
-        Q930,40 1000,72
-        Q1050,88 1100,68
-        Q1160,42 1230,75
-        Q1300,95 1360,78
-        Q1400,65 1440,80
-        L1440,120
-        Z
-      "
-            fill="white"
+          <Image
+            src="/welcome/cake.png"
+            alt=""
+            width={220}
+            height={220}
+            className="welcome-cake"
+            priority
+            unoptimized
           />
-        </svg>
+        </div>
+
+        <h1 className="welcome-title">ГЕРОФАРМ</h1>
+        <p className="welcome-subtitle">25 лет вместе с вами</p>
+
+        <Link href="/quiz" className="welcome-btn">
+          открыть викторину
+        </Link>
       </div>
     </div>
   );
