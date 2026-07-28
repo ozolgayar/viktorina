@@ -103,6 +103,15 @@ const DECOR_STARS: DecorPos[] = [
     opacity: 0.37,
     className: "quiz-intro-decor__star--md",
   },
+  // #8 — справа у верхней части карточки (уменьшена)
+  {
+    top: "24%",
+    right: "9%",
+    size: 88,
+    rotate: 10,
+    opacity: 0.36,
+    className: "quiz-intro-decor__star--md",
+  },
   // #11 — справа у нижней/средней части карточки
   {
     top: "52%",
@@ -120,10 +129,8 @@ const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
   { top: "34%", left: "24%", size: 22, rotate: 28, color: "#8ec8ff", opacity: 0.32 },
   // рядом с #2 — сдвинут вправо от звезды
   { top: "66%", left: "23%", size: 18, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
-  // рядом с #7
+  // рядом с #7/#8
   { top: "18%", right: "16%", size: 20, rotate: 36, color: "#7eb6f5", opacity: 0.28 },
-  // вместо крупной звезды #8 справа у карточки
-  { top: "24%", right: "11%", size: 14, rotate: 18, color: "#9fd0ff", opacity: 0.34 },
   // рядом с #11/#12
   { bottom: "20%", right: "18%", size: 16, rotate: -30, color: "#9fd0ff", opacity: 0.28 },
 ];
