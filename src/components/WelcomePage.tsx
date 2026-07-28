@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { BackgroundPattern } from "./BackgroundPattern";
 
 type DecorPos = {
   top?: string;
@@ -12,45 +11,79 @@ type DecorPos = {
   right?: string;
   size: number;
   rotate?: number;
+  /** доп. сдвиг по X (px) */
   offsetX?: number;
+  /** доп. сдвиг по Y (px) */
   offsetY?: number;
+  /** отразить по горизонтали */
   flipX?: boolean;
   className?: string;
 };
 
-/** Декор вокруг центрального контента (без шариков и торта) */
+/**
+ * Декор: 4 серпантина, 4 звезды, 4 конфетти.
+ * Правки по схеме пользователя:
+ * 1 — звезда слева по центру
+ * 2 — крупный серпантин справа снизу
+ * 3 — маленькая звезда справа снизу
+ * 4 — звезда справа по центру
+ */
 const DECOR_SPIRALS: DecorPos[] = [
-  { top: "12%", left: "6%", size: 48, rotate: -18, className: "welcome-decor__spiral--sm" },
-  { top: "18%", right: "7%", size: 56, rotate: 22, className: "welcome-decor__spiral--sm" },
+  { top: "7%", left: "9%", size: 42, rotate: -18, className: "welcome-decor__spiral--sm" },
+  { top: "26%", left: "2%", size: 168, rotate: -38, className: "welcome-decor__spiral--lg" },
+  { top: "22%", right: "6%", size: 50, rotate: 22, className: "welcome-decor__spiral--sm" },
+  // #2: влево 100, вверх 100, отразить слева направо
   {
-    bottom: "14%",
-    left: "4%",
-    size: 120,
-    rotate: -28,
-    className: "welcome-decor__spiral--lg",
-  },
-  {
-    bottom: "10%",
-    right: "3%",
-    size: 130,
-    rotate: 26,
+    bottom: "8%",
+    right: "2%",
+    size: 155,
+    rotate: 30,
+    offsetX: -100,
+    offsetY: -100,
     flipX: true,
     className: "welcome-decor__spiral--lg",
   },
 ];
 
 const DECOR_STARS: DecorPos[] = [
-  { top: "22%", left: "10%", size: 58, rotate: -12, className: "welcome-decor__star--md" },
-  { top: "28%", right: "9%", size: 72, rotate: 14, className: "welcome-decor__star--md" },
-  { bottom: "22%", left: "8%", size: 140, rotate: -8, className: "welcome-decor__star--xl" },
-  { bottom: "18%", right: "10%", size: 48, rotate: 28, className: "welcome-decor__star--sm" },
+  { bottom: "5%", left: "3%", size: 168, rotate: -8, className: "welcome-decor__star--xl" },
+  // #1: вправо 200, вниз 50, поворот +45°
+  {
+    top: "46%",
+    left: "9%",
+    size: 52,
+    rotate: 14 + 45,
+    offsetX: 200,
+    offsetY: 50,
+    className: "welcome-decor__star--md",
+  },
+  // #4: большая у «5» — уменьшить на 40
+  {
+    top: "38%",
+    right: "8%",
+    size: 70 + 100 - 40,
+    rotate: -10,
+    offsetX: -250,
+    offsetY: -100,
+    className: "welcome-decor__star--md",
+  },
+  // #3: маленькая под ней — вниз на 200
+  {
+    bottom: "22%",
+    right: "11%",
+    size: 40 + 50,
+    rotate: 18 + 45,
+    offsetX: -300,
+    offsetY: 0,
+    className: "welcome-decor__star--sm",
+  },
 ];
 
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  { top: "16%", left: "22%", size: 12, rotate: 28, color: "#8ec8ff" },
-  { top: "14%", right: "24%", size: 11, rotate: -20, color: "#a8d8ff" },
-  { bottom: "28%", left: "18%", size: 12, rotate: 35, color: "#7eb6f5" },
-  { bottom: "32%", right: "16%", size: 12, rotate: -28, color: "#9fd0ff" },
+  { top: "9%", left: "26%", size: 13, rotate: 28, color: "#8ec8ff" },
+  { top: "5%", left: "48%", size: 11, rotate: -20, color: "#a8d8ff" },
+  { top: "11%", right: "18%", size: 12, rotate: 35, color: "#7eb6f5" },
+  { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff" },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -73,8 +106,6 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
 export function WelcomePage() {
   return (
     <div className="welcome-page">
-      <BackgroundPattern />
-
       <div className="welcome-decor" aria-hidden>
         {DECOR_SPIRALS.map((item, i) => (
           <Image
@@ -115,6 +146,41 @@ export function WelcomePage() {
       </div>
 
       <div className="welcome-stack">
+        <div className="welcome-hero">
+          <div className="welcome-balloons">
+            <Image
+              src="/welcome/balloon-2.png"
+              alt="2"
+              width={360}
+              height={440}
+              className="welcome-balloon welcome-balloon--2"
+              priority
+              unoptimized
+            />
+            <Image
+              src="/welcome/balloon-5.png"
+              alt="5"
+              width={360}
+              height={440}
+              className="welcome-balloon welcome-balloon--5"
+              priority
+              unoptimized
+            />
+          </div>
+
+          <div className="welcome-cake-wrap">
+            <Image
+              src="/welcome/cake.png"
+              alt=""
+              width={280}
+              height={280}
+              className="welcome-cake"
+              priority
+              unoptimized
+            />
+          </div>
+        </div>
+
         <div className="welcome-copy">
           <h1 className="welcome-title">ГЕРОФАРМ</h1>
           <Link href="/quiz" className="welcome-btn">

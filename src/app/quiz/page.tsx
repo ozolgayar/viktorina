@@ -89,6 +89,11 @@ export default function QuizIntroPage() {
                 </div>
               )}
             </div>
+
+            <div className="quiz-anniversary-badge">
+              <span className="quiz-anniversary-badge__number">25</span>
+              <span className="quiz-anniversary-badge__label">ЛЕТ УСПЕХА</span>
+            </div>
           </div>
 
           <div className="quiz-card quiz-card--intro w-full">
