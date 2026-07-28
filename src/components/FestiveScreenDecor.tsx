@@ -16,94 +16,101 @@ type DecorPos = {
 };
 
 /**
- * Асимметричный декор по периметру:
- * верх легче, низ плотнее, центр карточки чистый.
+ * Обрамление карточки без пересечений:
+ * верх/бока — лёгкие акценты ближе к форме,
+ * низ — более крупные «опоры» в углах, разведённые по зонам.
+ *
+ * Карточка регистрации ~max-w ~28rem по центру ≈ 28–72% ширины.
+ * Держим декор вне ~24–76% по X и не залезаем на края карточки.
  */
 const DECOR_SPIRALS: DecorPos[] = [
-  // верх слева — мелкая, с воздухом от угла
+  // верх слева — мелкая, у верхнего угла карточки
   {
-    top: "10%",
-    left: "5.5%",
-    size: 38,
-    rotate: -22,
+    top: "14%",
+    left: "11%",
+    size: 42,
+    rotate: -20,
+    opacity: 0.36,
+    className: "quiz-intro-decor__spiral--sm",
+  },
+  // верх справа — другая высота, не зеркало
+  {
+    top: "11%",
+    right: "10%",
+    size: 36,
+    rotate: 26,
     opacity: 0.34,
     className: "quiz-intro-decor__spiral--sm",
   },
-  // верх справа — чуть ниже и крупнее, не зеркало
+  // низ слева — крупная опора (зона отдельно от звезды)
   {
-    top: "15%",
-    right: "6.5%",
-    size: 46,
-    rotate: 18,
-    opacity: 0.32,
-    className: "quiz-intro-decor__spiral--sm",
-  },
-  // низ слева — крупная «опора»
-  {
-    bottom: "11%",
-    left: "4%",
-    size: 148,
-    rotate: -36,
+    bottom: "8%",
+    left: "6%",
+    size: 132,
+    rotate: -34,
     opacity: 0.34,
     className: "quiz-intro-decor__spiral--lg",
   },
-  // низ справа — другая высота и размер
+  // низ справа — чуть выше и меньше, не рядом с левой
   {
-    bottom: "6%",
-    right: "5%",
-    size: 122,
-    rotate: 24,
+    bottom: "4%",
+    right: "7%",
+    size: 110,
+    rotate: 22,
     flipX: true,
-    opacity: 0.36,
+    opacity: 0.35,
     className: "quiz-intro-decor__spiral--lg",
   },
 ];
 
 const DECOR_STARS: DecorPos[] = [
-  // акцент слева, ниже верхней спирали
+  // верхняя зона у карточки (между спиралями по высоте)
   {
-    top: "26%",
-    left: "7%",
-    size: 40,
-    rotate: -18,
+    top: "18%",
+    right: "16%",
+    size: 44,
+    rotate: 14,
     opacity: 0.38,
     className: "quiz-intro-decor__star--sm",
   },
-  // справа выше середины, другой размер
+  // боковой акцент слева, середина высоты
   {
-    top: "33%",
-    right: "5%",
-    size: 58,
-    rotate: 22,
-    opacity: 0.36,
+    top: "46%",
+    left: "8%",
+    size: 48,
+    rotate: -16,
+    opacity: 0.37,
     className: "quiz-intro-decor__star--md",
   },
-  // крупная внизу слева — заземление
+  // боковой акцент справа, выше середины — не на одной линии
   {
-    bottom: "15%",
-    left: "5.5%",
-    size: 108,
-    rotate: -6,
-    opacity: 0.34,
-    className: "quiz-intro-decor__star--xl",
-  },
-  // маленькая справа снизу, не на одной линии с крупной
-  {
-    bottom: "28%",
-    right: "7.5%",
-    size: 34,
-    rotate: 34,
+    top: "38%",
+    right: "8%",
+    size: 36,
+    rotate: 28,
     opacity: 0.4,
     className: "quiz-intro-decor__star--sm",
+  },
+  // крупная снизу слева — выше спирали, без overlap
+  {
+    bottom: "22%",
+    left: "9%",
+    size: 92,
+    rotate: -8,
+    opacity: 0.34,
+    className: "quiz-intro-decor__star--xl",
   },
 ];
 
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  { top: "7%", left: "21%", size: 8, rotate: 28, color: "#8ec8ff", opacity: 0.28 },
-  { top: "18%", right: "14%", size: 12, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
-  { top: "44%", left: "3.5%", size: 9, rotate: 40, color: "#7eb6f5", opacity: 0.26 },
-  { bottom: "36%", right: "3.5%", size: 7, rotate: -32, color: "#9fd0ff", opacity: 0.28 },
-  { top: "38%", right: "11%", size: 6, rotate: 18, color: "#b8dfff", opacity: 0.24 },
+  // верх у карточки
+  { top: "16%", left: "20%", size: 8, rotate: 28, color: "#8ec8ff", opacity: 0.28 },
+  { top: "13%", right: "22%", size: 10, rotate: -22, color: "#a8d8ff", opacity: 0.26 },
+  // бока ближе к форме
+  { top: "52%", left: "14%", size: 7, rotate: 36, color: "#7eb6f5", opacity: 0.24 },
+  { top: "58%", right: "13%", size: 9, rotate: -30, color: "#9fd0ff", opacity: 0.26 },
+  // лёгкий ритм снизу справа (далеко от крупной спирали)
+  { bottom: "18%", right: "18%", size: 6, rotate: 16, color: "#b8dfff", opacity: 0.22 },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
