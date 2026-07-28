@@ -134,10 +134,10 @@ const DECOR_STARS: DecorPos[] = [
 
 /** Квадратики в точках схемы как лёгкие связки рядом с крупными акцентами */
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  // рядом с #1 / верхней левой зоной
-  { top: "34%", left: "20%", size: 22, rotate: 28, color: "#8ec8ff", opacity: 0.32 },
-  // рядом с #2
-  { top: "66%", left: "19%", size: 18, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
+  // рядом с #1 — сдвинут вправо от звезды
+  { top: "34%", left: "24%", size: 22, rotate: 28, color: "#8ec8ff", opacity: 0.32 },
+  // рядом с #2 — сдвинут вправо от звезды
+  { top: "66%", left: "23%", size: 18, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
   // рядом с #7/#8
   { top: "18%", right: "16%", size: 20, rotate: 36, color: "#7eb6f5", opacity: 0.28 },
   // рядом с #11/#12
