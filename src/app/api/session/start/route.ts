@@ -9,6 +9,7 @@ import {
   isValidFullName,
   shuffleArray,
 } from "@/lib/quiz-config";
+import { QUESTIONS_BANK } from "@/lib/questions-bank";
 import type { PublicQuestion, SessionStartResponse } from "@/types/quiz";
 
 interface StartBody {
@@ -19,7 +20,7 @@ interface StartBody {
 /**
  * Создание сессии викторины.
  * - Проверка временного окна на сервере
- * - Выбор 10 случайных вопросов
+ * - Выбор вопросов из локального банка
  * - started_at через now() в БД
  * - correct_index НЕ возвращается клиенту
  */
@@ -62,36 +63,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createServiceClient();
-
-    // Загружаем все вопросы (service role — видим correct_index, но не отдаём)
-    const { data: allQuestions, error: qError } = await supabase
-      .from("questions")
-      .select("id, text, options, correct_index");
-
-    if (qError || !allQuestions?.length) {
-      console.error("Ошибка загрузки вопросов:", qError);
+    if (QUESTIONS_BANK.length < QUIZ_CONFIG.questionsCount) {
       return NextResponse.json(
-        { error: "Не удалось загрузить вопросы" },
+        { error: "Недостаточно вопросов в банке" },
         { status: 500 }
       );
     }
 
-    if (allQuestions.length < QUIZ_CONFIG.questionsCount) {
-      return NextResponse.json(
-        { error: "Недостаточно вопросов в базе данных" },
-        { status: 500 }
-      );
-    }
-
-    // Случайный выбор и перемешивание на сервере
-    const selected = shuffleArray(allQuestions).slice(
+    const selected = shuffleArray([...QUESTIONS_BANK]).slice(
       0,
       QUIZ_CONFIG.questionsCount
     );
     const questionIds = selected.map((q) => q.id);
 
-    // Создаём сессию через RPC (started_at = now() на стороне БД)
+    const supabase = createServiceClient();
+
     const { data: sessionId, error: sessionError } = await supabase.rpc(
       "create_quiz_session",
       {
@@ -109,7 +95,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Получаем started_at из БД
     const { data: session, error: fetchError } = await supabase
       .from("sessions")
       .select("started_at")
@@ -123,11 +108,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Публичные вопросы без correct_index
     const publicQuestions: PublicQuestion[] = selected.map((q) => ({
       id: q.id,
-      text: q.text,
-      options: q.options as string[],
+      text: `${q.context} ${q.prompt}`.trim(),
+      context: q.context,
+      prompt: q.prompt,
+      options: q.options,
+      image: q.image,
     }));
 
     const response: SessionStartResponse = {

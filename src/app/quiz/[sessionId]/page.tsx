@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { AnswerOption } from "@/components/AnswerOption";
-import { FestiveScreenDecor } from "@/components/FestiveScreenDecor";
 import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
+import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { Timer } from "@/components/Timer";
 import type {
   PublicQuestion,
@@ -220,7 +221,7 @@ export default function QuizPage() {
         <Timer remainingSeconds={remainingSeconds} warning={isWarning} inline />
       }
     >
-      <FestiveScreenDecor />
+      <RegisterFestiveDecor />
       <div className="quiz-question-screen">
         <div className="quiz-question-screen__inner">
           <QuizNavigation
@@ -231,26 +232,50 @@ export default function QuizPage() {
             onNavigate={navigateTo}
           />
 
-          <div className={`quiz-question-card w-full max-w-2xl ${cardAnimClass}`}>
-            <div className="quiz-card rounded-2xl p-5 shadow-xl sm:p-8">
-              <p className="quiz-question-card__title">
-                Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
-              </p>
+          <div className={`quiz-question-card w-full max-w-4xl ${cardAnimClass}`}>
+            <div className="quiz-card quiz-question-panel rounded-2xl shadow-xl">
+              <div className="quiz-question-panel__top">
+                <div className="quiz-question-panel__intro">
+                  <p className="quiz-question-card__title">
+                    Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
+                  </p>
+                  <p className="quiz-question-panel__context">
+                    {question.context || question.text}
+                  </p>
+                </div>
+                {question.image ? (
+                  <div className="quiz-question-panel__media">
+                    <Image
+                      src={question.image}
+                      alt=""
+                      width={480}
+                      height={320}
+                      className="quiz-question-panel__image"
+                      unoptimized
+                      priority
+                    />
+                  </div>
+                ) : null}
+              </div>
 
-              <p className="quiz-question-card__text">{question.text}</p>
+              <div className="quiz-question-panel__box">
+                <p className="quiz-question-panel__prompt">
+                  {question.prompt || question.text}
+                </p>
 
-              <div className="quiz-answer-options">
-                {question.options.map((option, index) => (
-                  <AnswerOption
-                    key={`${question.id}-${index}`}
-                    label={option}
-                    index={index}
-                    selected={selectedIndex === index}
-                    disabled={finishing}
-                    variant="radio"
-                    onSelect={() => handleSelect(index)}
-                  />
-                ))}
+                <div className="quiz-answer-options quiz-answer-options--panel">
+                  {question.options.map((option, index) => (
+                    <AnswerOption
+                      key={`${question.id}-${index}`}
+                      label={option}
+                      index={index}
+                      selected={selectedIndex === index}
+                      disabled={finishing}
+                      variant="radio"
+                      onSelect={() => handleSelect(index)}
+                    />
+                  ))}
+                </div>
               </div>
 
               {finishing && (

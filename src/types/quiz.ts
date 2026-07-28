@@ -1,8 +1,14 @@
 /** Публичный вопрос — без correct_index */
 export interface PublicQuestion {
   id: string;
+  /** Полный текст (для совместимости) */
   text: string;
+  /** Вводный абзац */
+  context: string;
+  /** Короткий вопрос */
+  prompt: string;
   options: string[];
+  image: string;
 }
 
 /** Вопрос с правильным ответом — только на сервере */

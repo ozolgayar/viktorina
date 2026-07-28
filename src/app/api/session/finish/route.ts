@@ -6,6 +6,7 @@ import {
   isQuizAvailable,
   isWithinTimeLimit,
 } from "@/lib/quiz-config";
+import { getBankQuestionById } from "@/lib/questions-bank";
 import type { SessionFinishResponse, UserAnswers } from "@/types/quiz";
 
 interface FinishBody {
@@ -70,23 +71,11 @@ export async function POST(request: NextRequest) {
 
     const questionIds = session.question_ids as string[];
 
-    // Загружаем правильные ответы только на сервере
-    const { data: questions, error: qError } = await supabase
-      .from("questions")
-      .select("id, correct_index")
-      .in("id", questionIds);
-
-    if (qError || !questions) {
-      return NextResponse.json(
-        { error: "Не удалось проверить ответы" },
-        { status: 500 }
-      );
-    }
-
-    // Подсчёт результата
     let score = 0;
-    for (const q of questions) {
-      const userAnswer = answers[q.id];
+    for (const id of questionIds) {
+      const q = getBankQuestionById(id);
+      if (!q) continue;
+      const userAnswer = answers[id];
       if (userAnswer !== undefined && userAnswer === q.correct_index) {
         score++;
       }
