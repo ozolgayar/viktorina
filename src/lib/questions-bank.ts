@@ -143,3 +143,8 @@ export const QUESTIONS_BANK: BankQuestion[] = RAW_QUESTIONS.map((q) => ({
 export function getBankQuestionById(id: string): BankQuestion | undefined {
   return QUESTIONS_BANK.find((q) => q.id === id);
 }
+
+/** Публичный lookup картинки без отдачи correct_index в API */
+export function getQuestionImageById(id: string): string | undefined {
+  return QUESTIONS_BANK.find((q) => q.id === id)?.image;
+}

@@ -9,6 +9,7 @@ import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
 import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { Timer } from "@/components/Timer";
+import { getQuestionImageById } from "@/lib/questions-bank";
 import type {
   PublicQuestion,
   SessionFinishResponse,
@@ -203,6 +204,8 @@ export default function QuizPage() {
   const isWarning = remainingSeconds <= 60;
   const isLastQuestion = currentIndex === TOTAL_QUESTIONS - 1;
   const isFirstQuestion = currentIndex === 0;
+  const questionImage =
+    question.image || getQuestionImageById(question.id) || null;
 
   const cardAnimClass = [
     animPhase === "exit" && `quiz-question-card--exit-${slideDir}`,
@@ -243,19 +246,19 @@ export default function QuizPage() {
                     {question.context || question.text}
                   </p>
                 </div>
-                {question.image ? (
-                  <div className="quiz-question-panel__media">
+                <div className="quiz-question-panel__media">
+                  {questionImage ? (
                     <Image
-                      src={question.image}
+                      src={questionImage}
                       alt=""
-                      width={480}
-                      height={320}
+                      width={640}
+                      height={400}
                       className="quiz-question-panel__image"
                       unoptimized
                       priority
                     />
-                  </div>
-                ) : null}
+                  ) : null}
+                </div>
               </div>
 
               <div className="quiz-question-panel__box">
