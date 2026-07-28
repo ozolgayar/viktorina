@@ -132,6 +132,8 @@ const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
   { top: "66%", left: "23%", size: 18, rotate: -24, color: "#a8d8ff", opacity: 0.3 },
   // рядом с #7/#8
   { top: "18%", right: "16%", size: 20, rotate: 36, color: "#7eb6f5", opacity: 0.28 },
+  // справа у карточки, средняя-верхняя зона (по обводке)
+  { top: "38%", right: "14%", size: 16, rotate: 22, color: "#8ec8ff", opacity: 0.32 },
   // рядом с #11/#12
   { bottom: "20%", right: "18%", size: 16, rotate: -30, color: "#9fd0ff", opacity: 0.28 },
 ];
