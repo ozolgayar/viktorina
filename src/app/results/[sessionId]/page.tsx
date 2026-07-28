@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
+import { FestiveScreenDecor } from "@/components/FestiveScreenDecor";
 import {
   PerfectResultCard,
   ResultsFestiveBackground,
@@ -27,7 +28,7 @@ export default function ResultsPage() {
 
   if (!result) {
     return (
-      <div className="app-gradient flex min-h-dvh items-center justify-center">
+      <div className="app-gradient--festive flex min-h-dvh items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white" />
       </div>
     );
@@ -39,7 +40,7 @@ export default function ResultsPage() {
         centered
         hideHeader
         background="none"
-        gradient="sky"
+        gradient="festive"
         mainClassName="!p-0 overflow-y-auto"
         overlay={<ResultsFestiveBackground />}
       >
@@ -58,8 +59,10 @@ export default function ResultsPage() {
       centered
       hideHeader
       background="none"
+      gradient="festive"
       mainClassName="!p-0 min-h-screen overflow-y-auto px-4 py-8"
     >
+      <FestiveScreenDecor />
       <div className="page-enter w-full max-w-lg mx-auto">
         <div className="quiz-card mx-auto rounded-2xl p-6 text-center shadow-xl sm:p-8">
           <h1 className="mb-2 text-2xl font-bold text-brand-accent md:text-3xl lg:text-4xl">

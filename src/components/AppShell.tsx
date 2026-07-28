@@ -30,8 +30,8 @@ export function AppShell({
   belowHeader,
   headerCenter,
   hideHeader = false,
-  background = "pattern",
-  gradient = "default",
+  background = "none",
+  gradient = "festive",
   overlay,
   mainClassName = "",
 }: AppShellProps) {

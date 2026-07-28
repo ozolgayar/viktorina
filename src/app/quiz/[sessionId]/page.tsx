@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { AnswerOption } from "@/components/AnswerOption";
+import { FestiveScreenDecor } from "@/components/FestiveScreenDecor";
 import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
 import { Timer } from "@/components/Timer";
@@ -212,12 +213,14 @@ export default function QuizPage() {
 
   return (
     <AppShell
-      background="quiz-particles"
+      background="none"
+      gradient="festive"
       mainClassName="!p-0"
       headerCenter={
         <Timer remainingSeconds={remainingSeconds} warning={isWarning} inline />
       }
     >
+      <FestiveScreenDecor />
       <div className="quiz-question-screen">
         <div className="quiz-question-screen__inner">
           <QuizNavigation

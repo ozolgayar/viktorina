@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
+import { FestiveScreenDecor } from "@/components/FestiveScreenDecor";
 import {
   getEmailValidationError,
   isGeropharmEmail,
@@ -144,14 +145,15 @@ export default function StartPage() {
 
   if (autoStarting) {
     return (
-      <div className="app-gradient flex min-h-dvh items-center justify-center">
+      <div className="app-gradient--festive flex min-h-dvh items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white" />
       </div>
     );
   }
 
   return (
-    <AppShell centered background="particles" mainClassName="!p-0">
+    <AppShell centered background="none" gradient="festive" mainClassName="!p-0">
+      <FestiveScreenDecor />
       <div
         className={`register-page-screen register-page-enter w-full${visible ? " register-page-enter--visible" : ""}`}
       >
