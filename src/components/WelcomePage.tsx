@@ -57,24 +57,24 @@ const DECOR_STARS: DecorPos[] = [
     offsetY: 50,
     className: "welcome-decor__star--md",
   },
-  // #4: влево 300, увеличить на 100; затем вверх 100, вправо 50
+  // #4: большая у «5» — уменьшить на 40
   {
     top: "38%",
     right: "8%",
-    size: 70 + 100,
+    size: 70 + 100 - 40,
     rotate: -10,
     offsetX: -250,
     offsetY: -100,
     className: "welcome-decor__star--md",
   },
-  // #3: влево 300, вверх 200, поворот +45°, увеличить на 50
+  // #3: маленькая под ней — вниз на 200
   {
     bottom: "22%",
     right: "11%",
     size: 40 + 50,
     rotate: 18 + 45,
     offsetX: -300,
-    offsetY: -200,
+    offsetY: 0,
     className: "welcome-decor__star--sm",
   },
 ];

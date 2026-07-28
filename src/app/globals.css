@@ -1668,7 +1668,7 @@ select {
   position: relative;
   z-index: 1;
   margin-right: -12%;
-  margin-bottom: 4%;
+  margin-bottom: 0;
   translate: -100px 50px;
   animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
@@ -1677,6 +1677,7 @@ select {
   position: relative;
   z-index: 2;
   margin-left: -4%;
+  margin-bottom: 0;
   translate: 100px 50px;
   animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
@@ -1702,7 +1703,7 @@ select {
 @keyframes welcome-balloon-a {
   0%,
   100% {
-    transform: translateY(0) rotate(-2.5deg);
+    transform: translateY(0) rotate(-2deg);
   }
   50% {
     transform: translateY(-8px) rotate(1.5deg);
@@ -1712,10 +1713,10 @@ select {
 @keyframes welcome-balloon-b {
   0%,
   100% {
-    transform: translateY(-3px) rotate(2deg);
+    transform: translateY(0) rotate(2deg);
   }
   50% {
-    transform: translateY(5px) rotate(-1.5deg);
+    transform: translateY(-8px) rotate(-1.5deg);
   }
 }
 
@@ -1794,12 +1795,13 @@ select {
 
   .welcome-balloon--2 {
     margin-right: -14%;
-    margin-bottom: 5%;
+    margin-bottom: 0;
     translate: -100px 50px;
   }
 
   .welcome-balloon--5 {
     margin-left: -5%;
+    margin-bottom: 0;
     translate: 100px 50px;
   }
 
