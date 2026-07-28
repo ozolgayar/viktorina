@@ -1573,8 +1573,9 @@ select {
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 75% 55% at 50% 32%, #5a2db8 0%, transparent 68%),
-    linear-gradient(180deg, #2a1060 0%, #3b1a7a 40%, #1a0a40 100%);
+    radial-gradient(ellipse 70% 58% at 50% 36%, #6b3bc7 0%, transparent 62%),
+    radial-gradient(ellipse 90% 80% at 50% 50%, #3d1a7a 0%, transparent 75%),
+    linear-gradient(180deg, #2a1060 0%, #2f1470 45%, #14082e 100%);
 }
 
 .welcome-decor {
@@ -1600,6 +1601,13 @@ select {
   animation: welcome-float 6.5s ease-in-out infinite reverse;
 }
 
+.welcome-decor__confetti {
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(140, 200, 255, 0.4);
+  animation: welcome-float 4.8s ease-in-out infinite;
+}
+
 @keyframes welcome-float {
   0%,
   100% {
@@ -1617,8 +1625,9 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
-  padding: 12px 16px 24px;
+  width: 100%;
+  max-width: 720px;
+  padding: 8px 16px 28px;
   text-align: center;
 }
 
@@ -1626,7 +1635,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .welcome-balloons {
@@ -1636,24 +1645,24 @@ select {
   align-items: flex-end;
   justify-content: center;
   gap: 0;
-  margin-bottom: -28px;
+  margin-bottom: -42px;
 }
 
 .welcome-balloon {
   width: auto;
-  height: clamp(160px, 30vh, 260px);
+  height: clamp(170px, 32vh, 290px);
   object-fit: contain;
   mix-blend-mode: screen;
 }
 
 .welcome-balloon--2 {
-  margin-right: -28px;
-  margin-bottom: 14px;
+  margin-right: -36px;
+  margin-bottom: 18px;
   animation: welcome-balloon-a 3.2s ease-in-out infinite;
 }
 
 .welcome-balloon--5 {
-  margin-left: -14px;
+  margin-left: -18px;
   animation: welcome-balloon-b 3.6s ease-in-out infinite;
 }
 
@@ -1661,11 +1670,11 @@ select {
   position: relative;
   z-index: 1;
   width: auto;
-  height: clamp(72px, 11vh, 110px);
+  height: clamp(120px, 18vh, 190px);
   object-fit: contain;
   mix-blend-mode: screen;
   margin-top: 0;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.38));
 }
 
 @keyframes welcome-balloon-a {
@@ -1689,7 +1698,7 @@ select {
 }
 
 .welcome-title {
-  margin: 18px 0 8px;
+  margin: 22px 0 10px;
   color: #ffffff;
   font-family: Verdana, Geneva, sans-serif !important;
   font-size: clamp(2rem, 5.5vw, 3.25rem);
@@ -1700,7 +1709,7 @@ select {
 }
 
 .welcome-subtitle {
-  margin: 0 0 32px;
+  margin: 0 0 36px;
   color: rgba(255, 255, 255, 0.92);
   font-family: Verdana, Geneva, sans-serif !important;
   font-size: clamp(1rem, 2.5vw, 1.35rem);
@@ -1711,9 +1720,9 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: min(300px, 78vw);
-  min-height: 54px;
-  padding: 14px 40px;
+  min-width: min(320px, 78vw);
+  min-height: 56px;
+  padding: 16px 44px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background:
@@ -1746,33 +1755,106 @@ select {
     inset 0 -2px 6px rgba(40, 10, 100, 0.35);
 }
 
-@media (min-width: 768px) {
+/* Desktop — строго как фото 2 */
+@media (min-width: 1024px) {
+  .welcome-content {
+    max-width: 820px;
+    padding: 12px 24px 40px;
+  }
+
   .welcome-balloon {
-    height: clamp(200px, 34vh, 300px);
+    height: clamp(260px, 36vh, 340px);
   }
 
   .welcome-cake {
-    height: clamp(90px, 12vh, 120px);
+    height: clamp(170px, 20vh, 210px);
   }
 
   .welcome-balloons {
-    margin-bottom: -36px;
+    margin-bottom: -52px;
+  }
+
+  .welcome-balloon--2 {
+    margin-right: -44px;
+    margin-bottom: 22px;
+  }
+
+  .welcome-balloon--5 {
+    margin-left: -22px;
+  }
+
+  .welcome-title {
+    margin-top: 28px;
+    font-size: 3.25rem;
+  }
+
+  .welcome-subtitle {
+    margin-bottom: 40px;
+    font-size: 1.35rem;
+  }
+
+  .welcome-btn {
+    min-width: 360px;
+    min-height: 60px;
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .welcome-balloon {
+    height: clamp(200px, 30vh, 270px);
+  }
+
+  .welcome-cake {
+    height: clamp(140px, 16vh, 170px);
+  }
+
+  .welcome-balloons {
+    margin-bottom: -40px;
   }
 
   .welcome-btn {
     min-width: 340px;
     min-height: 58px;
-    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .welcome-balloon {
+    height: clamp(140px, 26vh, 200px);
+  }
+
+  .welcome-cake {
+    height: clamp(100px, 14vh, 140px);
+  }
+
+  .welcome-balloons {
+    margin-bottom: -30px;
+  }
+
+  .welcome-balloon--2 {
+    margin-right: -24px;
+    margin-bottom: 12px;
+  }
+
+  .welcome-title {
+    margin-top: 16px;
+  }
+
+  .welcome-subtitle {
+    margin-bottom: 28px;
+  }
+
+  .welcome-decor__img,
+  .welcome-decor__confetti {
+    scale: 0.72;
   }
 }
 
 @media (max-width: 480px) {
-  .welcome-decor__spiral {
-    opacity: 0.75;
-    scale: 0.85;
-  }
-
-  .welcome-decor__star {
-    opacity: 0.85;
+  .welcome-decor__img,
+  .welcome-decor__confetti {
+    scale: 0.58;
+    opacity: 0.8;
   }
 }
