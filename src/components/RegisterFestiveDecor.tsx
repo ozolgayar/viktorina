@@ -103,10 +103,10 @@ const DECOR_STARS: DecorPos[] = [
     opacity: 0.37,
     className: "quiz-intro-decor__star--md",
   },
-  // #8 — справа у верхней части карточки (−200px влево, −200px вверх)
+  // #8 — справа у верхней части карточки (уменьшена)
   {
-    top: "calc(24% - 200px)",
-    right: "calc(9% + 200px)",
+    top: "24%",
+    right: "9%",
     size: 88,
     rotate: 10,
     opacity: 0.36,
