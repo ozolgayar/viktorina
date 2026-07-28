@@ -359,15 +359,20 @@ select {
 }
 
 @media (max-width: 768px) {
-  .quiz-intro-decor__spiral--lg,
+  .quiz-intro-decor__spiral--lg {
+    scale: 0.55;
+    opacity: 0.28;
+  }
+
   .quiz-intro-decor__star--xl {
-    display: none;
+    scale: 0.6;
+    opacity: 0.3;
   }
 
   .quiz-intro-decor__img,
   .quiz-intro-decor__confetti {
-    opacity: 0.32;
-    scale: 0.7;
+    opacity: 0.3;
+    scale: 0.78;
   }
 }
 
