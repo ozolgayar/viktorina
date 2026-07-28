@@ -1590,7 +1590,8 @@ select {
   object-fit: contain;
   mix-blend-mode: screen;
   opacity: 0.96;
-  transform: rotate(var(--decor-rotate, 0deg));
+  transform: rotate(var(--decor-rotate, 0deg)) scaleX(var(--decor-flip, 1));
+  translate: var(--decor-x, 0px) var(--decor-y, 0px);
 }
 
 .welcome-decor__spiral,
@@ -1611,16 +1612,17 @@ select {
   border-radius: 2px;
   box-shadow: 0 0 8px rgba(140, 200, 255, 0.35);
   transform: rotate(var(--decor-rotate, 0deg));
+  translate: var(--decor-x, 0px) var(--decor-y, 0px);
   animation: welcome-float 4.6s ease-in-out infinite;
 }
 
 @keyframes welcome-float {
   0%,
   100% {
-    translate: 0 0;
+    translate: var(--decor-x, 0px) var(--decor-y, 0px);
   }
   50% {
-    translate: 0 -7px;
+    translate: var(--decor-x, 0px) calc(var(--decor-y, 0px) - 7px);
   }
 }
 

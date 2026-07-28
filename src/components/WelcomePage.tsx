@@ -11,25 +11,71 @@ type DecorPos = {
   right?: string;
   size: number;
   rotate?: number;
+  /** доп. сдвиг по X (px) */
+  offsetX?: number;
+  /** доп. сдвиг по Y (px) */
+  offsetY?: number;
+  /** отразить по горизонтали */
+  flipX?: boolean;
   className?: string;
 };
 
 /**
- * Декор строго по фото 2:
- * 4 серпантина, 4 звезды, 4 конфетти.
+ * Декор: 4 серпантина, 4 звезды, 4 конфетти.
+ * Правки по схеме пользователя:
+ * 1 — звезда слева по центру
+ * 2 — крупный серпантин справа снизу
+ * 3 — маленькая звезда справа снизу
+ * 4 — звезда справа по центру
  */
 const DECOR_SPIRALS: DecorPos[] = [
   { top: "7%", left: "9%", size: 42, rotate: -18, className: "welcome-decor__spiral--sm" },
   { top: "26%", left: "2%", size: 168, rotate: -38, className: "welcome-decor__spiral--lg" },
   { top: "22%", right: "6%", size: 50, rotate: 22, className: "welcome-decor__spiral--sm" },
-  { bottom: "8%", right: "2%", size: 155, rotate: 30, className: "welcome-decor__spiral--lg" },
+  // #2: влево 100, вверх 100, отразить слева направо
+  {
+    bottom: "8%",
+    right: "2%",
+    size: 155,
+    rotate: 30,
+    offsetX: -100,
+    offsetY: -100,
+    flipX: true,
+    className: "welcome-decor__spiral--lg",
+  },
 ];
 
 const DECOR_STARS: DecorPos[] = [
   { bottom: "5%", left: "3%", size: 168, rotate: -8, className: "welcome-decor__star--xl" },
-  { top: "46%", left: "9%", size: 52, rotate: 14, className: "welcome-decor__star--md" },
-  { top: "38%", right: "8%", size: 70, rotate: -10, className: "welcome-decor__star--md" },
-  { bottom: "22%", right: "11%", size: 40, rotate: 18, className: "welcome-decor__star--sm" },
+  // #1: вправо 200, вниз 50, поворот +45°
+  {
+    top: "46%",
+    left: "9%",
+    size: 52,
+    rotate: 14 + 45,
+    offsetX: 200,
+    offsetY: 50,
+    className: "welcome-decor__star--md",
+  },
+  // #4: влево 300, увеличить на 100
+  {
+    top: "38%",
+    right: "8%",
+    size: 70 + 100,
+    rotate: -10,
+    offsetX: -300,
+    className: "welcome-decor__star--md",
+  },
+  // #3: влево 300, вверх 200, поворот +45°, увеличить на 50
+  {
+    bottom: "22%",
+    right: "11%",
+    size: 40 + 50,
+    rotate: 18 + 45,
+    offsetX: -300,
+    offsetY: -200,
+    className: "welcome-decor__star--sm",
+  },
 ];
 
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
@@ -47,12 +93,15 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
     right: item.right,
     width: item.size,
     height: item.size,
-    ["--decor-rotate" as string]: item.rotate != null ? `${item.rotate}deg` : "0deg",
+    ["--decor-rotate" as string]: `${item.rotate ?? 0}deg`,
+    ["--decor-x" as string]: `${item.offsetX ?? 0}px`,
+    ["--decor-y" as string]: `${item.offsetY ?? 0}px`,
+    ["--decor-flip" as string]: item.flipX ? "-1" : "1",
     ...extra,
   };
 }
 
-/** Заставка — праздничный экран к 25-летию (композиция как на фото 2) */
+/** Заставка — праздничный экран к 25-летию */
 export function WelcomePage() {
   return (
     <div className="welcome-page">
@@ -97,7 +146,7 @@ export function WelcomePage() {
 
       <div className="welcome-stack">
         <div className="welcome-hero">
-          <div className="welcome-balloons" aria-hidden={false}>
+          <div className="welcome-balloons">
             <Image
               src="/welcome/balloon-2.png"
               alt="2"
