@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
-import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import {
   getEmailValidationError,
   isGeropharmEmail,
@@ -153,7 +152,6 @@ export default function StartPage() {
 
   return (
     <AppShell centered background="none" gradient="festive" mainClassName="!p-0">
-      <RegisterFestiveDecor />
       <div
         className={`register-page-screen register-page-enter w-full${visible ? " register-page-enter--visible" : ""}`}
       >
