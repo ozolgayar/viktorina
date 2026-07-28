@@ -1734,7 +1734,7 @@ select {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  translate: 0 -50px;
+  translate: 0 0;
 }
 
 .welcome-btn {
@@ -1742,7 +1742,7 @@ select {
   align-items: center;
   justify-content: center;
   margin-top: 1.75rem;
-  translate: 0 -100px;
+  translate: 0 -30px;
   min-width: min(320px, 78vw);
   min-height: 54px;
   padding: 15px 42px;
@@ -1815,12 +1815,12 @@ select {
 
   .welcome-title {
     font-size: 3.15rem;
-    translate: 0 -50px;
+    translate: 0 0;
   }
 
   .welcome-btn {
     margin-top: 2rem;
-    translate: 0 -100px;
+    translate: 0 -30px;
     min-width: 360px;
     min-height: 60px;
     font-size: 1.125rem;
@@ -1878,7 +1878,7 @@ select {
 
   .welcome-btn {
     margin-top: 1.35rem;
-    translate: 0 -80px;
+    translate: 0 -10px;
     min-width: min(280px, 82vw);
   }
 
