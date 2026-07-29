@@ -60,15 +60,18 @@ export default function ResultsPage() {
       hideHeader
       background="none"
       gradient="festive"
-      mainClassName="!p-0 min-h-screen overflow-y-auto px-4 py-8"
+      mainClassName="!p-0"
     >
       <FestiveScreenDecor />
-      <div className="page-enter w-full max-w-lg mx-auto">
-        <div className="quiz-card mx-auto rounded-2xl p-6 text-center shadow-xl sm:p-8">
-          <h1 className="mb-2 text-2xl font-bold text-brand-accent md:text-3xl lg:text-4xl">
-            Ваш результат {result.score}/{result.totalQuestions}
+      <div className="register-page-screen page-enter">
+        <div className="register-card-form quiz-card mx-auto">
+          <h1 className="mb-1 text-2xl font-black text-brand-dark sm:text-3xl">
+            Ваш результат
           </h1>
-          <p className="mb-6 text-sm leading-relaxed text-brand-dark/70 md:mx-auto md:max-w-md md:text-base lg:mb-8 lg:max-w-lg lg:text-lg">
+          <p className="mb-6 text-sm font-medium text-[#3F2183] md:text-base">
+            {result.score}/{result.totalQuestions} · нужно 10 из 10
+          </p>
+          <p className="mb-6 text-sm leading-relaxed text-brand-dark/60 md:text-[0.9375rem] lg:mb-8">
             Вы знаете о компании «ГЕРОФАРМ» многое, но не всё. Чтобы получить
             приз, нужно ответить{" "}
             <strong className="text-brand-dark">
@@ -77,34 +80,26 @@ export default function ResultsPage() {
             .
           </p>
 
-          <div className="mb-6 rounded-xl bg-brand-light p-4 text-left md:p-5 lg:mb-8">
-            <p className="text-sm leading-relaxed text-brand-dark/80 md:text-base">
+          <div className="rounded-xl bg-brand-light p-4 md:p-5">
+            <p className="text-sm leading-relaxed text-brand-dark/80 md:text-[0.9375rem]">
               Если сразу не получилось — у вас есть возможность пройти викторину
               ещё раз. Удачи!
             </p>
           </div>
 
-          <Link
-            href="/start"
-            className="mb-3 block md:mx-auto md:max-w-sm lg:max-w-md"
-          >
-            <Button
-              fullWidth
-              variant="secondary"
-              className="!bg-[#2D1367] hover:!bg-[#24104f]"
-            >
-              Пройти викторину повторно
-            </Button>
-          </Link>
+          <div className="quiz-intro-start-btn mt-6 sm:mt-8">
+            <Link href="/start" className="block w-full">
+              <Button fullWidth className="quiz-png-register-btn">
+                Пройти ещё раз
+              </Button>
+            </Link>
+          </div>
 
-          <Link href="/" className="block md:mx-auto md:max-w-sm lg:max-w-md">
-            <Button
-              fullWidth
-              variant="outline"
-              className="!border-[#2D1367] !text-[#2D1367] hover:!bg-[#2D1367]/5"
-            >
-              На главную
-            </Button>
+          <Link
+            href="/"
+            className="mt-3 block text-center text-sm font-semibold text-[#3F2183] hover:underline md:text-[0.9375rem]"
+          >
+            На главную
           </Link>
         </div>
       </div>
