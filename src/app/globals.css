@@ -629,8 +629,8 @@ select {
   box-shadow: none;
 }
 
-/* Кнопка «Регистрация» на стартовом экране — PNG без искажения */
-.quiz-intro-shell .quiz-intro-register-btn.btn-primary {
+/* Кнопка «Регистрация» (PNG) — стартовый экран и форма регистрации */
+.quiz-png-register-btn.btn-primary {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -657,13 +657,13 @@ select {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.quiz-intro-shell .quiz-intro-register-btn.btn-primary:hover:not(:disabled) {
+.quiz-png-register-btn.btn-primary:hover:not(:disabled) {
   transform: translateY(-1px) scale(1.02) !important;
   filter: brightness(1.05);
   box-shadow: none !important;
 }
 
-.quiz-intro-shell .quiz-intro-register-btn.btn-primary:active:not(:disabled) {
+.quiz-png-register-btn.btn-primary:active:not(:disabled) {
   transform: scale(0.98) !important;
 }
 
@@ -672,7 +672,7 @@ select {
     width: min(100%, 320px);
   }
 
-  .quiz-intro-shell .quiz-intro-register-btn.btn-primary {
+  .quiz-png-register-btn.btn-primary {
     max-width: 320px;
     font-size: 0.98rem !important;
   }

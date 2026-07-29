@@ -163,7 +163,7 @@ export default function StartPage() {
           <h1 className="mb-1 text-2xl font-black text-brand-dark sm:text-3xl">
             Регистрация
           </h1>
-          <p className="mb-6 text-sm font-medium text-brand-accent md:text-base">
+          <p className="mb-6 text-sm font-medium text-[#3F2183] md:text-base">
             10 вопросов · 25 минут
           </p>
           <p className="mb-6 text-sm leading-relaxed text-brand-dark/60 md:text-[0.9375rem] lg:mb-8">
@@ -231,10 +231,10 @@ export default function StartPage() {
             </div>
           )}
 
-          <div className="mt-6 sm:mt-8">
+          <div className="quiz-intro-start-btn mt-6 sm:mt-8">
             <Button
               fullWidth
-              className="!min-h-[44px] !py-4 !text-base !font-bold"
+              className="quiz-png-register-btn"
               onClick={handleStart}
               disabled={
                 !isFormValid ||

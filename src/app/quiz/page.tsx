@@ -135,7 +135,7 @@ export default function QuizIntroPage() {
               <div className="quiz-intro-start-btn">
                 <Button
                   fullWidth
-                  className="quiz-intro-register-btn"
+                  className="quiz-png-register-btn"
                   disabled={
                     !loading && availability !== null && !availability.available
                   }
