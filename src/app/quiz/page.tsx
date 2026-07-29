@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
-import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { RuleItem } from "@/components/RuleItem";
 import { useQuizStats } from "@/hooks/useQuizStats";
 import { declension, formatTime } from "@/lib/utils";
@@ -44,7 +43,7 @@ export default function QuizIntroPage() {
       lockViewport
       shellClassName="quiz-intro-shell"
       mainClassName="quiz-intro-main !p-0"
-      overlay={<RegisterFestiveDecor />}
+      headerCenter={<span className="sr-only">Викторина ГЕРОФАРМ</span>}
     >
       <div className="quiz-page">
         <section className="quiz-main">
@@ -54,7 +53,7 @@ export default function QuizIntroPage() {
             <div className="quiz-intro-screen__hero">
               <div className="quiz-intro-screen__hero-text">
                 <h1 className="quiz-hero-title">Викторина ГЕРОФАРМ</h1>
-                <p className="quiz-intro-screen__subtitle text-sm sm:text-base">
+                <p className="quiz-intro-screen__subtitle text-center text-sm sm:text-base">
                   Проверьте свои знания о компании и станьте экспертом ГЕРОФАРМ
                 </p>
 
