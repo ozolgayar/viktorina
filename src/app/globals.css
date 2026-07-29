@@ -640,6 +640,7 @@ select {
   min-height: 0 !important;
   aspect-ratio: 946 / 234;
   padding: 0 !important;
+  padding-bottom: 0.28em !important;
   border: 0 !important;
   border-radius: 0 !important;
   background-color: transparent !important;
@@ -2347,7 +2348,7 @@ select {
   min-width: 0;
   min-height: 0;
   aspect-ratio: 946 / 234;
-  padding: 0 18px;
+  padding: 0 18px 0.28em;
   border: none;
   border-radius: 0;
   background-color: transparent;
