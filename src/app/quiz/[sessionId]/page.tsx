@@ -42,6 +42,7 @@ export default function QuizPage() {
   const [animPhase, setAnimPhase] = useState<AnimPhase>("idle");
   const [slideDir, setSlideDir] = useState<SlideDirection>("right");
   const [enterVisible, setEnterVisible] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const finishCalled = useRef(false);
 
   useEffect(() => {
@@ -137,6 +138,7 @@ export default function QuizPage() {
       setEnterVisible(false);
 
       setTimeout(() => {
+        setImagePreview(null);
         setCurrentIndex(newIndex);
         setAnimPhase("enter");
         requestAnimationFrame(() => {
@@ -150,6 +152,15 @@ export default function QuizPage() {
     },
     [quizData, currentIndex, animPhase, finishing]
   );
+
+  useEffect(() => {
+    if (!imagePreview) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setImagePreview(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [imagePreview]);
 
   const handleSelect = (index: number) => {
     if (!quizData || finishing) return;
@@ -250,15 +261,22 @@ export default function QuizPage() {
                 </div>
                 <div className="quiz-question-panel__media">
                   {questionImage ? (
-                    <Image
-                      src={questionImage}
-                      alt=""
-                      width={640}
-                      height={400}
-                      className="quiz-question-panel__image"
-                      unoptimized
-                      priority
-                    />
+                    <button
+                      type="button"
+                      className="quiz-question-panel__media-btn"
+                      onClick={() => setImagePreview(questionImage)}
+                      aria-label="Увеличить изображение"
+                    >
+                      <Image
+                        src={questionImage}
+                        alt=""
+                        width={640}
+                        height={400}
+                        className="quiz-question-panel__image"
+                        unoptimized
+                        priority
+                      />
+                    </button>
                   ) : null}
                 </div>
               </div>
@@ -346,6 +364,39 @@ export default function QuizPage() {
         onAction={handleTimeExpired}
         showClose={false}
       />
+
+      {imagePreview && (
+        <div
+          className="quiz-image-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Увеличенное изображение"
+          onClick={() => setImagePreview(null)}
+        >
+          <button
+            type="button"
+            className="quiz-image-lightbox__close"
+            onClick={() => setImagePreview(null)}
+            aria-label="Закрыть"
+          >
+            ×
+          </button>
+          <div
+            className="quiz-image-lightbox__content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={imagePreview}
+              alt=""
+              width={1280}
+              height={800}
+              className="quiz-image-lightbox__img"
+              unoptimized
+              priority
+            />
+          </div>
+        </div>
+      )}
     </AppShell>
   );
 }
