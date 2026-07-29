@@ -638,7 +638,7 @@ select {
   max-width: 340px;
   height: auto !important;
   min-height: 0 !important;
-  aspect-ratio: 953 / 232;
+  aspect-ratio: 1025 / 304;
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -2304,7 +2304,7 @@ select {
     min-height: unset;
     height: auto;
     max-width: 240px;
-    aspect-ratio: 953 / 232;
+    aspect-ratio: 1025 / 304;
     font-size: 14px;
     letter-spacing: 0.02em;
   }
@@ -2426,7 +2426,7 @@ select {
     min-height: unset;
     height: auto;
     max-width: 220px;
-    aspect-ratio: 953 / 232;
+    aspect-ratio: 1025 / 304;
     font-size: 13px;
     letter-spacing: 0.02em;
   }
