@@ -220,7 +220,6 @@ export default function QuizPage() {
     <AppShell
       background="none"
       gradient="festive"
-      lockViewport
       mainClassName="!p-0"
       headerCenter={
         <Timer remainingSeconds={remainingSeconds} warning={isWarning} inline />
