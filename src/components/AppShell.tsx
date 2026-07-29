@@ -21,6 +21,10 @@ interface AppShellProps {
   overlay?: React.ReactNode;
   /** Дополнительные классы для main */
   mainClassName?: string;
+  /** Дополнительные классы для корневой оболочки */
+  shellClassName?: string;
+  /** Зафиксировать высоту во viewport без скролла страницы */
+  lockViewport?: boolean;
 }
 
 /** Оболочка приложения: градиент, паттерн, шапка */
@@ -34,6 +38,8 @@ export function AppShell({
   gradient = "festive",
   overlay,
   mainClassName = "",
+  shellClassName = "",
+  lockViewport = false,
 }: AppShellProps) {
   const shellClass =
     gradient === "sky"
@@ -44,20 +50,36 @@ export function AppShell({
 
   return (
     <div
-      className={`${shellClass} relative flex min-h-dvh min-h-screen flex-col overflow-x-hidden`}
+      className={[
+        shellClass,
+        "relative flex flex-col overflow-x-hidden",
+        lockViewport ? "app-shell--locked" : "min-h-dvh min-h-screen",
+        shellClassName,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {overlay}
       {background === "pattern" && <BackgroundPattern />}
       {background === "particles" && <RegisterFloatingParticles />}
       {background === "quiz-particles" && <QuizFloatingParticles />}
-      <div className="relative z-10 flex min-h-dvh flex-col">
+      <div
+        className={[
+          "app-shell__body relative z-10 flex flex-col",
+          lockViewport ? "h-full min-h-0 overflow-hidden" : "min-h-dvh",
+        ].join(" ")}
+      >
         {!hideHeader && <Header center={headerCenter} />}
         {belowHeader}
         <main
           className={
             centered
-              ? `flex flex-1 flex-col items-center justify-center px-4 py-6 md:px-8 md:py-10 lg:px-12 lg:py-12 ${mainClassName}`
-              : `flex flex-1 flex-col px-4 py-4 pb-8 md:px-8 lg:px-12 lg:pb-10 ${mainClassName}`
+              ? `flex min-h-0 flex-1 flex-col items-center justify-center px-4 py-6 md:px-8 md:py-10 lg:px-12 lg:py-12 ${
+                  lockViewport ? "overflow-hidden" : ""
+                } ${mainClassName}`
+              : `flex min-h-0 flex-1 flex-col px-4 py-4 pb-8 md:px-8 lg:px-12 lg:pb-10 ${
+                  lockViewport ? "overflow-hidden" : ""
+                } ${mainClassName}`
           }
         >
           {children}

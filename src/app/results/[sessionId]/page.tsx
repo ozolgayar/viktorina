@@ -88,13 +88,21 @@ export default function ResultsPage() {
             href="/start"
             className="mb-3 block md:mx-auto md:max-w-sm lg:max-w-md"
           >
-            <Button fullWidth variant="secondary">
+            <Button
+              fullWidth
+              variant="secondary"
+              className="!bg-[#2D1367] hover:!bg-[#24104f]"
+            >
               Пройти викторину повторно
             </Button>
           </Link>
 
           <Link href="/" className="block md:mx-auto md:max-w-sm lg:max-w-md">
-            <Button fullWidth variant="outline">
+            <Button
+              fullWidth
+              variant="outline"
+              className="!border-[#2D1367] !text-[#2D1367] hover:!bg-[#2D1367]/5"
+            >
               На главную
             </Button>
           </Link>
