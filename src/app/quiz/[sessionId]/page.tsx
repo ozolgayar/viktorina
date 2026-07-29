@@ -9,6 +9,7 @@ import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
 import { Timer } from "@/components/Timer";
 import { getQuestionImageById } from "@/lib/questions-bank";
+import { formatQuizText } from "@/lib/quiz-typography";
 import type {
   PublicQuestion,
   SessionFinishResponse,
@@ -216,7 +217,8 @@ export default function QuizPage() {
   const isFirstQuestion = currentIndex === 0;
   const questionImage =
     question.image || getQuestionImageById(question.id) || null;
-  const contextText = question.context || question.text || "";
+  const contextText = formatQuizText(question.context || question.text || "");
+  const promptText = formatQuizText(question.prompt || question.text);
   const isWideQuestion = contextText.length >= 500;
 
   const cardAnimClass = [
@@ -282,9 +284,7 @@ export default function QuizPage() {
               </div>
 
               <div className="quiz-question-panel__box">
-                <p className="quiz-question-panel__prompt">
-                  {question.prompt || question.text}
-                </p>
+                <p className="quiz-question-panel__prompt">{promptText}</p>
 
                 <div className="quiz-answer-options quiz-answer-options--panel">
                   {question.options.map((option, index) => (

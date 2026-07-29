@@ -70,11 +70,7 @@ export default function ResultsPage() {
           </h1>
           <p className="mb-6 text-sm leading-relaxed text-brand-dark/70 md:mx-auto md:max-w-md md:text-base">
             Вы знаете о компании «ГЕРОФАРМ» многое, но не всё. Чтобы получить
-            приз, нужно ответить{" "}
-            <strong className="text-brand-dark">
-              верно на все 10 вопросов
-            </strong>
-            .
+            приз, нужно ответить верно на все 10 вопросов.
           </p>
 
           <div
@@ -100,7 +96,7 @@ export default function ResultsPage() {
               <Button
                 fullWidth
                 variant="outline"
-                className="!border-[#3F2183] !text-[#3F2183] hover:!bg-[#3F2183]/5"
+                className="!border-0 !text-[#3F2183] hover:!bg-[#3F2183]/5"
               >
                 На главную
               </Button>

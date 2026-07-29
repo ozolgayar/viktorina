@@ -1,3 +1,5 @@
+import { formatQuizText } from "@/lib/quiz-typography";
+
 interface AnswerOptionProps {
   label: string;
   selected: boolean;
@@ -16,6 +18,8 @@ export function AnswerOption({
   onSelect,
   variant = "check",
 }: AnswerOptionProps) {
+  const formattedLabel = formatQuizText(label);
+
   return (
     <button
       type="button"
@@ -50,7 +54,7 @@ export function AnswerOption({
           )}
         </span>
       )}
-      <span>{label}</span>
+      <span>{formattedLabel}</span>
     </button>
   );
 }
