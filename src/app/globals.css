@@ -626,6 +626,30 @@ select {
   box-shadow: none;
 }
 
+/* Цвета стартового экрана (quiz-intro-shell) */
+.quiz-intro-shell .quiz-intro-register-btn.btn-primary {
+  background: #2B1364 !important;
+  box-shadow: none !important;
+}
+
+.quiz-intro-shell .quiz-intro-register-btn.btn-primary:hover:not(:disabled) {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.quiz-intro-shell .quiz-intro-lead strong {
+  color: #2B1364 !important;
+}
+
+/* Галочки в кружочках правил */
+.quiz-intro-shell .quiz-intro-rules li > span {
+  background: rgba(43, 19, 100, 0.14) !important;
+}
+
+.quiz-intro-shell .quiz-intro-rules li svg path {
+  stroke: #2B1364 !important;
+}
+
 /* Логотип — компактный контейнер */
 .logo-container {
   width: 140px;
