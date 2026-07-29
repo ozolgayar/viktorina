@@ -1096,16 +1096,17 @@ select {
 }
 
 .quiz-question-card__title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 4px;
   color: #f7941d;
   font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1.15;
 }
 
 @media (min-width: 640px) {
   .quiz-question-card__title {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: 6px;
+    font-size: 15px;
   }
 }
 
@@ -1134,14 +1135,14 @@ select {
 
 @media (min-width: 900px) {
   .quiz-question-panel__top {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 320px);
+    gap: 1.15rem;
     align-items: start;
   }
 
   .quiz-question-card--wide .quiz-question-panel__top {
-    grid-template-columns: minmax(0, 1.25fr) minmax(340px, 420px);
-    gap: 1.75rem;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 340px);
+    gap: 1.25rem;
   }
 }
 
@@ -1149,22 +1150,31 @@ select {
   min-width: 0;
   max-width: none;
   min-height: 0;
+  overflow: visible;
 }
 
 .quiz-question-panel__context {
   margin: 0;
-  max-height: 8.5em;
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
   color: #1a2332;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
 }
 
 @media (min-width: 640px) {
   .quiz-question-panel__context {
-    max-height: 9.5em;
-    font-size: 0.95rem;
+    font-size: clamp(0.875rem, 0.95vw, 1.05rem);
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 900px) {
+  .quiz-question-panel__context {
+    font-size: clamp(0.9rem, 0.92vw, 1.05rem);
+    line-height: 1.28;
   }
 }
 
@@ -1175,15 +1185,15 @@ select {
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  max-height: 260px;
+  max-height: 220px;
   border-radius: 20px;
   background: #d8d8d8;
 }
 
 @media (max-width: 899px) {
   .quiz-question-panel__media {
-    max-height: 220px;
-    min-height: 160px;
+    max-height: 200px;
+    min-height: 150px;
     aspect-ratio: 16 / 10;
   }
 }
@@ -1192,14 +1202,14 @@ select {
   display: block;
   width: 100%;
   height: 100%;
-  max-height: 260px;
+  max-height: 220px;
   object-fit: contain;
   border-radius: 20px;
 }
 
 @media (max-width: 899px) {
   .quiz-question-panel__image {
-    max-height: 220px;
+    max-height: 200px;
   }
 }
 
