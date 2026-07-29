@@ -195,8 +195,8 @@ export function WelcomePage() {
         <Image
           src="/welcome/mobile-hero.png"
           alt="ГЕРОФАРМ — 25 лет вместе с вами"
-          width={1154}
-          height={1996}
+          width={292}
+          height={518}
           className="welcome-mobile__hero"
           priority
           unoptimized
