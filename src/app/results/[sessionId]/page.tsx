@@ -64,20 +64,17 @@ export default function ResultsPage() {
       overlay={<RegisterFestiveDecor />}
     >
       <div className="register-page-screen page-enter">
-        <div className="register-card-form quiz-card mx-auto text-center">
-          <h1 className="mb-2 text-2xl font-bold text-brand-accent md:text-3xl">
+        <div className="register-card-form quiz-card result-card mx-auto text-center">
+          <h1 className="result-title mb-2 text-2xl font-bold md:text-3xl">
             Ваш результат {result.score}/{result.totalQuestions}
           </h1>
-          <p className="mb-6 text-sm leading-relaxed text-brand-dark/70 md:mx-auto md:max-w-md md:text-base">
+          <p className="result-description mb-6 text-sm leading-relaxed md:mx-auto md:max-w-md md:text-base">
             Вы знаете о компании «ГЕРОФАРМ» многое, но не всё. Чтобы получить
             приз, нужно ответить верно на все 10 вопросов.
           </p>
 
-          <div
-            className="mb-6 rounded-xl p-4 text-left md:p-5"
-            style={{ background: "#F5F0FE" }}
-          >
-            <p className="text-sm leading-relaxed text-brand-dark/80 md:text-base">
+          <div className="result-info-box mb-6 rounded-xl p-4 text-left md:p-5">
+            <p className="result-note text-sm leading-relaxed md:text-base">
               Если сразу не получилось — у вас есть возможность пройти викторину
               ещё раз. Удачи!
             </p>
@@ -85,7 +82,7 @@ export default function ResultsPage() {
 
           <div className="quiz-intro-start-btn mb-3">
             <Link href="/start" className="block w-full">
-              <Button fullWidth className="quiz-png-register-btn">
+              <Button fullWidth className="result-primary-button">
                 Пройти викторину повторно
               </Button>
             </Link>
@@ -93,11 +90,7 @@ export default function ResultsPage() {
 
           <div className="quiz-intro-start-btn">
             <Link href="/" className="block w-full">
-              <Button
-                fullWidth
-                variant="outline"
-                className="!border-0 !text-[#3F2183] hover:!bg-[#3F2183]/5"
-              >
+              <Button fullWidth className="result-secondary-button">
                 На главную
               </Button>
             </Link>
