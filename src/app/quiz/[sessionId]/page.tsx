@@ -206,6 +206,8 @@ export default function QuizPage() {
   const isFirstQuestion = currentIndex === 0;
   const questionImage =
     question.image || getQuestionImageById(question.id) || null;
+  const contextText = question.context || question.text || "";
+  const isWideQuestion = contextText.length >= 500;
 
   const cardAnimClass = [
     animPhase === "exit" && `quiz-question-card--exit-${slideDir}`,
@@ -225,7 +227,7 @@ export default function QuizPage() {
       }
     >
       <RegisterFestiveDecor />
-      <div className="quiz-question-screen">
+      <div className={`quiz-question-screen${isWideQuestion ? " quiz-question-screen--wide" : ""}`}>
         <div className="quiz-question-screen__inner">
           <QuizNavigation
             currentIndex={currentIndex}
@@ -235,7 +237,9 @@ export default function QuizPage() {
             onNavigate={navigateTo}
           />
 
-          <div className={`quiz-question-card w-full max-w-4xl ${cardAnimClass}`}>
+          <div
+            className={`quiz-question-card${isWideQuestion ? " quiz-question-card--wide" : ""} ${cardAnimClass}`}
+          >
             <div className="quiz-card quiz-question-panel rounded-2xl shadow-xl">
               <div className="quiz-question-panel__top">
                 <div className="quiz-question-panel__intro">
@@ -243,7 +247,7 @@ export default function QuizPage() {
                     Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
                   </p>
                   <p className="quiz-question-panel__context">
-                    {question.context || question.text}
+                    {contextText}
                   </p>
                 </div>
                 <div className="quiz-question-panel__media">
