@@ -628,26 +628,40 @@ select {
 
 /* Цвета стартового экрана (quiz-intro-shell) */
 .quiz-intro-shell .quiz-intro-register-btn.btn-primary {
-  background: #2B1364 !important;
-  box-shadow: none !important;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.08) 18%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(180deg, #9d60ff 0%, #7f3ffc 45%, #6b2ff0 100%) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -2px 8px rgba(72, 23, 168, 0.45),
+    0 0 0 3px rgba(205, 178, 255, 0.35),
+    0 8px 22px rgba(74, 28, 168, 0.32) !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(53, 19, 126, 0.35);
 }
 
 .quiz-intro-shell .quiz-intro-register-btn.btn-primary:hover:not(:disabled) {
-  transform: none !important;
-  box-shadow: none !important;
+  transform: translateY(-1px) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -2px 8px rgba(72, 23, 168, 0.45),
+    0 0 0 3px rgba(205, 178, 255, 0.38),
+    0 10px 24px rgba(74, 28, 168, 0.36) !important;
 }
 
 .quiz-intro-shell .quiz-intro-lead strong {
-  color: #2B1364 !important;
+  color: #3F2183 !important;
 }
 
 /* Галочки в кружочках правил */
 .quiz-intro-shell .quiz-intro-rules li > span {
-  background: rgba(43, 19, 100, 0.14) !important;
+  background: rgba(63, 33, 131, 0.16) !important;
 }
 
 .quiz-intro-shell .quiz-intro-rules li svg path {
-  stroke: #2B1364 !important;
+  stroke: #3F2183 !important;
 }
 
 /* Логотип — компактный контейнер */
