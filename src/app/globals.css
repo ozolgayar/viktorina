@@ -2498,7 +2498,7 @@ select {
     margin:
       0
       16px
-      max(28px, calc(18px + env(safe-area-inset-bottom, 0px)));
+      max(128px, calc(118px + env(safe-area-inset-bottom, 0px)));
     translate: none;
     width: min(280px, 78vw);
     max-width: 300px;
@@ -2520,7 +2520,7 @@ select {
   }
 
   .welcome-mobile__btn {
-    margin-bottom: max(14px, calc(10px + env(safe-area-inset-bottom, 0px)));
+    margin-bottom: max(114px, calc(110px + env(safe-area-inset-bottom, 0px)));
     width: min(220px, 42vw);
     max-width: 240px;
     font-size: 13px;
@@ -2529,7 +2529,7 @@ select {
 
 @media (max-width: 768px) and (orientation: portrait) and (max-height: 700px) {
   .welcome-mobile__btn {
-    margin-bottom: max(18px, calc(12px + env(safe-area-inset-bottom, 0px)));
+    margin-bottom: max(118px, calc(112px + env(safe-area-inset-bottom, 0px)));
     width: min(240px, 74vw);
     max-width: 260px;
     font-size: 14px;
