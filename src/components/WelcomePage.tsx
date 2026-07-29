@@ -106,87 +106,104 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
 export function WelcomePage() {
   return (
     <div className="welcome-page">
-      <div className="welcome-decor" aria-hidden>
-        {DECOR_SPIRALS.map((item, i) => (
-          <Image
-            key={`spiral-${i}`}
-            src="/welcome/spiral.png"
-            alt=""
-            width={item.size}
-            height={item.size}
-            className={`welcome-decor__img welcome-decor__spiral ${item.className ?? ""}`}
-            style={decorStyle(item, { animationDelay: `${i * 0.4}s` })}
-            unoptimized
-          />
-        ))}
+      <div className="welcome-desktop">
+        <div className="welcome-decor" aria-hidden>
+          {DECOR_SPIRALS.map((item, i) => (
+            <Image
+              key={`spiral-${i}`}
+              src="/welcome/spiral.png"
+              alt=""
+              width={item.size}
+              height={item.size}
+              className={`welcome-decor__img welcome-decor__spiral ${item.className ?? ""}`}
+              style={decorStyle(item, { animationDelay: `${i * 0.4}s` })}
+              unoptimized
+            />
+          ))}
 
-        {DECOR_STARS.map((item, i) => (
-          <Image
-            key={`star-${i}`}
-            src="/welcome/star.png"
-            alt=""
-            width={item.size}
-            height={item.size}
-            className={`welcome-decor__img welcome-decor__star ${item.className ?? ""}`}
-            style={decorStyle(item, { animationDelay: `${i * 0.35}s` })}
-            unoptimized
-          />
-        ))}
+          {DECOR_STARS.map((item, i) => (
+            <Image
+              key={`star-${i}`}
+              src="/welcome/star.png"
+              alt=""
+              width={item.size}
+              height={item.size}
+              className={`welcome-decor__img welcome-decor__star ${item.className ?? ""}`}
+              style={decorStyle(item, { animationDelay: `${i * 0.35}s` })}
+              unoptimized
+            />
+          ))}
 
-        {DECOR_CONFETTI.map((item, i) => (
-          <span
-            key={`confetti-${i}`}
-            className="welcome-decor__confetti"
-            style={decorStyle(item, {
-              background: item.color,
-              animationDelay: `${i * 0.25}s`,
-            })}
-          />
-        ))}
+          {DECOR_CONFETTI.map((item, i) => (
+            <span
+              key={`confetti-${i}`}
+              className="welcome-decor__confetti"
+              style={decorStyle(item, {
+                background: item.color,
+                animationDelay: `${i * 0.25}s`,
+              })}
+            />
+          ))}
+        </div>
+
+        <div className="welcome-stack">
+          <div className="welcome-hero">
+            <div className="welcome-balloons">
+              <Image
+                src="/welcome/balloon-2.png"
+                alt="2"
+                width={360}
+                height={440}
+                className="welcome-balloon welcome-balloon--2"
+                priority
+                unoptimized
+              />
+              <Image
+                src="/welcome/balloon-5.png"
+                alt="5"
+                width={360}
+                height={440}
+                className="welcome-balloon welcome-balloon--5"
+                priority
+                unoptimized
+              />
+            </div>
+
+            <div className="welcome-cake-wrap">
+              <Image
+                src="/welcome/cake.png"
+                alt=""
+                width={280}
+                height={280}
+                className="welcome-cake"
+                priority
+                unoptimized
+              />
+            </div>
+          </div>
+
+          <div className="welcome-copy">
+            <h1 className="welcome-title">ГЕРОФАРМ</h1>
+            <Link href="/quiz" className="welcome-btn">
+              Открыть викторину
+            </Link>
+          </div>
+        </div>
       </div>
 
-      <div className="welcome-stack">
-        <div className="welcome-hero">
-          <div className="welcome-balloons">
-            <Image
-              src="/welcome/balloon-2.png"
-              alt="2"
-              width={360}
-              height={440}
-              className="welcome-balloon welcome-balloon--2"
-              priority
-              unoptimized
-            />
-            <Image
-              src="/welcome/balloon-5.png"
-              alt="5"
-              width={360}
-              height={440}
-              className="welcome-balloon welcome-balloon--5"
-              priority
-              unoptimized
-            />
-          </div>
-
-          <div className="welcome-cake-wrap">
-            <Image
-              src="/welcome/cake.png"
-              alt=""
-              width={280}
-              height={280}
-              className="welcome-cake"
-              priority
-              unoptimized
-            />
-          </div>
-        </div>
-
-        <div className="welcome-copy">
-          <h1 className="welcome-title">ГЕРОФАРМ</h1>
-          <Link href="/quiz" className="welcome-btn">
-            Открыть викторину
-          </Link>
-        </div>
+      <div className="welcome-mobile">
+        <Image
+          src="/welcome/mobile-hero.png"
+          alt="ГЕРОФАРМ — 25 лет вместе с вами"
+          width={1154}
+          height={1996}
+          className="welcome-mobile__hero"
+          priority
+          unoptimized
+        />
+        <Link href="/quiz" className="welcome-btn welcome-mobile__btn">
+          Открыть викторину
+        </Link>
       </div>
     </div>
   );
