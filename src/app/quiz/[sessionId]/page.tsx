@@ -7,7 +7,6 @@ import { AppShell } from "@/components/AppShell";
 import { AnswerOption } from "@/components/AnswerOption";
 import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
-import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { Timer } from "@/components/Timer";
 import { getQuestionImageById } from "@/lib/questions-bank";
 import type {
@@ -226,7 +225,6 @@ export default function QuizPage() {
         <Timer remainingSeconds={remainingSeconds} warning={isWarning} inline />
       }
     >
-      <RegisterFestiveDecor />
       <div className={`quiz-question-screen${isWideQuestion ? " quiz-question-screen--wide" : ""}`}>
         <div className="quiz-question-screen__inner">
           <QuizNavigation
