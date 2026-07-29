@@ -132,10 +132,10 @@ export default function QuizIntroPage() {
                 </div>
               )}
 
-              <div className="quiz-intro-start-btn block w-full sm:mx-auto sm:max-w-[360px]">
+              <div className="quiz-intro-start-btn">
                 <Button
                   fullWidth
-                  className="quiz-intro-register-btn !min-h-0 !py-0 !text-base !font-bold"
+                  className="quiz-intro-register-btn"
                   disabled={
                     !loading && availability !== null && !availability.available
                   }

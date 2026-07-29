@@ -509,8 +509,11 @@ select {
 }
 
 .quiz-intro-start-btn {
+  width: min(100%, 340px);
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quiz-intro-footer-note {
@@ -626,24 +629,53 @@ select {
   box-shadow: none;
 }
 
-/* Цвета стартового экрана (quiz-intro-shell) */
+/* Кнопка «Регистрация» на стартовом экране — PNG без искажения */
 .quiz-intro-shell .quiz-intro-register-btn.btn-primary {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  aspect-ratio: 458 / 136;
+  max-width: 340px;
+  height: auto !important;
   min-height: 0 !important;
-  padding: 0 1.5rem !important;
+  aspect-ratio: 953 / 232;
+  padding: 0 !important;
   border: 0 !important;
-  background: url("/welcome/button.png") center / contain no-repeat !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: url("/welcome/button.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
   color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em;
   text-shadow: 0 1px 2px rgba(53, 19, 126, 0.35);
   box-shadow: none !important;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .quiz-intro-shell .quiz-intro-register-btn.btn-primary:hover:not(:disabled) {
-  transform: translateY(-1px) !important;
+  transform: translateY(-1px) scale(1.02) !important;
+  filter: brightness(1.05);
   box-shadow: none !important;
+}
+
+.quiz-intro-shell .quiz-intro-register-btn.btn-primary:active:not(:disabled) {
+  transform: scale(0.98) !important;
+}
+
+@media (max-width: 640px) {
+  .quiz-intro-start-btn {
+    width: min(100%, 320px);
+  }
+
+  .quiz-intro-shell .quiz-intro-register-btn.btn-primary {
+    max-width: 320px;
+    font-size: 0.98rem !important;
+  }
 }
 
 .quiz-intro-shell .quiz-intro-lead strong {
