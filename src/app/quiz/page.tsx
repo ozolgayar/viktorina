@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
+import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { RuleItem } from "@/components/RuleItem";
 import { useQuizStats } from "@/hooks/useQuizStats";
 import { declension, formatTime } from "@/lib/utils";
@@ -44,6 +45,7 @@ export default function QuizIntroPage() {
       shellClassName="quiz-intro-shell"
       mainClassName="quiz-intro-main !p-0"
       headerCenter={<span className="sr-only">Викторина ГЕРОФАРМ</span>}
+      overlay={<RegisterFestiveDecor />}
     >
       <div className="quiz-page">
         <section className="quiz-main">

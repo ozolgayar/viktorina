@@ -192,17 +192,23 @@ select {
   text-align: center;
 }
 
-/* Фон стартового экрана викторины — Ресурс 2, приглушённый */
-.quiz-intro-shell.app-gradient--festive {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(28, 10, 68, 0.52) 0%,
-      rgba(20, 8, 52, 0.58) 45%,
-      rgba(14, 5, 36, 0.66) 100%
-    ),
-    url("/welcome/quiz-intro-bg.png") center top / cover no-repeat,
-    #24105a;
+/* Мобильный фон стартового экрана — Ресурс 2, приглушённый */
+@media (max-width: 768px) {
+  .quiz-intro-shell.app-gradient--festive {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(28, 10, 68, 0.52) 0%,
+        rgba(20, 8, 52, 0.58) 45%,
+        rgba(14, 5, 36, 0.66) 100%
+      ),
+      url("/welcome/quiz-intro-bg.png") center top / cover no-repeat,
+      #24105a;
+  }
+
+  .quiz-intro-shell .quiz-intro-decor {
+    display: none;
+  }
 }
 
 .quiz-intro-stats {
