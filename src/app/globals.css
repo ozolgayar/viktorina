@@ -1951,6 +1951,13 @@ select {
     var(--result-card-bg-2) 100%
   );
   box-shadow: 0 24px 70px rgba(24, 8, 70, 0.35);
+  padding-bottom: calc(1.5rem + 20px);
+}
+
+@media (min-width: 640px) {
+  .result-card {
+    padding-bottom: calc(2.5rem + 20px);
+  }
 }
 
 .result-title {
@@ -1979,39 +1986,28 @@ select {
   min-height: 0 !important;
   aspect-ratio: 946 / 234;
   padding: 0 !important;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background-image: none !important;
-  background: linear-gradient(
-    180deg,
-    var(--result-primary-from) 0%,
-    var(--result-primary-to) 100%
-  );
-  color: #ffffff;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1;
+  padding-bottom: 0.28em !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: url("/welcome/button.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
   letter-spacing: 0.02em;
-  box-shadow:
-    0 0 0 3px rgba(166, 107, 255, 0.18),
-    0 12px 32px rgba(85, 31, 180, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  filter: none;
-  text-shadow: none;
-  transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  text-shadow: 0 1px 2px rgba(53, 19, 126, 0.35);
+  box-shadow: none !important;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .result-primary-button.btn-primary:hover:not(:disabled) {
-  background: linear-gradient(180deg, #b27aff 0%, #873ef0 100%);
-  box-shadow:
-    0 0 0 4px rgba(166, 107, 255, 0.2),
-    0 14px 36px rgba(85, 31, 180, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  transform: translateY(-1px);
-  filter: none;
+  transform: translateY(-1px) scale(1.02) !important;
+  filter: brightness(1.05);
+  box-shadow: none !important;
 }
 
 .result-secondary-button.btn-primary {
@@ -2036,6 +2032,7 @@ select {
     background 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+  margin-top: 20px;
 }
 
 .result-secondary-button.btn-primary:hover:not(:disabled) {
