@@ -1370,9 +1370,23 @@ select {
   border: 1.5px solid rgba(255, 255, 255, 0.55);
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  font-size: 1.07rem;
-  line-height: 1.35;
+  font-size: 1.04rem;
+  line-height: 1.32;
   box-shadow: none;
+}
+
+@media (min-width: 640px) {
+  .quiz-answer-options.quiz-answer-options--panel .answer-option {
+    font-size: clamp(1.04rem, 1.05vw, 1.22rem);
+    line-height: 1.34;
+  }
+}
+
+@media (min-width: 900px) {
+  .quiz-answer-options.quiz-answer-options--panel .answer-option {
+    font-size: clamp(1.06rem, 0.98vw, 1.2rem);
+    line-height: 1.32;
+  }
 }
 
 .quiz-answer-options.quiz-answer-options--panel .answer-option:hover:not(:disabled) {
