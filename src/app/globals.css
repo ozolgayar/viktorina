@@ -1938,6 +1938,46 @@ select {
   }
 }
 
+/* Экран регистрации: больше воздуха вокруг CTA */
+.registration-card {
+  padding-bottom: calc(1.5rem + 28px);
+}
+
+@media (min-width: 640px) {
+  .registration-card {
+    padding-bottom: calc(2.5rem + 28px);
+  }
+}
+
+.registration-form__actions {
+  margin-top: 30px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.registration-button.quiz-png-register-btn.btn-primary {
+  width: min(350px, 100%) !important;
+  max-width: 350px !important;
+  font-size: 1rem !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+  .registration-card {
+    padding-bottom: calc(1.5rem + 24px);
+  }
+
+  .registration-form__actions {
+    margin-top: 26px !important;
+  }
+
+  .registration-button.quiz-png-register-btn.btn-primary {
+    width: min(320px, 100%) !important;
+    max-width: 320px !important;
+    font-size: 0.96rem !important;
+  }
+}
+
 /* Финальный экран результата — мягкая лавандовая палитра */
 .result-card {
   --result-card-bg: #fbf8ff;

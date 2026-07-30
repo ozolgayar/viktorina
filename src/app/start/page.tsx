@@ -158,7 +158,7 @@ export default function StartPage() {
         className={`register-page-screen register-page-enter w-full${visible ? " register-page-enter--visible" : ""}`}
       >
         <div
-          className={`register-card-form register-card-enter quiz-card mx-auto${visible ? " register-card-enter--visible" : ""}`}
+          className={`register-card-form registration-card register-card-enter quiz-card mx-auto${visible ? " register-card-enter--visible" : ""}`}
         >
           <h1 className="mb-1 text-2xl font-black text-brand-dark sm:text-3xl">
             Регистрация
@@ -231,10 +231,10 @@ export default function StartPage() {
             </div>
           )}
 
-          <div className="quiz-intro-start-btn mt-6 sm:mt-8">
+          <div className="quiz-intro-start-btn registration-form__actions mt-7 sm:mt-8">
             <Button
               fullWidth
-              className="quiz-png-register-btn"
+              className="quiz-png-register-btn registration-button"
               onClick={handleStart}
               disabled={
                 !isFormValid ||
