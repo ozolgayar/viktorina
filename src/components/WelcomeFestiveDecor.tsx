@@ -14,12 +14,35 @@ type DecorPos = {
   offsetY?: number;
   flipX?: boolean;
   className?: string;
+  mobileHidden?: boolean;
+  mobileClassName?: string;
 };
 
 const DECOR_SPIRALS: DecorPos[] = [
-  { top: "7%", left: "9%", size: 42, rotate: -18, className: "welcome-decor__spiral--sm" },
-  { top: "26%", left: "2%", size: 168, rotate: -38, className: "welcome-decor__spiral--lg" },
-  { top: "22%", right: "6%", size: 50, rotate: 22, className: "welcome-decor__spiral--sm" },
+  {
+    top: "7%",
+    left: "9%",
+    size: 42,
+    rotate: -18,
+    className: "welcome-decor__spiral--sm",
+    mobileClassName: "welcome-decor__mobile-tl",
+  },
+  {
+    top: "26%",
+    left: "2%",
+    size: 168,
+    rotate: -38,
+    className: "welcome-decor__spiral--lg",
+    mobileHidden: true,
+  },
+  {
+    top: "22%",
+    right: "6%",
+    size: 50,
+    rotate: 22,
+    className: "welcome-decor__spiral--sm",
+    mobileClassName: "welcome-decor__mobile-tr",
+  },
   {
     bottom: "8%",
     right: "2%",
@@ -29,45 +52,84 @@ const DECOR_SPIRALS: DecorPos[] = [
     offsetY: -100,
     flipX: true,
     className: "welcome-decor__spiral--lg",
+    mobileClassName: "welcome-decor__mobile-br",
   },
 ];
 
 const DECOR_STARS: DecorPos[] = [
-  { bottom: "5%", left: "3%", size: 168, rotate: -8, className: "welcome-decor__star--xl" },
+  {
+    bottom: "5%",
+    left: "3%",
+    size: 168,
+    rotate: -8,
+    className: "welcome-decor__star--xl",
+    mobileHidden: true,
+  },
   {
     top: "46%",
     left: "9%",
     size: 52,
-    rotate: 14 + 45,
+    rotate: 59,
     offsetX: 200,
     offsetY: 50,
     className: "welcome-decor__star--md",
+    mobileHidden: true,
   },
   {
     top: "38%",
     right: "8%",
-    size: 70 + 100 - 40,
+    size: 130,
     rotate: -10,
     offsetX: -250,
     offsetY: -100,
     className: "welcome-decor__star--md",
+    mobileClassName: "welcome-decor__mobile-tr-star",
   },
   {
     bottom: "22%",
     right: "11%",
-    size: 40 + 50,
-    rotate: 18 + 45,
+    size: 90,
+    rotate: 63,
     offsetX: -300,
     offsetY: 0,
     className: "welcome-decor__star--sm",
+    mobileClassName: "welcome-decor__mobile-br-star",
   },
 ];
 
 const DECOR_CONFETTI: (DecorPos & { color: string })[] = [
-  { top: "9%", left: "26%", size: 13, rotate: 28, color: "#8ec8ff" },
-  { top: "5%", left: "48%", size: 11, rotate: -20, color: "#a8d8ff" },
-  { top: "11%", right: "18%", size: 12, rotate: 35, color: "#7eb6f5" },
-  { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff" },
+  {
+    top: "9%",
+    left: "26%",
+    size: 13,
+    rotate: 28,
+    color: "#8ec8ff",
+    mobileClassName: "welcome-decor__mobile-confetti-tl",
+  },
+  {
+    top: "5%",
+    left: "48%",
+    size: 11,
+    rotate: -20,
+    color: "#a8d8ff",
+    mobileHidden: true,
+  },
+  {
+    top: "11%",
+    right: "18%",
+    size: 12,
+    rotate: 35,
+    color: "#7eb6f5",
+    mobileClassName: "welcome-decor__mobile-confetti-tr",
+  },
+  {
+    top: "36%",
+    right: "14%",
+    size: 12,
+    rotate: -28,
+    color: "#9fd0ff",
+    mobileHidden: true,
+  },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -86,6 +148,17 @@ function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
   };
 }
 
+function decorClassName(base: string, item: DecorPos): string {
+  return [
+    base,
+    item.className ?? "",
+    item.mobileClassName ?? "",
+    item.mobileHidden ? "welcome-decor__item--mobile-off" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
 /** Звёзды, серпантины и конфетти — как на главном экране (без цифр, торта и кнопки) */
 export function WelcomeFestiveDecor() {
   return (
@@ -97,7 +170,10 @@ export function WelcomeFestiveDecor() {
           alt=""
           width={item.size}
           height={item.size}
-          className={`welcome-decor__img welcome-decor__spiral ${item.className ?? ""}`}
+          className={decorClassName(
+            "welcome-decor__img welcome-decor__spiral",
+            item,
+          )}
           style={decorStyle(item, { animationDelay: `${i * 0.4}s` })}
           unoptimized
         />
@@ -110,7 +186,10 @@ export function WelcomeFestiveDecor() {
           alt=""
           width={item.size}
           height={item.size}
-          className={`welcome-decor__img welcome-decor__star ${item.className ?? ""}`}
+          className={decorClassName(
+            "welcome-decor__img welcome-decor__star",
+            item,
+          )}
           style={decorStyle(item, { animationDelay: `${i * 0.35}s` })}
           unoptimized
         />
@@ -119,7 +198,7 @@ export function WelcomeFestiveDecor() {
       {DECOR_CONFETTI.map((item, i) => (
         <span
           key={`confetti-${i}`}
-          className="welcome-decor__confetti"
+          className={decorClassName("welcome-decor__confetti", item)}
           style={decorStyle(item, {
             background: item.color,
             animationDelay: `${i * 0.25}s`,

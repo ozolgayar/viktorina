@@ -2681,7 +2681,7 @@ select {
   }
 }
 
-/* Mobile — та же композиция, что на десктопе, без фонового PNG */
+/* Mobile — облегчённая композиция без перегруза декором */
 @media (max-width: 767px) {
   .welcome-page {
     padding:
@@ -2691,38 +2691,56 @@ select {
   }
 
   .welcome-stack {
+    position: relative;
+    z-index: 10;
     width: 100%;
-    padding: 0 20px 8px;
+    padding: 0 16px 8px;
     justify-content: center;
   }
 
+  .welcome-hero {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .welcome-balloons {
+    justify-content: space-between;
+    padding: 0 1%;
+  }
+
   .welcome-balloon {
-    height: clamp(108px, 24vh, 168px);
+    height: clamp(78px, 17.5vh, 122px);
   }
 
   .welcome-balloon--2 {
-    margin-right: -8%;
-    translate: clamp(-56px, -14vw, -36px) clamp(18px, 4vh, 32px);
+    margin-right: 0;
+    translate: clamp(-64px, -20vw, -36px) clamp(14px, 3.5vh, 26px);
   }
 
   .welcome-balloon--5 {
-    margin-left: -2%;
-    translate: clamp(36px, 14vw, 56px) clamp(18px, 4vh, 32px);
+    margin-left: 0;
+    translate: clamp(36px, 20vw, 64px) clamp(14px, 3.5vh, 26px);
   }
 
   .welcome-cake-wrap {
-    margin-top: clamp(-5vh, -40px, -2.5vh);
+    z-index: 1;
+    margin-top: clamp(-2vh, -16px, 0px);
   }
 
   .welcome-cake {
-    height: clamp(130px, calc(16vh + 48px), 190px);
+    height: clamp(84px, calc(10.5vh + 32px), 124px);
   }
 
   .welcome-copy {
-    margin-top: clamp(0.25rem, 1.5vh, 0.85rem);
+    position: relative;
+    z-index: 20;
+    margin-top: clamp(0.75rem, 2.5vh, 1.25rem);
   }
 
   .welcome-title {
+    position: relative;
+    z-index: 21;
     font-size: clamp(1.55rem, 7.5vw, 2rem);
     letter-spacing: 0.12em;
     padding-left: 0.12em;
@@ -2730,6 +2748,8 @@ select {
   }
 
   .welcome-btn {
+    position: relative;
+    z-index: 30;
     margin-top: clamp(1rem, 3vh, 1.5rem);
     translate: none;
     width: min(100%, 300px);
@@ -2738,10 +2758,78 @@ select {
     font-size: 15px;
   }
 
-  .welcome-decor__img,
-  .welcome-decor__confetti {
-    scale: 0.62;
-    opacity: 0.82;
+  /* Декор: скрыть лишнее, уменьшить и сдвинуть к краям */
+  .welcome-decor__item--mobile-off {
+    display: none !important;
+  }
+
+  .welcome-decor__img:not(.welcome-decor__item--mobile-off),
+  .welcome-decor__confetti:not(.welcome-decor__item--mobile-off) {
+    scale: 0.55;
+    opacity: 0.76;
+  }
+
+  .welcome-decor__mobile-tl {
+    top: 4% !important;
+    left: 2% !important;
+    bottom: auto !important;
+    right: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-tr {
+    top: 5% !important;
+    right: 2% !important;
+    left: auto !important;
+    bottom: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-br {
+    bottom: 6% !important;
+    right: 1% !important;
+    top: auto !important;
+    left: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-tr-star {
+    top: 14% !important;
+    right: 3% !important;
+    left: auto !important;
+    bottom: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-br-star {
+    bottom: 10% !important;
+    right: 4% !important;
+    top: auto !important;
+    left: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-confetti-tl {
+    top: 3% !important;
+    left: 6% !important;
+    right: auto !important;
+    bottom: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-confetti-tr {
+    top: 4% !important;
+    right: 8% !important;
+    left: auto !important;
+    bottom: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
   }
 }
 
@@ -2752,19 +2840,27 @@ select {
   }
 
   .welcome-balloon {
-    height: clamp(80px, 22vh, 120px);
+    height: clamp(58px, 16vh, 88px);
+  }
+
+  .welcome-balloon--2 {
+    translate: clamp(-48px, -18vw, -28px) clamp(8px, 2vh, 16px);
+  }
+
+  .welcome-balloon--5 {
+    translate: clamp(28px, 18vw, 48px) clamp(8px, 2vh, 16px);
   }
 
   .welcome-cake {
-    height: clamp(90px, 14vh, 130px);
+    height: clamp(62px, 9vh, 88px);
   }
 
   .welcome-cake-wrap {
-    margin-top: -3vh;
+    margin-top: 0;
   }
 
   .welcome-copy {
-    margin-top: 0;
+    margin-top: 0.5rem;
   }
 
   .welcome-btn {
@@ -2777,15 +2873,15 @@ select {
 
 @media (max-width: 767px) and (orientation: portrait) and (max-height: 700px) {
   .welcome-balloon {
-    height: clamp(96px, 21vh, 140px);
+    height: clamp(70px, 16vh, 108px);
   }
 
   .welcome-cake {
-    height: clamp(115px, calc(14vh + 40px), 165px);
+    height: clamp(76px, calc(9vh + 28px), 112px);
   }
 
   .welcome-cake-wrap {
-    margin-top: -3.5vh;
+    margin-top: clamp(-1vh, -8px, 0px);
   }
 
   .welcome-btn {
