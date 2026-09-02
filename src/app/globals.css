@@ -532,30 +532,22 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: var(--quiz-intro-bottom-gap);
   margin-top: calc(var(--quiz-intro-bottom-gap) - var(--quiz-intro-content-gap));
 }
 
 .quiz-intro-start-btn {
   width: min(100%, 340px);
-  display: flex;
-  justify-content: center;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  line-height: 0;
-}
-
-.quiz-intro-bottom .quiz-png-register-btn.btn-primary {
-  padding-bottom: 0 !important;
-  background-position: center bottom !important;
 }
 
 .quiz-intro-footer-note {
   width: 100%;
   max-width: none;
-  margin-top: var(--quiz-intro-bottom-gap);
+  margin-top: 0;
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
