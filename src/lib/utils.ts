@@ -8,6 +8,14 @@ export function declension(n: number): string {
   return "участников";
 }
 
+/** Глагол для плашки: 1 участник прошёл, 2 участника прошли */
+export function passedQuizVerb(n: number): string {
+  const abs = Math.abs(n) % 100;
+  const n1 = abs % 10;
+  if (n1 === 1 && !(abs > 10 && abs < 20)) return "прошёл";
+  return "прошли";
+}
+
 /** Форматирование времени: 19 → "00:19" */
 export function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60);

@@ -8,7 +8,7 @@ import { Button } from "@/components/Button";
 import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
 import { RuleItem } from "@/components/RuleItem";
 import { useQuizStats } from "@/hooks/useQuizStats";
-import { formatTime } from "@/lib/utils";
+import { declension, formatTime, passedQuizVerb } from "@/lib/utils";
 import type { AvailabilityResponse } from "@/types/quiz";
 
 /** Экран викторины — правила и кнопка старта */
@@ -73,7 +73,7 @@ export default function QuizIntroPage() {
                         />
                         <span className="quiz-intro-stat__value">{count}</span>
                         <span className="quiz-intro-stat__label">
-                          успешно прошли викторину
+                          {declension(count)} {passedQuizVerb(count)} викторину
                         </span>
                       </div>
                     )}
