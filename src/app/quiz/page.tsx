@@ -122,7 +122,7 @@ export default function QuizIntroPage() {
                 <p className="quiz-intro-rules__title text-sm font-semibold text-brand-dark">
                   Правила викторины
                 </p>
-                <ul className="quiz-intro-rules-grid quiz-intro-rules-grid--single">
+                <ul className="quiz-intro-rules-grid">
                   <RuleItem>
                     Нужно ответить правильно на все 10 вопросов за 25 минут
                   </RuleItem>
@@ -151,23 +151,26 @@ export default function QuizIntroPage() {
                 </div>
               )}
 
-              <div className="quiz-intro-start-btn">
-                <Button
-                  fullWidth
-                  className="quiz-png-register-btn"
-                  disabled={
-                    !loading && availability !== null && !availability.available
-                  }
-                  onClick={handleStartClick}
-                >
-                  Регистрация
-                </Button>
-              </div>
+              <div className="quiz-intro-bottom">
+                <div className="quiz-intro-start-btn">
+                  <Button
+                    fullWidth
+                    className="quiz-png-register-btn"
+                    disabled={
+                      !loading && availability !== null && !availability.available
+                    }
+                    onClick={handleStartClick}
+                  >
+                    Регистрация
+                  </Button>
+                </div>
 
-              <p className="quiz-intro-footer-note text-center text-xs text-brand-dark/40">
-                Если сразу не получилось правильно ответить на все 10 вопросов,
-                то у вас есть возможность пройти викторину ещё&nbsp;раз.
-              </p>
+                <p className="quiz-intro-footer-note text-center text-xs text-brand-dark/40">
+                  Если сразу не получилось правильно ответить на все 10
+                  вопросов, то у вас есть возможность пройти викторину
+                  ещё&nbsp;раз
+                </p>
+              </div>
             </div>
           </div>
         </section>
