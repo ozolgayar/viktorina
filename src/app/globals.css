@@ -538,20 +538,24 @@ select {
 
 .quiz-intro-start-btn {
   width: min(100%, 340px);
+  display: flex;
+  justify-content: center;
   margin-top: 0;
-  margin-bottom: var(--quiz-intro-bottom-gap);
+  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
+  line-height: 0;
 }
 
 .quiz-intro-bottom .quiz-png-register-btn.btn-primary {
   padding-bottom: 0 !important;
+  background-position: center bottom !important;
 }
 
 .quiz-intro-footer-note {
   width: 100%;
   max-width: none;
-  margin-top: 0;
+  margin-top: var(--quiz-intro-bottom-gap);
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
