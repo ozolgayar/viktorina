@@ -7,7 +7,7 @@ export const QUIZ_CONFIG = {
   startHour: Number(process.env.QUIZ_START_HOUR ?? 10),
   endHour: Number(process.env.QUIZ_END_HOUR ?? 17),
   timezone: process.env.QUIZ_TIMEZONE ?? "Europe/Moscow",
-  skipTimeWindow: process.env.QUIZ_SKIP_TIME_WINDOW === "true",
+  skipTimeWindow: process.env.QUIZ_SKIP_TIME_WINDOW !== "false",
 } as const;
 
 /**

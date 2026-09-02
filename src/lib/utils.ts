@@ -8,9 +8,9 @@ export function declension(n: number): string {
   return "участников";
 }
 
-/** Форматирование времени: 125 → "2:05" */
+/** Форматирование времени: 19 → "00:19" */
 export function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60);
   const s = Math.round(seconds % 60);
-  return `${m}:${String(s).padStart(2, "0")}`;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }

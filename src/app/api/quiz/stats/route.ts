@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
+import { QUIZ_CONFIG } from "@/lib/quiz-config";
 import { createServiceClient } from "@/lib/supabase/server";
 
-/** Статистика викторины: счётчик завершивших и лучшее время */
+/** Статистика викторины: счётчик успешно прошедших и лучшее время */
 export async function GET() {
   try {
     const supabase = createServiceClient();
@@ -9,7 +10,8 @@ export async function GET() {
     const { count, error: countError } = await supabase
       .from("sessions")
       .select("*", { count: "exact", head: true })
-      .not("finished_at", "is", null);
+      .not("finished_at", "is", null)
+      .eq("score", QUIZ_CONFIG.questionsCount);
 
     if (countError) {
       console.error("Ошибка подсчёта сессий:", countError);
@@ -23,7 +25,7 @@ export async function GET() {
       .from("sessions")
       .select("started_at, finished_at")
       .not("finished_at", "is", null)
-      .eq("score", 10);
+      .eq("score", QUIZ_CONFIG.questionsCount);
 
     if (bestError) {
       console.error("Ошибка лучшего времени:", bestError);
