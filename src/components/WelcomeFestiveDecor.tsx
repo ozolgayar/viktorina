@@ -68,13 +68,12 @@ const DECOR_SPIRALS: DecorPos[] = [
     mobileClassName: "welcome-decor__mobile-spiral-fixed",
   },
   {
-    top: "613px",
-    left: "316px",
+    top: "610px",
+    left: "360px",
     size: 56,
     rotate: 22,
     mobileOnly: true,
     mobileClassName: "welcome-decor__mobile-spiral-c",
-    mobileHidden: true,
   },
 ];
 
@@ -138,8 +137,8 @@ const DECOR_STARS: DecorPos[] = [
     mobileHidden: true,
   },
   {
-    top: "617px",
-    left: "46px",
+    top: "610px",
+    left: "60px",
     size: 60,
     rotate: 14,
     mobileOnly: true,
