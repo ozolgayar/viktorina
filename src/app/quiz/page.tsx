@@ -166,10 +166,12 @@ export default function QuizIntroPage() {
                 </div>
 
                 <p className="quiz-intro-footer-note text-center text-xs text-brand-dark/40">
-                  Если сразу не получилось правильно ответить на все 10
-                  вопросов, то у вас есть{" "}
-                  <br />
-                  возможность пройти викторину ещё&nbsp;раз
+                  <span className="quiz-intro-footer-note__line">
+                    Если сразу не получилось правильно ответить на все 10 вопросов, то у вас есть
+                  </span>
+                  <span className="quiz-intro-footer-note__line">
+                    возможность пройти викторину ещё&nbsp;раз
+                  </span>
                 </p>
               </div>
             </div>

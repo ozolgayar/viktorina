@@ -549,12 +549,23 @@ select {
 }
 
 .quiz-intro-footer-note {
-  max-width: 22rem;
+  width: 100%;
+  max-width: none;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.45;
+}
+
+.quiz-intro-footer-note__line {
+  display: block;
+}
+
+@media (min-width: 480px) {
+  .quiz-intro-footer-note__line:first-child {
+    white-space: nowrap;
+  }
 }
 
 .quiz-card.quiz-card--intro .quiz-intro-lead {
