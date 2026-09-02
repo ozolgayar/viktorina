@@ -2916,8 +2916,8 @@ select {
     left: 128px !important;
     bottom: auto !important;
     right: auto !important;
-    width: 30px !important;
-    height: 30px !important;
+    width: 80px !important;
+    height: 80px !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
   }

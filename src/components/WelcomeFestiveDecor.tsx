@@ -105,7 +105,7 @@ const DECOR_STARS: DecorPos[] = [
   {
     top: "80px",
     left: "128px",
-    size: 30,
+    size: 80,
     rotate: 0,
     mobileOnly: true,
     mobileClassName: "welcome-decor__mobile-star-fixed",
