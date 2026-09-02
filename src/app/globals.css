@@ -513,7 +513,7 @@ select {
 .quiz-intro-rules-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 6px;
+  gap: 12px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -521,12 +521,18 @@ select {
 
 .quiz-intro-rules-grid--single {
   grid-template-columns: 1fr;
+  margin-bottom: 8px;
 }
 
 @media (min-width: 640px) {
   .quiz-intro-rules-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 6px 22px;
+    gap: 12px 22px;
+  }
+
+  .quiz-intro-rules-grid--single {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -539,8 +545,11 @@ select {
 }
 
 .quiz-intro-footer-note {
+  max-width: 17.75rem;
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.45;
 }
 
@@ -552,6 +561,10 @@ select {
 .quiz-card.quiz-card--intro .quiz-intro-rules {
   margin-bottom: 0;
   padding: 12px 14px;
+}
+
+.quiz-intro-rules__title {
+  margin: 0 0 8px;
 }
 
 .quiz-intro-shell .quiz-intro-rules-grid .flex {

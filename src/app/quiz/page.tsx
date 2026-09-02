@@ -73,7 +73,7 @@ export default function QuizIntroPage() {
                         />
                         <span className="quiz-intro-stat__value">{count}</span>
                         <span className="quiz-intro-stat__label">
-                          успешно прошли викторин
+                          успешно прошли викторину
                         </span>
                       </div>
                     )}
@@ -119,7 +119,7 @@ export default function QuizIntroPage() {
               </p>
 
               <div className="quiz-intro-rules rounded-xl bg-brand-light">
-                <p className="mb-1 text-sm font-semibold text-brand-dark">
+                <p className="quiz-intro-rules__title text-sm font-semibold text-brand-dark">
                   Правила викторины
                 </p>
                 <ul className="quiz-intro-rules-grid quiz-intro-rules-grid--single">
@@ -166,7 +166,7 @@ export default function QuizIntroPage() {
 
               <p className="quiz-intro-footer-note text-center text-xs text-brand-dark/40">
                 Если сразу не получилось правильно ответить на все 10 вопросов,
-                то у вас есть возможность пройти викторину ещё раз.
+                то у вас есть возможность пройти викторину ещё&nbsp;раз.
               </p>
             </div>
           </div>
