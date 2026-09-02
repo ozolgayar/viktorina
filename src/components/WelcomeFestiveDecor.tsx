@@ -57,6 +57,7 @@ const DECOR_SPIRALS: DecorPos[] = [
     flipX: true,
     className: "welcome-decor__spiral--lg",
     mobileClassName: "welcome-decor__mobile-spiral-br",
+    mobileHidden: true,
   },
   {
     top: "292px",
@@ -129,10 +130,19 @@ const DECOR_CONFETTI: ConfettiPos[] = [
   { top: "28%", right: "10%", size: 13, rotate: -15, color: "#a8d8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-6", mobileHidden: true },
   { top: "52%", left: "12%", size: 12, rotate: 40, color: "#7eb6f5", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-7" },
   { top: "62%", right: "20%", size: 15, rotate: -8, color: "#9fd0ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-8" },
-  { bottom: "32%", left: "18%", size: 13, rotate: 25, color: "#8ec8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-9" },
+  { bottom: "32%", left: "18%", size: 13, rotate: 25, color: "#8ec8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-9", mobileHidden: true },
   { bottom: "24%", right: "14%", size: 14, rotate: -22, color: "#a8d8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-10", mobileHidden: true },
   { bottom: "12%", left: "42%", size: 12, rotate: 18, color: "#7eb6f5", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-11", mobileHidden: true },
   { top: "42%", left: "78%", size: 13, rotate: -30, color: "#9fd0ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-12", mobileHidden: true },
+  {
+    top: "350px",
+    left: "322px",
+    size: 14,
+    rotate: 18,
+    color: "#8ec8ff",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-confetti-fixed",
+  },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {

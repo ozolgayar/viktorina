@@ -2943,6 +2943,16 @@ select {
   .welcome-decor__mobile-confetti-10 { bottom: 22% !important; right: 12% !important; width: 14px !important; height: 14px !important; }
   .welcome-decor__mobile-confetti-11 { bottom: 10% !important; left: 40% !important; width: 12px !important; height: 12px !important; }
   .welcome-decor__mobile-confetti-12 { top: 40% !important; right: 6% !important; width: 13px !important; height: 13px !important; }
+  .welcome-decor__mobile-confetti-fixed {
+    top: 350px !important;
+    left: 322px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
 }
 
 @media (max-width: 767px) and (orientation: landscape) {
