@@ -3015,6 +3015,13 @@ select {
   .welcome-decor__mobile-spiral-c {
     top: 484px !important;
     left: 376px !important;
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .welcome-decor__mobile-confetti-b {
+    top: 663px !important;
+    left: 188px !important;
   }
 }
 
