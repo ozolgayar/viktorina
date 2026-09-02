@@ -17,9 +17,6 @@ type DecorPos = {
   mobileHidden?: boolean;
   mobileOnly?: boolean;
   mobileClassName?: string;
-  desktopHidden?: boolean;
-  desktopOnly?: boolean;
-  desktopClassName?: string;
 };
 
 type ConfettiPos = DecorPos & { color: string };
@@ -75,8 +72,8 @@ const DECOR_SPIRALS: DecorPos[] = [
     left: "316px",
     size: 56,
     rotate: 22,
-    desktopOnly: true,
-    desktopClassName: "welcome-decor__desktop-spiral-a",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-spiral-c",
   },
 ];
 
@@ -135,21 +132,29 @@ const DECOR_STARS: DecorPos[] = [
     left: "50px",
     size: 80,
     rotate: -8,
-    desktopOnly: true,
-    desktopClassName: "welcome-decor__desktop-star-a",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-star-a",
   },
   {
     top: "617px",
     left: "46px",
     size: 60,
     rotate: 14,
-    desktopOnly: true,
-    desktopClassName: "welcome-decor__desktop-star-b",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-star-b",
   },
 ];
 
 const DECOR_CONFETTI: ConfettiPos[] = [
-  { top: "9%", left: "26%", size: 13, rotate: 28, color: "#8ec8ff", mobileClassName: "welcome-decor__mobile-confetti-1", desktopHidden: true },
+  {
+    top: "9%",
+    left: "26%",
+    size: 13,
+    rotate: 28,
+    color: "#8ec8ff",
+    mobileClassName: "welcome-decor__mobile-confetti-1",
+    mobileHidden: true,
+  },
   { top: "5%", left: "48%", size: 11, rotate: -20, color: "#a8d8ff", mobileClassName: "welcome-decor__mobile-confetti-2" },
   { top: "11%", right: "18%", size: 12, rotate: 35, color: "#7eb6f5", mobileClassName: "welcome-decor__mobile-confetti-3", mobileHidden: true },
   { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff", mobileClassName: "welcome-decor__mobile-confetti-4", mobileHidden: true },
@@ -176,8 +181,8 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     size: 14,
     rotate: 12,
     color: "#8ec8ff",
-    desktopOnly: true,
-    desktopClassName: "welcome-decor__desktop-confetti-a",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-confetti-a",
   },
   {
     top: "622px",
@@ -185,8 +190,8 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     size: 14,
     rotate: -18,
     color: "#a8d8ff",
-    desktopOnly: true,
-    desktopClassName: "welcome-decor__desktop-confetti-b",
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-confetti-b",
   },
 ];
 
@@ -211,11 +216,8 @@ function decorClassName(base: string, item: DecorPos): string {
     base,
     item.className ?? "",
     item.mobileClassName ?? "",
-    item.desktopClassName ?? "",
     item.mobileHidden ? "welcome-decor__item--mobile-off" : "",
     item.mobileOnly ? "welcome-decor__item--mobile-only" : "",
-    item.desktopHidden ? "welcome-decor__item--desktop-off" : "",
-    item.desktopOnly ? "welcome-decor__item--desktop-only" : "",
   ]
     .filter(Boolean)
     .join(" ");
