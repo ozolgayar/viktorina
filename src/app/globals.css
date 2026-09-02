@@ -3010,6 +3010,14 @@ select {
   }
 }
 
+/* iPhone 16 Pro Max (440×956) — спираль под кнопкой */
+@media only screen and (max-width: 767px) and (orientation: portrait) and (width: 440px) and (min-height: 940px) {
+  .welcome-decor__mobile-spiral-c {
+    top: 484px !important;
+    left: 376px !important;
+  }
+}
+
 @media (max-width: 767px) and (orientation: landscape) {
   .welcome-stack {
     margin-top: 8vh;
