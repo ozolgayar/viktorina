@@ -74,7 +74,7 @@ export default function ResultsPage() {
             все 10 вопросов
           </p>
 
-          <div className="result-info-box rounded-xl p-4 text-left md:p-5">
+          <div className="result-info-box rounded-xl p-4 text-center md:p-5">
             <p className="result-note text-sm leading-relaxed md:text-base">
               Ответы на вопросы вы легко найдете на портале «Сфера», в
               телеграм-канале ГЕРОФАРМ LIFE и в официальных соцсетях ГЕРОФАРМ
