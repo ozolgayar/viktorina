@@ -2373,19 +2373,6 @@ select {
     linear-gradient(180deg, #27105c 0%, #2a1268 42%, #12072c 100%);
 }
 
-.welcome-desktop {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.welcome-mobile {
-  display: none;
-}
-
 .welcome-decor {
   position: absolute;
   inset: 0;
@@ -2539,11 +2526,14 @@ select {
 
 .welcome-title {
   margin: 0;
+  width: 100%;
   color: #ffffff;
   font-family: Verdana, Geneva, sans-serif !important;
   font-size: clamp(1.9rem, 5vw, 3.1rem);
   font-weight: 700;
   letter-spacing: 0.14em;
+  padding-left: 0.14em;
+  text-align: center;
   text-transform: uppercase;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   translate: 0 20px;
@@ -2644,9 +2634,23 @@ select {
   }
 }
 
+/* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .welcome-stack {
+    width: min(100%, 680px);
+    padding: 0 24px 24px;
+  }
+
   .welcome-balloon {
     height: min(32vh, 280px);
+  }
+
+  .welcome-balloon--2 {
+    translate: -72px 40px;
+  }
+
+  .welcome-balloon--5 {
+    translate: 72px 40px;
   }
 
   .welcome-cake-wrap {
@@ -2657,95 +2661,137 @@ select {
     height: calc(min(20vh, 190px) + 100px);
   }
 
+  .welcome-copy {
+    margin-top: calc(1.2rem - 40px);
+  }
+
+  .welcome-title {
+    font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+  }
+
+  .welcome-btn {
+    width: min(100%, 320px);
+    max-width: 320px;
+    font-size: 16px;
+  }
+
   .welcome-decor__img,
   .welcome-decor__confetti {
     scale: 0.88;
   }
 }
 
-/* ——— Mobile: один PNG-герой + PNG-кнопка ——— */
-@media (max-width: 768px) {
+/* Mobile — та же композиция, что на десктопе, без фонового PNG */
+@media (max-width: 767px) {
   .welcome-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: stretch;
-    min-height: 100dvh;
-    height: 100dvh;
-    max-height: 100dvh;
-    overflow: hidden;
-    padding: 0;
-    background: #2a1268;
-  }
-
-  .welcome-desktop {
-    display: none;
-  }
-
-  .welcome-mobile {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-    max-height: 100dvh;
-    overflow: hidden;
-  }
-
-  .welcome-mobile__hero {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .welcome-mobile__btn {
-    position: relative;
-    z-index: 2;
-    margin:
+    padding:
+      max(12px, env(safe-area-inset-top, 0px))
       0
-      16px
-      max(128px, calc(118px + env(safe-area-inset-bottom, 0px)));
+      max(12px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .welcome-stack {
+    width: 100%;
+    padding: 0 20px 8px;
+    justify-content: center;
+  }
+
+  .welcome-balloon {
+    height: clamp(108px, 24vh, 168px);
+  }
+
+  .welcome-balloon--2 {
+    margin-right: -8%;
+    translate: clamp(-56px, -14vw, -36px) clamp(18px, 4vh, 32px);
+  }
+
+  .welcome-balloon--5 {
+    margin-left: -2%;
+    translate: clamp(36px, 14vw, 56px) clamp(18px, 4vh, 32px);
+  }
+
+  .welcome-cake-wrap {
+    margin-top: clamp(-5vh, -40px, -2.5vh);
+  }
+
+  .welcome-cake {
+    height: clamp(130px, calc(16vh + 48px), 190px);
+  }
+
+  .welcome-copy {
+    margin-top: clamp(0.25rem, 1.5vh, 0.85rem);
+  }
+
+  .welcome-title {
+    font-size: clamp(1.55rem, 7.5vw, 2rem);
+    letter-spacing: 0.12em;
+    padding-left: 0.12em;
     translate: none;
-    width: min(280px, 78vw);
+  }
+
+  .welcome-btn {
+    margin-top: clamp(1rem, 3vh, 1.5rem);
+    translate: none;
+    width: min(100%, 300px);
     max-width: 300px;
-    height: auto;
-    min-width: unset;
-    min-height: unset;
-    aspect-ratio: 946 / 234;
-    background-size: contain;
+    min-height: 48px;
     font-size: 15px;
-    letter-spacing: 0.02em;
+  }
+
+  .welcome-decor__img,
+  .welcome-decor__confetti {
+    scale: 0.62;
+    opacity: 0.82;
   }
 }
 
-@media (max-width: 768px) and (orientation: landscape) {
-  .welcome-mobile__hero {
-    object-fit: contain;
-    object-position: center center;
-    background: #2a1268;
+@media (max-width: 767px) and (orientation: landscape) {
+  .welcome-stack {
+    transform: scale(0.88);
+    padding-bottom: 0;
   }
 
-  .welcome-mobile__btn {
-    margin-bottom: max(114px, calc(110px + env(safe-area-inset-bottom, 0px)));
-    width: min(220px, 42vw);
-    max-width: 240px;
-    font-size: 13px;
+  .welcome-balloon {
+    height: clamp(80px, 22vh, 120px);
   }
-}
 
-@media (max-width: 768px) and (orientation: portrait) and (max-height: 700px) {
-  .welcome-mobile__btn {
-    margin-bottom: max(118px, calc(112px + env(safe-area-inset-bottom, 0px)));
-    width: min(240px, 74vw);
+  .welcome-cake {
+    height: clamp(90px, 14vh, 130px);
+  }
+
+  .welcome-cake-wrap {
+    margin-top: -3vh;
+  }
+
+  .welcome-copy {
+    margin-top: 0;
+  }
+
+  .welcome-btn {
+    margin-top: 0.75rem;
+    width: min(100%, 260px);
     max-width: 260px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) and (max-height: 700px) {
+  .welcome-balloon {
+    height: clamp(96px, 21vh, 140px);
+  }
+
+  .welcome-cake {
+    height: clamp(115px, calc(14vh + 40px), 165px);
+  }
+
+  .welcome-cake-wrap {
+    margin-top: -3.5vh;
+  }
+
+  .welcome-btn {
+    margin-top: 0.85rem;
+    width: min(100%, 280px);
+    max-width: 280px;
     font-size: 14px;
   }
 }
