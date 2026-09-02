@@ -69,14 +69,15 @@ export default function ResultsPage() {
             Ваш результат {result.score}/{result.totalQuestions}
           </h1>
           <p className="result-description mb-6 text-sm leading-relaxed md:mx-auto md:max-w-md md:text-base">
-            Вы знаете о компании «ГЕРОФАРМ» многое, но не всё. Чтобы получить
-            приз, нужно ответить верно на все 10 вопросов.
+            Вы знаете о компании многое, но некоторые новости ускользнули в
+            потоке информации. Чтобы получить приз, нужно ответить правильно на
+            все 10 вопросов.
           </p>
 
           <div className="result-info-box mb-6 rounded-xl p-4 text-left md:p-5">
             <p className="result-note text-sm leading-relaxed md:text-base">
-              Если сразу не получилось — у вас есть возможность пройти викторину
-              ещё раз. Удачи!
+              Ответы на вопросы вы легко найдете на портале «Сфера», в
+              телеграм-канале ГЕРОФАРМ LIFE и в официальных соцсетях ГЕРОФАРМ.
             </p>
           </div>
 
