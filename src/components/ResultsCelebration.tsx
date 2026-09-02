@@ -1,23 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
-const COLORS = [
-  "#F7941D",
-  "#2dd4bf",
-  "#f472b6",
-  "#facc15",
-  "#a78bfa",
-  "#34d399",
-  "#f87171",
-] as const;
-
-const CLOUDS = [
-  { top: "8%", left: "4%", scale: 1.4, duration: 9 },
-  { top: "10%", left: "52%", scale: 1.0, duration: 12 },
-  { top: "5%", right: "6%", scale: 0.75, duration: 8 },
-  { top: "22%", left: "25%", scale: 1.15, duration: 14 },
-] as const;
+import { WelcomeFestiveDecor } from "@/components/WelcomeFestiveDecor";
 
 const STARS = [
   { top: "-8px", left: "20px", symbol: "✦", color: "#F7941D", delay: 0 },
@@ -28,91 +12,11 @@ const STARS = [
   { bottom: "4px", right: "20px", symbol: "★", color: "#2dd4bf", delay: 1.5 },
 ] as const;
 
-function buildConfetti() {
-  const items = [];
-
-  for (let i = 0; i < 40; i++) {
-    const elongated = i % 5 === 0;
-    const circle = i % 3 === 1;
-    const sway = i % 2 === 1;
-
-    items.push({
-      left: `${(i * 17 + 3) % 100}%`,
-      top: `${(i * 23 + 7) % 100}%`,
-      color: COLORS[i % COLORS.length],
-      width: elongated ? 10 : 6 + (i % 7),
-      height: elongated ? 4 : 6 + ((i + 2) % 7),
-      borderRadius: circle ? "50%" : "2px",
-      duration: 3 + (i % 5),
-      delay: -5 + ((i * 0.42) % 7),
-      animation: sway ? "results-confetti-sway" : "results-confetti-fall",
-    });
-  }
-
-  return items;
-}
-
-const CONFETTI = buildConfetti();
-
-function ResultsCloud({
-  top,
-  left,
-  right,
-  scale,
-  duration,
-}: {
-  top: string;
-  left?: string;
-  right?: string;
-  scale: number;
-  duration: number;
-}) {
-  return (
-    <div
-      className="results-cloud"
-      style={{
-        top,
-        left,
-        right,
-        ["--cloud-scale" as string]: scale,
-        animationDuration: `${duration}s`,
-      }}
-      aria-hidden
-    >
-      <div className="results-cloud__base" />
-      <div className="results-cloud__hump results-cloud__hump--left" />
-      <div className="results-cloud__hump results-cloud__hump--center" />
-      <div className="results-cloud__hump results-cloud__hump--right" />
-      <div className="results-cloud__hump results-cloud__hump--small" />
-    </div>
-  );
-}
-
-/** Праздничный фон: конфетти и облака */
+/** Праздничный фон экрана победы — декор как на главной */
 export function ResultsFestiveBackground() {
   return (
     <div className="results-festive-bg" aria-hidden>
-      {CONFETTI.map((item, i) => (
-        <span
-          key={i}
-          className="results-confetti"
-          style={{
-            left: item.left,
-            top: item.top,
-            width: `${item.width}px`,
-            height: `${item.height}px`,
-            borderRadius: item.borderRadius,
-            backgroundColor: item.color,
-            animationName: item.animation,
-            animationDuration: `${item.duration}s`,
-            animationDelay: `${item.delay}s`,
-          }}
-        />
-      ))}
-
-      {CLOUDS.map((cloud, i) => (
-        <ResultsCloud key={i} {...cloud} />
-      ))}
+      <WelcomeFestiveDecor />
     </div>
   );
 }
