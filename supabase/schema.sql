@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS public.sessions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   full_name TEXT NOT NULL,
   email TEXT NOT NULL,
+  location TEXT,
   started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   finished_at TIMESTAMPTZ,
   score INTEGER CHECK (score IS NULL OR (score >= 0 AND score <= 10)),
@@ -73,7 +74,8 @@ ALTER TABLE public.sessions ENABLE ROW LEVEL SECURITY;
 CREATE OR REPLACE FUNCTION public.create_quiz_session(
   p_full_name TEXT,
   p_email TEXT,
-  p_question_ids UUID[]
+  p_question_ids UUID[],
+  p_location TEXT DEFAULT NULL
 )
 RETURNS UUID
 LANGUAGE plpgsql
@@ -83,11 +85,12 @@ AS $$
 DECLARE
   v_session_id UUID;
 BEGIN
-  INSERT INTO public.sessions (full_name, email, question_ids, started_at)
+  INSERT INTO public.sessions (full_name, email, question_ids, location, started_at)
   VALUES (
     p_full_name,
     lower(trim(p_email)),
     to_jsonb(p_question_ids),
+    nullif(trim(p_location), ''),
     now()
   )
   RETURNING id INTO v_session_id;
@@ -96,8 +99,8 @@ BEGIN
 END;
 $$;
 
-REVOKE ALL ON FUNCTION public.create_quiz_session(TEXT, TEXT, UUID[]) FROM PUBLIC;
-GRANT EXECUTE ON FUNCTION public.create_quiz_session(TEXT, TEXT, UUID[]) TO service_role;
+REVOKE ALL ON FUNCTION public.create_quiz_session(TEXT, TEXT, UUID[], TEXT) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.create_quiz_session(TEXT, TEXT, UUID[], TEXT) TO service_role;
 
 -- ------------------------------------------------------------
 -- Функция: завершение сессии с серверным finished_at

@@ -3,6 +3,7 @@ export interface AdminSession {
   id: string;
   full_name: string;
   email: string;
+  location: string | null;
   score: number | null;
   started_at: string;
   finished_at: string | null;

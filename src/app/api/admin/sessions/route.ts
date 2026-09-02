@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabase
       .from("sessions")
       .select(
-        "id, full_name, email, score, started_at, finished_at, answers, question_ids"
+        "id, full_name, email, location, score, started_at, finished_at, answers, question_ids"
       )
       .order("started_at", { ascending: false });
 

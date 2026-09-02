@@ -618,6 +618,16 @@ select {
   box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.15);
 }
 
+.quiz-select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%233F2183' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px 8px;
+  cursor: pointer;
+}
+
 /* Вариант ответа */
 .answer-option {
   background: white;
@@ -1996,6 +2006,29 @@ select {
   margin-top: 30px !important;
   display: flex;
   justify-content: center;
+}
+
+.registration-intro {
+  max-width: 36rem;
+}
+
+.registration-consent {
+  margin-top: 0.25rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(63, 33, 131, 0.04);
+  border: 1px solid rgba(63, 33, 131, 0.08);
+}
+
+.registration-consent__checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: #3f2183;
+  cursor: pointer;
+}
+
+.registration-consent__text {
+  user-select: none;
 }
 
 .registration-button.quiz-png-register-btn.btn-primary {

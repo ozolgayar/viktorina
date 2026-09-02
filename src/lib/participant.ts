@@ -6,13 +6,19 @@ const TTL_MS = 60 * 60 * 1000; // 1 час
 export interface StoredParticipant {
   fullName: string;
   email: string;
+  location?: string;
   registeredAt: number;
 }
 
-export function saveParticipant(fullName: string, email: string): void {
+export function saveParticipant(
+  fullName: string,
+  email: string,
+  location: string
+): void {
   const data: StoredParticipant = {
     fullName: fullName.trim(),
     email: email.trim().toLowerCase(),
+    location: location.trim(),
     registeredAt: Date.now(),
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));

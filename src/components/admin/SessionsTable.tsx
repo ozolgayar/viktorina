@@ -18,10 +18,11 @@ interface SessionsTableProps {
   loading: boolean;
 }
 
-const COLUMNS: { key: SortField | "index"; label: string; sortable: boolean }[] = [
+const COLUMNS: { key: SortField | "index" | "location"; label: string; sortable: boolean }[] = [
   { key: "index", label: "№", sortable: false },
   { key: "full_name", label: "ФИО", sortable: true },
   { key: "email", label: "Email", sortable: true },
+  { key: "location", label: "Площадка", sortable: false },
   { key: "score", label: "Результат", sortable: true },
   { key: "finished_at", label: "Дата прохождения", sortable: true },
   { key: "duration", label: "Время (мин)", sortable: true },
@@ -52,6 +53,7 @@ export function exportSessionsToExcel(
   const rows = sessions.map((s) => ({
     ФИО: s.full_name,
     Email: s.email,
+    Площадка: s.location ?? "—",
     Результат: s.score !== null ? `${s.score}/10` : "—",
     "Дата прохождения": s.finished_at
       ? formatDateTime(s.finished_at)
@@ -147,6 +149,9 @@ export function SessionsTable({
                   </span>
                 </td>
                 <td className="px-4 py-3 text-gray-600">{session.email}</td>
+                <td className="px-4 py-3 text-gray-600">
+                  {session.location ?? "—"}
+                </td>
                 <td className="px-4 py-3">
                   <span
                     className="font-semibold"

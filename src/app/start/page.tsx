@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/Button";
 import { RegisterFestiveDecor } from "@/components/RegisterFestiveDecor";
@@ -10,6 +10,7 @@ import {
   isGeropharmEmail,
   isValidFullName,
 } from "@/lib/quiz-config";
+import { VENUE_OPTIONS } from "@/lib/locations";
 import {
   getValidParticipant,
   saveParticipant,
@@ -18,12 +19,18 @@ import type { AvailabilityResponse, SessionStartResponse } from "@/types/quiz";
 
 async function startQuizSession(
   fullName: string,
-  email: string
+  email: string,
+  location: string
 ): Promise<{ ok: true; session: SessionStartResponse } | { ok: false; error: string }> {
   const res = await fetch("/api/session/start", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ fullName, email }),
+    body: JSON.stringify({
+      fullName,
+      email,
+      location,
+      consent: true,
+    }),
   });
 
   const data = await res.json();
@@ -50,17 +57,21 @@ export default function StartPage() {
   const router = useRouter();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
+  const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [availability, setAvailability] = useState<AvailabilityResponse | null>(
     null
   );
   const [visible, setVisible] = useState(false);
-  const [autoStarting, setAutoStarting] = useState(true);
-  const autoStartTried = useRef(false);
 
   const emailError = getEmailValidationError(email);
-  const isFormValid = isValidFullName(fullName) && isGeropharmEmail(email);
+  const isFormValid =
+    isValidFullName(fullName) &&
+    isGeropharmEmail(email) &&
+    location !== "" &&
+    consent;
 
   useEffect(() => {
     fetch("/api/quiz/availability")
@@ -74,51 +85,15 @@ export default function StartPage() {
   }, []);
 
   useEffect(() => {
-    if (autoStartTried.current) return;
-    autoStartTried.current = true;
-
     const participant = getValidParticipant();
-    if (!participant) {
-      setAutoStarting(false);
-      return;
+    if (!participant) return;
+
+    setFullName(participant.fullName);
+    setEmail(participant.email);
+    if (participant.location) {
+      setLocation(participant.location);
     }
-
-    let cancelled = false;
-
-    (async () => {
-      setLoading(true);
-      try {
-        const result = await startQuizSession(
-          participant.fullName,
-          participant.email
-        );
-        if (cancelled) return;
-
-        if (!result.ok) {
-          setError(result.error);
-          setFullName(participant.fullName);
-          setEmail(participant.email);
-          setAutoStarting(false);
-          setLoading(false);
-          return;
-        }
-
-        saveParticipant(participant.fullName, participant.email);
-        router.push(`/quiz/${result.session.sessionId}`);
-      } catch {
-        if (cancelled) return;
-        setFullName(participant.fullName);
-        setEmail(participant.email);
-        setError("Не удалось подключиться к серверу");
-        setAutoStarting(false);
-        setLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [router]);
+  }, []);
 
   const handleStart = async () => {
     if (!isFormValid) return;
@@ -127,7 +102,7 @@ export default function StartPage() {
     setError("");
 
     try {
-      const result = await startQuizSession(fullName, email);
+      const result = await startQuizSession(fullName, email, location);
 
       if (!result.ok) {
         setError(result.error);
@@ -135,21 +110,13 @@ export default function StartPage() {
         return;
       }
 
-      saveParticipant(fullName, email);
+      saveParticipant(fullName, email, location);
       router.push(`/quiz/${result.session.sessionId}`);
     } catch {
       setError("Не удалось подключиться к серверу");
       setLoading(false);
     }
   };
-
-  if (autoStarting) {
-    return (
-      <div className="app-gradient--festive flex min-h-dvh items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white" />
-      </div>
-    );
-  }
 
   return (
     <AppShell centered background="none" gradient="festive" mainClassName="!p-0">
@@ -163,11 +130,12 @@ export default function StartPage() {
           <h1 className="mb-1 text-2xl font-black text-brand-dark sm:text-3xl">
             Регистрация
           </h1>
-          <p className="mb-6 text-sm font-medium text-[#3F2183] md:text-base">
+          <p className="mb-4 text-sm font-medium text-[#3F2183] md:text-base">
             10 вопросов · 25 минут
           </p>
-          <p className="mb-6 text-sm leading-relaxed text-brand-dark/60 md:text-[0.9375rem] lg:mb-8">
-            Вопросы показываются по одному, назад вернуться нельзя.
+          <p className="registration-intro mb-5 text-sm leading-relaxed text-brand-dark/60 md:mb-6 md:text-[0.9375rem]">
+            Вы можете отвечать на вопросы в любом порядке. Викторина доступна с
+            10:00 11.09.2026 до 16:00 14.09.2026.
           </p>
 
           {availability && !availability.available && (
@@ -176,7 +144,7 @@ export default function StartPage() {
             </div>
           )}
 
-          <div className="space-y-4 md:space-y-5">
+          <div className="registration-form-fields space-y-4 md:space-y-[1.125rem]">
             <div>
               <label
                 htmlFor="fullName"
@@ -223,6 +191,42 @@ export default function StartPage() {
                 Укажите корпоративную почту ГЕРОФАРМ (@geropharm.com)
               </p>
             </div>
+
+            <div>
+              <label
+                htmlFor="location"
+                className="mb-1.5 block text-sm font-medium text-brand-dark md:text-[0.9375rem]"
+              >
+                Площадка
+              </label>
+              <select
+                id="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className="quiz-input quiz-select"
+              >
+                <option value="">Выберите свою площадку</option>
+                {VENUE_OPTIONS.map((venue) => (
+                  <option key={venue} value={venue}>
+                    {venue}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <label className="registration-consent flex cursor-pointer items-start gap-3">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="registration-consent__checkbox mt-0.5 shrink-0"
+              />
+              <span className="registration-consent__text text-xs leading-relaxed text-brand-dark/70 md:text-[0.8125rem]">
+                Я даю свое согласие на обработку персональных данных для того,
+                чтобы организаторы викторины могли связаться со мной для
+                получения подарка
+              </span>
+            </label>
           </div>
 
           {error && (
@@ -231,7 +235,7 @@ export default function StartPage() {
             </div>
           )}
 
-          <div className="quiz-intro-start-btn registration-form__actions mt-7 sm:mt-8">
+          <div className="quiz-intro-start-btn registration-form__actions mt-6 sm:mt-7">
             <Button
               fullWidth
               className="quiz-png-register-btn registration-button"
