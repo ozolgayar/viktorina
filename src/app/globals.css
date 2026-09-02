@@ -1974,61 +1974,128 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.register-main {
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .register-card-form {
   width: 100%;
   max-width: 28rem;
-  padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: visible;
+  max-height: none;
+  height: auto;
+  flex-shrink: 0;
 }
 
-@media (min-width: 640px) {
-  .register-card-form {
-    padding: 2.5rem;
-  }
-}
-
-/* Экран регистрации: больше воздуха вокруг CTA */
 .registration-card {
-  padding-bottom: calc(1.5rem + 28px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2rem 1.75rem;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 @media (min-width: 640px) {
   .registration-card {
-    padding-bottom: calc(2.5rem + 28px);
+    padding: 2.5rem 2.5rem;
   }
 }
 
-.registration-form__actions {
-  margin-top: 30px !important;
-  display: flex;
-  justify-content: center;
+.registration-card__title {
+  margin: 0 0 5px;
 }
 
-.registration-intro {
+.registration-card__meta {
+  margin: 0 0 12px;
+}
+
+.registration-card__intro {
+  margin: 0 0 22px;
   max-width: 36rem;
 }
 
+.registration-card__alert {
+  margin: 0 0 16px;
+}
+
+.registration-card__error {
+  margin: 16px 0 0;
+}
+
+.registration-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registration-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-brand-dark);
+}
+
+@media (min-width: 640px) {
+  .registration-field label {
+    font-size: 0.9375rem;
+  }
+}
+
 .registration-consent {
-  margin-top: 0.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 4px;
   padding: 0.875rem 1rem;
   border-radius: 0.75rem;
   background: rgba(63, 33, 131, 0.04);
   border: 1px solid rgba(63, 33, 131, 0.08);
+  cursor: pointer;
 }
 
 .registration-consent__checkbox {
   width: 1.125rem;
   height: 1.125rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
   accent-color: #3f2183;
   cursor: pointer;
 }
 
 .registration-consent__text {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(26, 26, 46, 0.7);
   user-select: none;
+}
+
+@media (min-width: 640px) {
+  .registration-consent__text {
+    font-size: 0.8125rem;
+  }
+}
+
+.registration-form__actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .registration-form__actions {
+    margin-top: 28px;
+  }
 }
 
 .registration-button.quiz-png-register-btn.btn-primary {
@@ -2039,12 +2106,8 @@ select {
 }
 
 @media (max-width: 640px) {
-  .registration-card {
-    padding-bottom: calc(1.5rem + 24px);
-  }
-
   .registration-form__actions {
-    margin-top: 26px !important;
+    margin-top: 24px;
   }
 
   .registration-button.quiz-png-register-btn.btn-primary {

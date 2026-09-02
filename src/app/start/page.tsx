@@ -119,39 +119,39 @@ export default function StartPage() {
   };
 
   return (
-    <AppShell centered background="none" gradient="festive" mainClassName="!p-0">
+    <AppShell
+      centered
+      background="none"
+      gradient="festive"
+      mainClassName="register-main !p-0"
+    >
       <RegisterFestiveDecor />
       <div
         className={`register-page-screen register-page-enter w-full${visible ? " register-page-enter--visible" : ""}`}
       >
         <div
-          className={`register-card-form registration-card register-card-enter quiz-card mx-auto${visible ? " register-card-enter--visible" : ""}`}
+          className={`register-card-form registration-card register-card-enter mx-auto${visible ? " register-card-enter--visible" : ""}`}
         >
-          <h1 className="mb-1 text-2xl font-black text-brand-dark sm:text-3xl">
+          <h1 className="registration-card__title text-2xl font-black text-brand-dark sm:text-3xl">
             Регистрация
           </h1>
-          <p className="mb-4 text-sm font-medium text-[#3F2183] md:text-base">
+          <p className="registration-card__meta text-sm font-medium text-[#3F2183] md:text-base">
             10 вопросов · 25 минут
           </p>
-          <p className="registration-intro mb-5 text-sm leading-relaxed text-brand-dark/60 md:mb-6 md:text-[0.9375rem]">
+          <p className="registration-card__intro text-sm leading-relaxed text-brand-dark/60 md:text-[0.9375rem]">
             Вы можете отвечать на вопросы в любом порядке. Викторина доступна с
             10:00 11.09.2026 до 16:00 14.09.2026.
           </p>
 
           {availability && !availability.available && (
-            <div className="mb-4 rounded-xl bg-brand-accent/10 p-3 text-sm text-brand-accent-dark">
+            <div className="registration-card__alert rounded-xl bg-brand-accent/10 p-3 text-sm text-brand-accent-dark">
               {availability.message}
             </div>
           )}
 
-          <div className="registration-form-fields space-y-4 md:space-y-[1.125rem]">
-            <div>
-              <label
-                htmlFor="fullName"
-                className="mb-1.5 block text-sm font-medium text-brand-dark md:text-[0.9375rem]"
-              >
-                ФИО
-              </label>
+          <div className="registration-form-fields">
+            <div className="registration-field">
+              <label htmlFor="fullName">ФИО</label>
               <input
                 id="fullName"
                 type="text"
@@ -168,13 +168,8 @@ export default function StartPage() {
               )}
             </div>
 
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-1.5 block text-sm font-medium text-brand-dark md:text-[0.9375rem]"
-              >
-                Email
-              </label>
+            <div className="registration-field">
+              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
@@ -192,13 +187,8 @@ export default function StartPage() {
               </p>
             </div>
 
-            <div>
-              <label
-                htmlFor="location"
-                className="mb-1.5 block text-sm font-medium text-brand-dark md:text-[0.9375rem]"
-              >
-                Площадка
-              </label>
+            <div className="registration-field registration-field--location">
+              <label htmlFor="location">Площадка</label>
               <select
                 id="location"
                 value={location}
@@ -214,14 +204,14 @@ export default function StartPage() {
               </select>
             </div>
 
-            <label className="registration-consent flex cursor-pointer items-start gap-3">
+            <label className="registration-consent">
               <input
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="registration-consent__checkbox mt-0.5 shrink-0"
+                className="registration-consent__checkbox"
               />
-              <span className="registration-consent__text text-xs leading-relaxed text-brand-dark/70 md:text-[0.8125rem]">
+              <span className="registration-consent__text">
                 Я даю свое согласие на обработку персональных данных для того,
                 чтобы организаторы викторины могли связаться со мной для
                 получения подарка
@@ -230,12 +220,12 @@ export default function StartPage() {
           </div>
 
           {error && (
-            <div className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-600">
+            <div className="registration-card__error rounded-xl bg-red-50 p-3 text-sm text-red-600">
               {error}
             </div>
           )}
 
-          <div className="quiz-intro-start-btn registration-form__actions mt-6 sm:mt-7">
+          <div className="registration-form__actions">
             <Button
               fullWidth
               className="quiz-png-register-btn registration-button"
