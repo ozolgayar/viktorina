@@ -2793,21 +2793,13 @@ select {
   }
 
   .welcome-subtitle {
-    display: block;
-    margin: 10px 0 0;
-    color: rgba(255, 255, 255, 0.92);
-    font-family: Verdana, Geneva, sans-serif !important;
-    font-size: clamp(0.85rem, 3.6vw, 1rem);
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    line-height: 1.35;
-    text-align: center;
+    display: none;
   }
 
   .welcome-btn {
     position: relative;
     z-index: 30;
-    margin-top: clamp(30px, 8vw, 40px);
+    margin-top: clamp(10px, 8vw, 20px);
     translate: none;
     width: min(100%, 300px);
     max-width: 300px;
@@ -2885,6 +2877,17 @@ select {
     height: 46px !important;
   }
 
+  .welcome-decor__mobile-spiral-fixed {
+    top: 292px !important;
+    left: 26px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 70px !important;
+    height: 70px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
   /* Звёзды 50–70px */
   .welcome-decor__mobile-star-tl {
     top: 8% !important;
@@ -2934,8 +2937,8 @@ select {
   .welcome-decor__mobile-confetti-4 { top: 34% !important; right: 12% !important; width: 12px !important; height: 12px !important; }
   .welcome-decor__mobile-confetti-5 { top: 16% !important; left: 10% !important; width: 15px !important; height: 15px !important; }
   .welcome-decor__mobile-confetti-6 { top: 26% !important; right: 22% !important; width: 13px !important; height: 13px !important; }
-  .welcome-decor__mobile-confetti-7 { top: 48% !important; left: 8% !important; width: 12px !important; height: 12px !important; }
-  .welcome-decor__mobile-confetti-8 { top: 58% !important; right: 18% !important; width: 14px !important; height: 14px !important; }
+  .welcome-decor__mobile-confetti-7 { top: calc(48% - 45px) !important; left: 8% !important; width: 12px !important; height: 12px !important; }
+  .welcome-decor__mobile-confetti-8 { top: calc(58% + 40px) !important; right: calc(18% - 30px) !important; width: 14px !important; height: 14px !important; }
   .welcome-decor__mobile-confetti-9 { bottom: 30% !important; left: 16% !important; width: 13px !important; height: 13px !important; }
   .welcome-decor__mobile-confetti-10 { bottom: 22% !important; right: 12% !important; width: 14px !important; height: 14px !important; }
   .welcome-decor__mobile-confetti-11 { bottom: 10% !important; left: 40% !important; width: 12px !important; height: 12px !important; }

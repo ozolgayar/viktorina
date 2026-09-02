@@ -58,6 +58,14 @@ const DECOR_SPIRALS: DecorPos[] = [
     className: "welcome-decor__spiral--lg",
     mobileClassName: "welcome-decor__mobile-spiral-br",
   },
+  {
+    top: "292px",
+    left: "26px",
+    size: 70,
+    rotate: -12,
+    mobileOnly: true,
+    mobileClassName: "welcome-decor__mobile-spiral-fixed",
+  },
 ];
 
 const DECOR_STARS: DecorPos[] = [
@@ -116,15 +124,15 @@ const DECOR_CONFETTI: ConfettiPos[] = [
   { top: "9%", left: "26%", size: 13, rotate: 28, color: "#8ec8ff", mobileClassName: "welcome-decor__mobile-confetti-1" },
   { top: "5%", left: "48%", size: 11, rotate: -20, color: "#a8d8ff", mobileClassName: "welcome-decor__mobile-confetti-2" },
   { top: "11%", right: "18%", size: 12, rotate: 35, color: "#7eb6f5", mobileClassName: "welcome-decor__mobile-confetti-3", mobileHidden: true },
-  { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff", mobileClassName: "welcome-decor__mobile-confetti-4" },
+  { top: "36%", right: "14%", size: 12, rotate: -28, color: "#9fd0ff", mobileClassName: "welcome-decor__mobile-confetti-4", mobileHidden: true },
   { top: "18%", left: "8%", size: 14, rotate: 12, color: "#8ec8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-5" },
   { top: "28%", right: "10%", size: 13, rotate: -15, color: "#a8d8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-6", mobileHidden: true },
   { top: "52%", left: "12%", size: 12, rotate: 40, color: "#7eb6f5", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-7" },
   { top: "62%", right: "20%", size: 15, rotate: -8, color: "#9fd0ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-8" },
   { bottom: "32%", left: "18%", size: 13, rotate: 25, color: "#8ec8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-9" },
-  { bottom: "24%", right: "14%", size: 14, rotate: -22, color: "#a8d8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-10" },
+  { bottom: "24%", right: "14%", size: 14, rotate: -22, color: "#a8d8ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-10", mobileHidden: true },
   { bottom: "12%", left: "42%", size: 12, rotate: 18, color: "#7eb6f5", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-11", mobileHidden: true },
-  { top: "42%", left: "78%", size: 13, rotate: -30, color: "#9fd0ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-12" },
+  { top: "42%", left: "78%", size: 13, rotate: -30, color: "#9fd0ff", mobileOnly: true, mobileClassName: "welcome-decor__mobile-confetti-12", mobileHidden: true },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
