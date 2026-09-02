@@ -152,21 +152,24 @@ export function PerfectResultCard({
         </span>
       </div>
 
-      <h1 className="results-celebration-title">Вы выиграли!</h1>
+      <h1 className="results-celebration-title">Отличный результат!</h1>
       <p className="results-celebration-subtitle">
-        Вы настоящий эксперт «ГЕРОФАРМ»!
+        Мало кто знает компанию лучше вас. Спасибо за ваши амбициозные цели,
+        страстную работу и ответственный подход!
       </p>
 
       <div className="results-score-badge">
         <span className="results-score-badge__label">Ваш результат:</span>
         <span className="results-score-badge__value">
-          {score} из {totalQuestions}
+          {score}/{totalQuestions}
         </span>
       </div>
 
       <p className="results-celebration-text">
-        Спасибо за участие! Ваш результат зафиксирован. Организаторы свяжутся
-        с победителями по указанному email.
+        Списки победителей будут опубликованы после 15 сентября. Организаторы
+        свяжутся и расскажут, как получить подарок. Напоминаем, что сотрудник
+        может получить только 1 подарок, вне зависимости от количества
+        выигранных викторин.
       </p>
 
       <Link href="/" className="results-home-btn">
