@@ -2911,6 +2911,17 @@ select {
     height: 54px !important;
   }
 
+  .welcome-decor__mobile-star-fixed {
+    top: 80px !important;
+    left: 128px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 30px !important;
+    height: 30px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
   /* Конфетти 12–18px по фону */
   .welcome-decor__mobile-confetti-1 { top: 6% !important; left: 22% !important; width: 14px !important; height: 14px !important; }
   .welcome-decor__mobile-confetti-2 { top: 4% !important; left: 52% !important; width: 12px !important; height: 12px !important; }
