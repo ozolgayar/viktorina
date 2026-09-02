@@ -490,6 +490,7 @@ select {
 .quiz-card.quiz-card--intro {
   --quiz-intro-content-gap: 18px;
   --quiz-intro-bottom-gap: 30px;
+  --quiz-intro-button-text-gap: 20px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -532,7 +533,7 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--quiz-intro-bottom-gap);
+  gap: var(--quiz-intro-button-text-gap);
   margin-top: calc(var(--quiz-intro-bottom-gap) - var(--quiz-intro-content-gap));
 }
 
