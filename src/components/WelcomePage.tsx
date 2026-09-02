@@ -48,6 +48,7 @@ export function WelcomePage() {
 
         <div className="welcome-copy">
           <h1 className="welcome-title">ГЕРОФАРМ</h1>
+          <p className="welcome-subtitle">25 лет вместе с вами</p>
           <Link href="/quiz" className="welcome-btn">
             Открыть викторину
           </Link>
