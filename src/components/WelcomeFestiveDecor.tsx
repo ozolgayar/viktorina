@@ -103,7 +103,7 @@ const DECOR_STARS: DecorPos[] = [
     mobileHidden: true,
   },
   {
-    top: "80px",
+    top: "55px",
     left: "128px",
     size: 80,
     rotate: 0,

@@ -2696,7 +2696,12 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
     overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding:
       max(10px, env(safe-area-inset-top, 0px))
       0
@@ -2709,7 +2714,7 @@ select {
     width: 100%;
     max-width: 100%;
     margin-top: clamp(18vh, 22%, 25vh);
-    padding: 0 12px 12px;
+    padding: 0 12px 80px;
     justify-content: flex-start;
   }
 
@@ -2912,7 +2917,7 @@ select {
   }
 
   .welcome-decor__mobile-star-fixed {
-    top: 80px !important;
+    top: 55px !important;
     left: 128px !important;
     bottom: auto !important;
     right: auto !important;
