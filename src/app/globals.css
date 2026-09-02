@@ -2547,6 +2547,10 @@ select {
   display: none;
 }
 
+.welcome-decor__item--desktop-only {
+  display: none;
+}
+
 .welcome-btn {
   display: inline-flex;
   align-items: center;
@@ -2686,6 +2690,72 @@ select {
   .welcome-decor__img,
   .welcome-decor__confetti {
     scale: 0.88;
+  }
+}
+
+/* Desktop — фиксированный декор по координатам */
+@media (min-width: 768px) {
+  .welcome-decor__item--desktop-only {
+    display: block;
+  }
+
+  .welcome-decor__item--desktop-off {
+    display: none !important;
+  }
+
+  .welcome-decor__desktop-star-a {
+    top: 498px !important;
+    left: 50px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 80px !important;
+    height: 80px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__desktop-star-b {
+    top: 617px !important;
+    left: 46px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 60px !important;
+    height: 60px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__desktop-spiral-a {
+    top: 613px !important;
+    left: 316px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 56px !important;
+    height: 56px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__desktop-confetti-a {
+    top: 454px !important;
+    left: 46px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__desktop-confetti-b {
+    top: 622px !important;
+    left: 188px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
   }
 }
 
