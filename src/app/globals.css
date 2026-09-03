@@ -2693,11 +2693,11 @@ select {
   }
 }
 
-/* iPad mini и схожие (768×1024 / 744×1133) — без жёсткого min-height */
+/* iPad mini и схожие (768×1024 / 744×1133) */
 @media only screen
   and (orientation: portrait)
   and (min-width: 744px)
-  and (max-width: 834px) {
+  and (max-width: 800px) {
   .welcome-decor__mobile-spiral-tl {
     top: 88px !important;
     left: 84px !important;
@@ -2797,6 +2797,32 @@ select {
     right: auto !important;
     width: 14px !important;
     height: 14px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+}
+
+/* iPad Air и схожие (820×1180) */
+@media only screen
+  and (orientation: portrait)
+  and (min-width: 810px)
+  and (max-width: 850px) {
+  .welcome-decor__mobile-star-tl {
+    top: 936px !important;
+    left: 379px !important;
+    bottom: auto !important;
+    right: auto !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-spiral-br {
+    top: 572px !important;
+    left: 628px !important;
+    bottom: auto !important;
+    right: auto !important;
     scale: 1 !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
