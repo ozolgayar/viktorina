@@ -2713,8 +2713,8 @@ select {
   }
 
   .welcome-decor__mobile-star-tr {
-    top: 279px !important;
-    left: 369px !important;
+    top: 256px !important;
+    left: 371px !important;
     bottom: auto !important;
     right: auto !important;
     width: 130px !important;
@@ -2737,8 +2737,8 @@ select {
   }
 
   .welcome-decor__mobile-spiral-br {
-    top: 621px !important;
-    left: 597px !important;
+    top: 553px !important;
+    left: 668px !important;
     bottom: auto !important;
     right: auto !important;
     width: 155px !important;
