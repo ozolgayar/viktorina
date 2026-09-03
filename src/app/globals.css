@@ -2551,6 +2551,10 @@ select {
   display: none;
 }
 
+.welcome-decor__item--ipad-pro-only {
+  display: none;
+}
+
 .welcome-btn {
   display: inline-flex;
   align-items: center;
@@ -2850,20 +2854,45 @@ select {
     --decor-y: -170px !important;
   }
 
-  /* Спираль ~598,572 → вправо 30px */
+  /* Звезда ~414,512 → вверх 100px, влево 10px */
+  .welcome-decor__mobile-star-mid {
+    display: block !important;
+    top: 412px !important;
+    left: 404px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 52px !important;
+    height: 52px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Спираль ~693,653 → вниз 90px, вправо 50px */
   .welcome-decor__mobile-spiral-br {
-    top: 572px !important;
-    left: 628px !important;
+    top: 662px !important;
+    left: 678px !important;
     bottom: auto !important;
     right: auto !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
   }
 
-  /* Спираль ~112,113 → размер 100px */
+  /* Спираль ~170,170 → размер 150px, влево 100px */
   .welcome-decor__mobile-spiral-tl {
-    top: 113px !important;
-    left: 112px !important;
+    top: 170px !important;
+    left: 12px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 150px !important;
+    height: 150px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Спираль ~974,361 → размер 100px, влево 150px */
+  .welcome-decor__mobile-spiral-tr {
+    top: 361px !important;
+    left: 788px !important;
     bottom: auto !important;
     right: auto !important;
     width: 100px !important;
@@ -2872,10 +2901,36 @@ select {
     --decor-y: 0px !important;
   }
 
-  /* Спираль ~938,322 → размер 100px */
-  .welcome-decor__mobile-spiral-tr {
-    top: 322px !important;
-    left: 938px !important;
+  /* Только iPad Pro */
+  .welcome-decor__item--ipad-pro-only {
+    display: block !important;
+  }
+
+  .welcome-decor__ipad-pro-confetti-a {
+    top: 785px !important;
+    left: 124px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__ipad-pro-confetti-b {
+    top: 812px !important;
+    left: 874px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__ipad-pro-spiral {
+    top: 1034px !important;
+    left: 857px !important;
     bottom: auto !important;
     right: auto !important;
     width: 100px !important;
