@@ -2848,23 +2848,15 @@ select {
     --decor-y: 0px !important;
   }
 
-  /* Звезда за цифрой 5 → влево 100px, вверх 70px (от текущих offset) */
-  .welcome-decor__mobile-star-tr {
-    --decor-x: -350px !important;
-    --decor-y: -170px !important;
+  /* Звезда ~412,333 → убрать */
+  .welcome-decor__mobile-star-mid {
+    display: none !important;
   }
 
-  /* Звезда ~414,512 / ~537,406 → вверх 100px, влево 10px */
-  .welcome-decor__mobile-star-mid {
-    display: block !important;
-    top: 312px !important;
-    left: 394px !important;
-    bottom: auto !important;
-    right: auto !important;
-    width: 52px !important;
-    height: 52px !important;
-    --decor-x: 0px !important;
-    --decor-y: 0px !important;
+  /* Звезда ~518,406 → вверх 100px */
+  .welcome-decor__mobile-star-tr {
+    --decor-x: -350px !important;
+    --decor-y: -270px !important;
   }
 
   /* Спираль ~693,653 → вниз 90px, вправо 50px */
