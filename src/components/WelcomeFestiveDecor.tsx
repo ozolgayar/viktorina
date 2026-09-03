@@ -157,6 +157,14 @@ const DECOR_STARS: DecorPos[] = [
     mobileOnly: true,
     mobileClassName: "welcome-decor__mobile-star-b",
   },
+  {
+    top: "170px",
+    left: "12px",
+    size: 100,
+    rotate: -8,
+    ipadProOnly: true,
+    ipadProClassName: "welcome-decor__ipad-pro-star-tl",
+  },
 ];
 
 const DECOR_CONFETTI: ConfettiPos[] = [
@@ -242,6 +250,15 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     color: "#a8d8ff",
     ipadProOnly: true,
     ipadProClassName: "welcome-decor__ipad-pro-confetti-b",
+  },
+  {
+    top: "630px",
+    left: "113px",
+    size: 14,
+    rotate: 12,
+    color: "#8ec8ff",
+    ipadProOnly: true,
+    ipadProClassName: "welcome-decor__ipad-pro-confetti-c",
   },
 ];
 

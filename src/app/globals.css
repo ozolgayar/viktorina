@@ -2854,11 +2854,11 @@ select {
     --decor-y: -170px !important;
   }
 
-  /* Звезда ~414,512 → вверх 100px, влево 10px */
+  /* Звезда ~414,512 / ~537,406 → вверх 100px, влево 10px */
   .welcome-decor__mobile-star-mid {
     display: block !important;
-    top: 412px !important;
-    left: 404px !important;
+    top: 312px !important;
+    left: 394px !important;
     bottom: auto !important;
     right: auto !important;
     width: 52px !important;
@@ -2877,14 +2877,18 @@ select {
     --decor-y: 0px !important;
   }
 
-  /* Спираль ~170,170 → размер 150px, влево 100px */
+  /* Бывшая спираль слева (~90,257) → скрыть, вместо неё звезда */
   .welcome-decor__mobile-spiral-tl {
+    display: none !important;
+  }
+
+  .welcome-decor__ipad-pro-star-tl {
     top: 170px !important;
     left: 12px !important;
     bottom: auto !important;
     right: auto !important;
-    width: 150px !important;
-    height: 150px !important;
+    width: 100px !important;
+    height: 100px !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
   }
@@ -2899,6 +2903,15 @@ select {
     height: 100px !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
+  }
+
+  /* Цифры 2 и 5 — вверх на 2px */
+  .welcome-balloon--2 {
+    translate: -100px 48px !important;
+  }
+
+  .welcome-balloon--5 {
+    translate: 100px 48px !important;
   }
 
   /* Только iPad Pro */
@@ -2920,6 +2933,17 @@ select {
   .welcome-decor__ipad-pro-confetti-b {
     top: 812px !important;
     left: 874px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__ipad-pro-confetti-c {
+    top: 630px !important;
+    left: 113px !important;
     bottom: auto !important;
     right: auto !important;
     width: 14px !important;
