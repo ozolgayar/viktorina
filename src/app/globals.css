@@ -2819,6 +2819,72 @@ select {
   }
 }
 
+/* iPad Pro и схожие (1024×1366) — только точечные правки */
+@media only screen
+  and (orientation: portrait)
+  and (min-width: 1024px)
+  and (max-width: 1100px) {
+  /* Звезда ~560,1038 → вниз 140px */
+  .welcome-decor__mobile-star-tl {
+    top: 1178px !important;
+    left: 560px !important;
+    bottom: auto !important;
+    right: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда ~102,1204 → вверх 180px */
+  .welcome-decor__mobile-star-bl {
+    top: 1024px !important;
+    left: 102px !important;
+    bottom: auto !important;
+    right: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда за цифрой 5 → влево 100px, вверх 70px (от текущих offset) */
+  .welcome-decor__mobile-star-tr {
+    --decor-x: -350px !important;
+    --decor-y: -170px !important;
+  }
+
+  /* Спираль ~598,572 → вправо 30px */
+  .welcome-decor__mobile-spiral-br {
+    top: 572px !important;
+    left: 628px !important;
+    bottom: auto !important;
+    right: auto !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Спираль ~112,113 → размер 100px */
+  .welcome-decor__mobile-spiral-tl {
+    top: 113px !important;
+    left: 112px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Спираль ~938,322 → размер 100px */
+  .welcome-decor__mobile-spiral-tr {
+    top: 322px !important;
+    left: 938px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+}
+
 /* Mobile — композиция по эталону (фото 2) */
 @media (max-width: 767px) {
   .welcome-page {
