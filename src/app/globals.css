@@ -2697,7 +2697,7 @@ select {
 @media only screen
   and (orientation: portrait)
   and (min-width: 744px)
-  and (max-width: 800px) {
+  and (max-width: 834px) {
   .welcome-decor__mobile-spiral-tl {
     top: 88px !important;
     left: 84px !important;
@@ -2803,29 +2803,19 @@ select {
   }
 }
 
-/* iPad Air и схожие (820×1180) */
+/* iPad Air и схожие (820×1180) — только точечные сдвиги поверх базы mini */
 @media only screen
   and (orientation: portrait)
   and (min-width: 810px)
   and (max-width: 850px) {
   .welcome-decor__mobile-star-tl {
-    top: 936px !important;
-    left: 379px !important;
-    bottom: auto !important;
-    right: auto !important;
-    scale: 1 !important;
-    --decor-x: 0px !important;
-    --decor-y: 0px !important;
+    top: 892px !important;
+    left: 342px !important;
   }
 
   .welcome-decor__mobile-spiral-br {
-    top: 572px !important;
-    left: 628px !important;
-    bottom: auto !important;
-    right: auto !important;
-    scale: 1 !important;
-    --decor-x: 0px !important;
-    --decor-y: 0px !important;
+    top: 492px !important;
+    left: 554px !important;
   }
 }
 
