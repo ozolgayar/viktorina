@@ -3010,6 +3010,13 @@ select {
   }
 }
 
+/* iPhone 14 / 15 Pro Max и схожие (430×932) */
+@media only screen and (max-width: 767px) and (orientation: portrait) and (width: 430px) and (min-height: 900px) and (max-height: 960px) {
+  .welcome-decor__mobile-confetti-b {
+    top: 652px !important;
+  }
+}
+
 /* iPhone XR (414×896) — локальные сдвиги декора */
 @media only screen and (max-width: 767px) and (orientation: portrait) and (width: 414px) and (min-height: 860px) and (max-height: 920px) {
   .welcome-decor__mobile-spiral-fixed {
