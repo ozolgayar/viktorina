@@ -21,6 +21,8 @@ type DecorPos = {
   tabletClassName?: string;
   ipadProOnly?: boolean;
   ipadProClassName?: string;
+  surfaceProOnly?: boolean;
+  surfaceProClassName?: string;
 };
 
 type ConfettiPos = DecorPos & { color: string };
@@ -86,6 +88,14 @@ const DECOR_SPIRALS: DecorPos[] = [
     rotate: 18,
     ipadProOnly: true,
     ipadProClassName: "welcome-decor__ipad-pro-spiral",
+  },
+  {
+    top: "1056px",
+    left: "94px",
+    size: 120,
+    rotate: -12,
+    surfaceProOnly: true,
+    surfaceProClassName: "welcome-decor__surface-pro-spiral-bl",
   },
 ];
 
@@ -260,6 +270,24 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     ipadProOnly: true,
     ipadProClassName: "welcome-decor__ipad-pro-confetti-c",
   },
+  {
+    top: "737px",
+    left: "80px",
+    size: 14,
+    rotate: 18,
+    color: "#8ec8ff",
+    surfaceProOnly: true,
+    surfaceProClassName: "welcome-decor__surface-pro-confetti-a",
+  },
+  {
+    top: "733px",
+    left: "784px",
+    size: 14,
+    rotate: -22,
+    color: "#a8d8ff",
+    surfaceProOnly: true,
+    surfaceProClassName: "welcome-decor__surface-pro-confetti-b",
+  },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -285,10 +313,12 @@ function decorClassName(base: string, item: DecorPos): string {
     item.mobileClassName ?? "",
     item.tabletClassName ?? "",
     item.ipadProClassName ?? "",
+    item.surfaceProClassName ?? "",
     item.mobileHidden ? "welcome-decor__item--mobile-off" : "",
     item.mobileOnly ? "welcome-decor__item--mobile-only" : "",
     item.tabletOnly ? "welcome-decor__item--tablet-only" : "",
     item.ipadProOnly ? "welcome-decor__item--ipad-pro-only" : "",
+    item.surfaceProOnly ? "welcome-decor__item--surface-pro-only" : "",
   ]
     .filter(Boolean)
     .join(" ");

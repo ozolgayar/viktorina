@@ -2555,6 +2555,10 @@ select {
   display: none;
 }
 
+.welcome-decor__item--surface-pro-only {
+  display: none;
+}
+
 .welcome-btn {
   display: inline-flex;
   align-items: center;
@@ -2951,6 +2955,109 @@ select {
     right: auto !important;
     width: 100px !important;
     height: 100px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+}
+
+/* Surface Pro 7 и схожие (912×1368) */
+@media only screen
+  and (orientation: portrait)
+  and (min-width: 900px)
+  and (max-width: 960px) {
+  .welcome-decor__mobile-spiral-tl {
+    top: 109px !important;
+    left: 97px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-star-tr {
+    top: 377px !important;
+    left: 440px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 130px !important;
+    height: 130px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-spiral-tr {
+    top: 321px !important;
+    left: 814px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-star-mid {
+    display: none !important;
+  }
+
+  .welcome-decor__mobile-star-tl {
+    top: 1104px !important;
+    left: 466px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 90px !important;
+    height: 90px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда снизу слева → спираль */
+  .welcome-decor__mobile-star-bl {
+    display: none !important;
+  }
+
+  .welcome-decor__item--surface-pro-only {
+    display: block !important;
+  }
+
+  .welcome-decor__surface-pro-spiral-bl {
+    top: 1056px !important;
+    left: 94px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 120px !important;
+    height: 120px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__surface-pro-confetti-a {
+    top: 737px !important;
+    left: 80px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__surface-pro-confetti-b {
+    top: 733px !important;
+    left: 784px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    scale: 1 !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
   }
