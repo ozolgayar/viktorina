@@ -2964,13 +2964,12 @@ select {
   }
 }
 
-/* Nest Hub и схожие (1024×600 / Nest Hub Max 1280×800, landscape) */
+/* Nest Hub и схожие (1024×600, landscape) */
 @media only screen
   and (orientation: landscape)
   and (min-width: 1000px)
-  and (max-width: 1360px)
-  and (max-height: 850px)
-  and (min-aspect-ratio: 3 / 2) {
+  and (max-width: 1100px)
+  and (max-height: 700px) {
   /* Звезда ~564,410 (star-tl) → вправо 100px, вверх 100px */
   .welcome-decor__mobile-star-tl {
     top: 278px !important;
@@ -2983,21 +2982,33 @@ select {
     --decor-y: 0px !important;
   }
 
-  /* Звезда слева снизу → вверх 200px */
-  .welcome-decor__mobile-star-bl {
-    top: 202px !important;
-    left: 31px !important;
+  /* Звезда ~297,645 (star-mid) → убрать */
+  .welcome-decor__mobile-star-mid {
+    display: none !important;
+  }
+
+  /* Спираль ~110,64 → размер 100px */
+  .welcome-decor__mobile-spiral-tl {
+    top: 64px !important;
+    left: 110px !important;
     bottom: auto !important;
     right: auto !important;
-    width: 120px !important;
-    height: 120px !important;
+    width: 100px !important;
+    height: 100px !important;
     --decor-x: 0px !important;
     --decor-y: 0px !important;
   }
 
-  /* Звезда ~297,… (star-mid) → убрать */
-  .welcome-decor__mobile-star-mid {
-    display: none !important;
+  /* Спираль ~935,146 → размер 100px */
+  .welcome-decor__mobile-spiral-tr {
+    top: 146px !important;
+    left: 935px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
   }
 }
 
