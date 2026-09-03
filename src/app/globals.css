@@ -3010,6 +3010,32 @@ select {
   }
 }
 
+/* Samsung Galaxy S20 Ultra и схожие (420×915) */
+@media only screen and (max-width: 767px) and (orientation: portrait) and (width: 420px) and (min-height: 880px) and (max-height: 950px) {
+  .welcome-decor__mobile-spiral-fixed {
+    left: 6px !important;
+  }
+
+  .welcome-decor__mobile-confetti-fixed {
+    left: 342px !important;
+  }
+
+  .welcome-decor__mobile-confetti-8 {
+    top: 522px !important;
+    right: auto !important;
+    left: 350px !important;
+  }
+
+  .welcome-decor__mobile-spiral-c {
+    top: 570px !important;
+    left: 378px !important;
+  }
+
+  .welcome-decor__mobile-confetti-b {
+    top: 607px !important;
+  }
+}
+
 /* Samsung Galaxy S8+ и схожие (360×740) */
 @media only screen and (max-width: 767px) and (orientation: portrait) and (width: 360px) and (min-height: 700px) and (max-height: 780px) {
   .welcome-decor__mobile-confetti-b {
