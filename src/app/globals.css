@@ -2547,6 +2547,10 @@ select {
   display: none;
 }
 
+.welcome-decor__item--tablet-only {
+  display: none;
+}
+
 .welcome-btn {
   display: inline-flex;
   align-items: center;
@@ -2709,8 +2713,8 @@ select {
   }
 
   .welcome-decor__mobile-star-tr {
-    top: 171px !important;
-    left: 379px !important;
+    top: 220px !important;
+    left: 375px !important;
     bottom: auto !important;
     right: auto !important;
     width: 130px !important;
@@ -2733,8 +2737,8 @@ select {
   }
 
   .welcome-decor__mobile-spiral-br {
-    top: 615px !important;
-    left: 580px !important;
+    top: 544px !important;
+    left: 651px !important;
     bottom: auto !important;
     right: auto !important;
     width: 155px !important;
@@ -2763,6 +2767,34 @@ select {
     right: auto !important;
     width: 90px !important;
     height: 90px !important;
+    scale: 1;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__item--tablet-only {
+    display: block;
+  }
+
+  .welcome-decor__tablet-confetti-a {
+    top: 860px !important;
+    left: 94px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    scale: 1;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__tablet-confetti-b {
+    top: 896px !important;
+    left: 592px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
     scale: 1;
     --decor-x: 0px !important;
     --decor-y: 0px !important;

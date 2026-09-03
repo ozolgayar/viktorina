@@ -17,6 +17,8 @@ type DecorPos = {
   mobileHidden?: boolean;
   mobileOnly?: boolean;
   mobileClassName?: string;
+  tabletOnly?: boolean;
+  tabletClassName?: string;
 };
 
 type ConfettiPos = DecorPos & { color: string };
@@ -194,6 +196,24 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     mobileOnly: true,
     mobileClassName: "welcome-decor__mobile-confetti-b",
   },
+  {
+    top: "860px",
+    left: "94px",
+    size: 14,
+    rotate: 18,
+    color: "#8ec8ff",
+    tabletOnly: true,
+    tabletClassName: "welcome-decor__tablet-confetti-a",
+  },
+  {
+    top: "896px",
+    left: "592px",
+    size: 14,
+    rotate: -22,
+    color: "#a8d8ff",
+    tabletOnly: true,
+    tabletClassName: "welcome-decor__tablet-confetti-b",
+  },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -217,8 +237,10 @@ function decorClassName(base: string, item: DecorPos): string {
     base,
     item.className ?? "",
     item.mobileClassName ?? "",
+    item.tabletClassName ?? "",
     item.mobileHidden ? "welcome-decor__item--mobile-off" : "",
     item.mobileOnly ? "welcome-decor__item--mobile-only" : "",
+    item.tabletOnly ? "welcome-decor__item--tablet-only" : "",
   ]
     .filter(Boolean)
     .join(" ");
