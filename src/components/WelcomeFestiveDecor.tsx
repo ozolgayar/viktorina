@@ -23,6 +23,8 @@ type DecorPos = {
   ipadProClassName?: string;
   surfaceProOnly?: boolean;
   surfaceProClassName?: string;
+  zenbookOnly?: boolean;
+  zenbookClassName?: string;
 };
 
 type ConfettiPos = DecorPos & { color: string };
@@ -288,6 +290,24 @@ const DECOR_CONFETTI: ConfettiPos[] = [
     surfaceProOnly: true,
     surfaceProClassName: "welcome-decor__surface-pro-confetti-b",
   },
+  {
+    top: "730px",
+    left: "65px",
+    size: 14,
+    rotate: 18,
+    color: "#8ec8ff",
+    zenbookOnly: true,
+    zenbookClassName: "welcome-decor__zenbook-confetti-a",
+  },
+  {
+    top: "758px",
+    left: "736px",
+    size: 14,
+    rotate: -22,
+    color: "#a8d8ff",
+    zenbookOnly: true,
+    zenbookClassName: "welcome-decor__zenbook-confetti-b",
+  },
 ];
 
 function decorStyle(item: DecorPos, extra?: CSSProperties): CSSProperties {
@@ -314,11 +334,13 @@ function decorClassName(base: string, item: DecorPos): string {
     item.tabletClassName ?? "",
     item.ipadProClassName ?? "",
     item.surfaceProClassName ?? "",
+    item.zenbookClassName ?? "",
     item.mobileHidden ? "welcome-decor__item--mobile-off" : "",
     item.mobileOnly ? "welcome-decor__item--mobile-only" : "",
     item.tabletOnly ? "welcome-decor__item--tablet-only" : "",
     item.ipadProOnly ? "welcome-decor__item--ipad-pro-only" : "",
     item.surfaceProOnly ? "welcome-decor__item--surface-pro-only" : "",
+    item.zenbookOnly ? "welcome-decor__item--zenbook-only" : "",
   ]
     .filter(Boolean)
     .join(" ");

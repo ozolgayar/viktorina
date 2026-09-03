@@ -2559,6 +2559,10 @@ select {
   display: none;
 }
 
+.welcome-decor__item--zenbook-only {
+  display: none;
+}
+
 .welcome-btn {
   display: inline-flex;
   align-items: center;
@@ -2815,7 +2819,7 @@ select {
 @media only screen
   and (orientation: portrait)
   and (min-width: 810px)
-  and (max-width: 850px) {
+  and (max-width: 835px) {
   .welcome-decor__mobile-star-tl {
     top: 892px !important;
     left: 342px !important;
@@ -3053,6 +3057,90 @@ select {
   .welcome-decor__surface-pro-confetti-b {
     top: 733px !important;
     left: 784px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+}
+
+/* Asus Zenbook Fold и схожие (853×1280) */
+@media only screen
+  and (orientation: portrait)
+  and (min-width: 840px)
+  and (max-width: 880px) {
+  .welcome-decor__mobile-spiral-tl {
+    top: 101px !important;
+    left: 98px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда между 2 и 5 → влево 30px, вверх 110px */
+  .welcome-decor__mobile-star-tr {
+    top: 276px !important;
+    left: 375px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 130px !important;
+    height: 130px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__mobile-spiral-tr {
+    top: 292px !important;
+    left: 760px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда под кнопкой → вниз 70px */
+  .welcome-decor__mobile-star-bl {
+    top: 1118px !important;
+    left: 26px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 168px !important;
+    height: 168px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__item--zenbook-only {
+    display: block !important;
+  }
+
+  .welcome-decor__zenbook-confetti-a {
+    top: 730px !important;
+    left: 65px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 14px !important;
+    height: 14px !important;
+    scale: 1 !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  .welcome-decor__zenbook-confetti-b {
+    top: 758px !important;
+    left: 736px !important;
     bottom: auto !important;
     right: auto !important;
     width: 14px !important;
