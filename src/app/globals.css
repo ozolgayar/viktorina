@@ -3010,6 +3010,21 @@ select {
   }
 }
 
+/* Samsung Galaxy S8+ и схожие (360×740) */
+@media only screen and (max-width: 767px) and (orientation: portrait) and (width: 360px) and (min-height: 700px) and (max-height: 780px) {
+  .welcome-decor__mobile-confetti-b {
+    top: 577px !important;
+  }
+
+  .welcome-decor__mobile-star-b {
+    top: 560px !important;
+  }
+
+  .welcome-decor__mobile-star-fixed {
+    top: 75px !important;
+  }
+}
+
 /* iPhone 14 / 15 Pro Max и схожие (430×932) */
 @media only screen and (max-width: 767px) and (orientation: portrait) and (width: 430px) and (min-height: 900px) and (max-height: 960px) {
   .welcome-decor__mobile-confetti-b {
