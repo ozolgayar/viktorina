@@ -97,6 +97,7 @@ const DECOR_STARS: DecorPos[] = [
     offsetX: 200,
     offsetY: 50,
     className: "welcome-decor__star--md",
+    mobileClassName: "welcome-decor__mobile-star-mid",
     mobileHidden: true,
   },
   {
