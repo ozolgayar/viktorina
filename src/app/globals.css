@@ -3010,8 +3010,11 @@ select {
   }
 }
 
-/* Samsung Galaxy S20 Ultra и схожие (420×915) */
-@media only screen and (max-width: 767px) and (orientation: portrait) and (width: 420px) and (min-height: 880px) and (max-height: 950px) {
+/* Samsung Galaxy S20 Ultra и схожие (412–420 × ~915) */
+@media only screen
+  and (max-width: 767px)
+  and (orientation: portrait)
+  and ((width: 412px) or (width: 420px)) {
   .welcome-decor__mobile-spiral-fixed {
     left: 6px !important;
   }
