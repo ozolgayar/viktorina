@@ -3012,6 +3012,43 @@ select {
   }
 }
 
+/* Nest Hub Max и схожие (1280×800, landscape) */
+@media only screen
+  and (orientation: landscape)
+  and (min-width: 1200px)
+  and (max-width: 1360px)
+  and (min-height: 750px)
+  and (max-height: 850px) {
+  /* Звезда ~865,265 (star-tr) → вправо 70px, вниз 130px */
+  .welcome-decor__mobile-star-tr {
+    top: 334px !important;
+    left: 868px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 130px !important;
+    height: 130px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда ~791,573 (star-tl) → вниз 130px, вправо 130px */
+  .welcome-decor__mobile-star-tl {
+    top: 664px !important;
+    left: 879px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 90px !important;
+    height: 90px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда ~297,645 (star-mid) → убрать */
+  .welcome-decor__mobile-star-mid {
+    display: none !important;
+  }
+}
+
 /* Surface Pro 7 и схожие (912×1368) */
 @media only screen
   and (orientation: portrait)
