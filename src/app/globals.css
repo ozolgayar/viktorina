@@ -3047,6 +3047,30 @@ select {
   .welcome-decor__mobile-star-mid {
     display: none !important;
   }
+
+  /* Спираль ~1166,191 → размер 100px */
+  .welcome-decor__mobile-spiral-tr {
+    top: 191px !important;
+    left: 1166px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100px !important;
+    height: 100px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
+
+  /* Звезда ~116,670 (star-bl) → вверх 170px, вправо 100px */
+  .welcome-decor__mobile-star-bl {
+    top: 422px !important;
+    left: 138px !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 168px !important;
+    height: 168px !important;
+    --decor-x: 0px !important;
+    --decor-y: 0px !important;
+  }
 }
 
 /* Surface Pro 7 и схожие (912×1368) */
