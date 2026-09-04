@@ -19,7 +19,7 @@ export function QuizNavigation({
   const progress = ((currentIndex + 1) / total) * 100;
 
   return (
-    <nav className="quiz-nav w-full max-w-2xl" aria-label="Навигация по вопросам">
+    <nav className="quiz-nav" aria-label="Навигация по вопросам">
       <div className="quiz-nav__row">
         <div className="quiz-nav__row-main">
           <button

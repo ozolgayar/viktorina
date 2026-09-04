@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AppShell } from "@/components/AppShell";
@@ -43,7 +42,6 @@ export default function QuizPage() {
   const [animPhase, setAnimPhase] = useState<AnimPhase>("idle");
   const [slideDir, setSlideDir] = useState<SlideDirection>("right");
   const [enterVisible, setEnterVisible] = useState(false);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const finishCalled = useRef(false);
 
   useEffect(() => {
@@ -139,7 +137,6 @@ export default function QuizPage() {
       setEnterVisible(false);
 
       setTimeout(() => {
-        setImagePreview(null);
         setCurrentIndex(newIndex);
         setAnimPhase("enter");
         requestAnimationFrame(() => {
@@ -153,15 +150,6 @@ export default function QuizPage() {
     },
     [quizData, currentIndex, animPhase, finishing]
   );
-
-  useEffect(() => {
-    if (!imagePreview) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setImagePreview(null);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [imagePreview]);
 
   const handleSelect = (index: number) => {
     if (!quizData || finishing) return;
@@ -252,36 +240,24 @@ export default function QuizPage() {
             className={`quiz-question-card${isWideQuestion ? " quiz-question-card--wide" : ""} ${cardAnimClass}`}
           >
             <div className="quiz-card quiz-question-panel rounded-2xl shadow-xl">
-              <div className="quiz-question-panel__top">
-                <div className="quiz-question-panel__intro">
-                  <p className="quiz-question-card__title">
-                    Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
-                  </p>
-                  <p className="quiz-question-panel__context">
-                    {contextText}
-                  </p>
-                </div>
+              {questionImage ? (
                 <div className="quiz-question-panel__media">
-                  {questionImage ? (
-                    <button
-                      type="button"
-                      className="quiz-question-panel__media-btn"
-                      onClick={() => setImagePreview(questionImage)}
-                      aria-label="Увеличить изображение"
-                    >
-                      <Image
-                        src={questionImage}
-                        alt=""
-                        width={640}
-                        height={400}
-                        className="quiz-question-panel__image"
-                        unoptimized
-                        priority
-                      />
-                    </button>
-                  ) : null}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={questionImage}
+                    alt=""
+                    className="quiz-question-panel__image"
+                  />
                 </div>
-              </div>
+              ) : null}
+
+              <p className="quiz-question-card__title">
+                Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
+              </p>
+
+              {contextText ? (
+                <p className="quiz-question-panel__context">{contextText}</p>
+              ) : null}
 
               <div className="quiz-question-panel__box">
                 <p className="quiz-question-panel__prompt">{promptText}</p>
@@ -364,39 +340,6 @@ export default function QuizPage() {
         onAction={handleTimeExpired}
         showClose={false}
       />
-
-      {imagePreview && (
-        <div
-          className="quiz-image-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Увеличенное изображение"
-          onClick={() => setImagePreview(null)}
-        >
-          <button
-            type="button"
-            className="quiz-image-lightbox__close"
-            onClick={() => setImagePreview(null)}
-            aria-label="Закрыть"
-          >
-            ×
-          </button>
-          <div
-            className="quiz-image-lightbox__content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={imagePreview}
-              alt=""
-              width={1280}
-              height={800}
-              className="quiz-image-lightbox__img"
-              unoptimized
-              priority
-            />
-          </div>
-        </div>
-      )}
     </AppShell>
   );
 }
