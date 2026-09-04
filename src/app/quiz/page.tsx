@@ -55,7 +55,7 @@ export default function QuizIntroPage() {
             <div className="quiz-intro-screen__hero">
               <div className="quiz-intro-screen__hero-text">
                 <h1 className="quiz-hero-title">Викторина к Юбилею ГЕРОФАРМ</h1>
-                <p className="quiz-intro-screen__subtitle text-center text-sm sm:text-base">
+                <p className="quiz-intro-screen__subtitle text-left text-sm sm:text-base">
                   Проверьте свои знания о компании и получите подарок
                 </p>
 
