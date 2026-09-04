@@ -894,8 +894,14 @@ export type QuestionImageAlign = "center" | "top" | "bottom";
 const IMAGE_ALIGN_BY_NUMBER: Partial<Record<number, QuestionImageAlign>> = {
   14: "top",
   15: "bottom",
+  23: "top",
+  24: "top",
+  26: "top",
   28: "top",
+  30: "top",
+  32: "top",
   38: "top",
+  39: "top",
   45: "top",
   47: "top",
 };
