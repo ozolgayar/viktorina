@@ -1219,45 +1219,102 @@ body:has(.quiz-intro-shell) {
   }
 }
 
-/* Картинка вопроса: ~2× крупнее, скругление углов */
+/* Картинки вопросов: крупный размер + скругление + выравнивание по номеру */
 .quiz-question-panel__media {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
+  height: min(520px, 48vh);
   margin: 0 auto;
   padding: 0;
   border: 0;
+  border-radius: 20px;
   background: transparent;
+  overflow: hidden;
   line-height: 0;
+  clip-path: inset(0 round 20px);
+  -webkit-clip-path: inset(0 round 20px);
 }
 
 .quiz-question-panel__media img,
 .quiz-question-panel__image {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
-  height: auto;
-  max-height: min(720px, 58vh);
+  height: 100%;
   margin: 0 auto;
   border: 0;
   border-radius: 20px;
   background: transparent;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+}
+
+.quiz-question-panel__media--align-center img,
+.quiz-question-panel__media--align-center .quiz-question-panel__image {
+  object-position: center;
+}
+
+.quiz-question-panel__media--align-top img,
+.quiz-question-panel__media--align-top .quiz-question-panel__image {
+  object-position: top;
+}
+
+.quiz-question-panel__media--align-bottom img,
+.quiz-question-panel__media--align-bottom .quiz-question-panel__image {
+  object-position: bottom;
+}
+
+/* Превью выравнивания картинок (/preview-images) — стопка как экран викторины */
+.image-align-preview-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 24px 0 72px;
+}
+
+.image-align-preview-stack__note {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+}
+
+.image-align-preview-stack__label {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.image-align-preview-stack__screen.quiz-question-screen {
+  min-height: 0;
+  height: auto;
+  flex: none;
+  justify-content: flex-start;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
+  .quiz-question-panel__media {
+    height: min(640px, 52vh);
+    border-radius: 20px;
+    clip-path: inset(0 round 20px);
+    -webkit-clip-path: inset(0 round 20px);
+  }
+
   .quiz-question-panel__media img,
   .quiz-question-panel__image {
-    max-height: min(800px, 62vh);
     border-radius: 20px;
   }
 }
 
 @media (min-width: 1024px) {
-  .quiz-question-panel__media img,
-  .quiz-question-panel__image {
-    max-height: min(840px, 65vh);
-    border-radius: 20px;
+  .quiz-question-panel__media {
+    height: min(720px, 56vh);
   }
 }
 

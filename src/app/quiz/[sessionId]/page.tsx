@@ -7,7 +7,7 @@ import { AnswerOption } from "@/components/AnswerOption";
 import { Modal } from "@/components/Modal";
 import { QuizNavigation } from "@/components/QuizNavigation";
 import { Timer } from "@/components/Timer";
-import { getQuestionImageById } from "@/lib/questions-bank";
+import { getQuestionImageById, getQuestionImageAlign, getQuestionImageAlignClass } from "@/lib/questions-bank";
 import { formatQuizText } from "@/lib/quiz-typography";
 import type {
   PublicQuestion,
@@ -205,6 +205,8 @@ export default function QuizPage() {
   const isFirstQuestion = currentIndex === 0;
   const questionImage =
     question.image || getQuestionImageById(question.id) || null;
+  const imageAlign = getQuestionImageAlign(questionImage || question.id);
+  const imageAlignClass = getQuestionImageAlignClass(imageAlign);
   const contextText = formatQuizText(question.context || question.text || "");
   const promptText = formatQuizText(question.prompt || question.text);
   const isWideQuestion = contextText.length >= 500;
@@ -241,7 +243,7 @@ export default function QuizPage() {
           >
             <div className="quiz-card quiz-question-panel rounded-2xl shadow-xl">
               {questionImage ? (
-                <div className="quiz-question-panel__media">
+                <div className={`quiz-question-panel__media ${imageAlignClass}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={questionImage}
