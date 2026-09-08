@@ -145,6 +145,50 @@ export default function QuizIntroPage() {
                 </ul>
               </div>
 
+              <p className="quiz-intro-sources">
+                Ответы вы сможете найти на{" "}
+                <a
+                  href="https://hrm.geropharm.com/root/pages/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  корпоративном портале «Сфера»
+                </a>
+                , в каналах{" "}
+                <a
+                  href="https://t.me/+B2t0aUPUuJNlYTY6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ГЕРОФАРМ LIFE в телеграм
+                </a>{" "}
+                и{" "}
+                <a
+                  href="https://max.ru/join/d-gd069xb3KizIdnYoydwqaBFBRk5kmEGGfmVGK5YMc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  MAX
+                </a>{" "}
+                и в официальных телеграм-аккаунтах{" "}
+                <a
+                  href="http://t.me/geropharm_dialog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ГЕРОФАРМ
+                </a>{" "}
+                и{" "}
+                <a
+                  href="http://t.me/GEROPHARM_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  «Путь к стройности с ГЕРОФАРМ»
+                </a>
+                .
+              </p>
+
               {!loading && availability && !availability.available && (
                 <div className="rounded-xl bg-brand-accent/10 p-3 text-center text-sm text-brand-accent-dark">
                   {availability.message}

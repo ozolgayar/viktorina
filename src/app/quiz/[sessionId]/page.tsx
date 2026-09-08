@@ -242,24 +242,30 @@ export default function QuizPage() {
             className={`quiz-question-card${isWideQuestion ? " quiz-question-card--wide" : ""} ${cardAnimClass}`}
           >
             <div className="quiz-card quiz-question-panel rounded-2xl shadow-xl">
-              {questionImage ? (
-                <div className={`quiz-question-panel__media ${imageAlignClass}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={questionImage}
-                    alt=""
-                    className="quiz-question-panel__image"
-                  />
+              <div
+                className={`quiz-question-panel__top${questionImage ? "" : " quiz-question-panel__top--no-media"}`}
+              >
+                <div className="quiz-question-panel__copy">
+                  <p className="quiz-question-card__title">
+                    {currentIndex + 1} / {TOTAL_QUESTIONS}
+                  </p>
+
+                  {contextText ? (
+                    <p className="quiz-question-panel__context">{contextText}</p>
+                  ) : null}
                 </div>
-              ) : null}
 
-              <p className="quiz-question-card__title">
-                Вопрос {currentIndex + 1} / {TOTAL_QUESTIONS}
-              </p>
-
-              {contextText ? (
-                <p className="quiz-question-panel__context">{contextText}</p>
-              ) : null}
+                {questionImage ? (
+                  <div className={`quiz-question-panel__media ${imageAlignClass}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={questionImage}
+                      alt=""
+                      className="quiz-question-panel__image"
+                    />
+                  </div>
+                ) : null}
+              </div>
 
               <div className="quiz-question-panel__box">
                 <p className="quiz-question-panel__prompt">{promptText}</p>

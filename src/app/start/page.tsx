@@ -175,7 +175,7 @@ export default function StartPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="ivanov@geropharm.com"
+                placeholder="ivan.ivanov@geropharm.com"
                 className="quiz-input"
                 autoComplete="email"
               />
