@@ -161,6 +161,7 @@ export async function POST(request: NextRequest) {
       prompt: q.prompt,
       options: q.options,
       image: q.image,
+      ...(q.hashtags ? { hashtags: q.hashtags } : {}),
     }));
 
     const response: SessionStartResponse = {

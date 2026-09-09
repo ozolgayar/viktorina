@@ -9,6 +9,8 @@ export interface BankQuestion {
   options: string[];
   correct_index: number;
   image: string;
+  /** Строка хештегов над вариантами ответов */
+  hashtags?: string;
 }
 
 function capitalizeOption(raw: string): string {
@@ -77,7 +79,7 @@ const RAW_QUESTIONS: BankQuestion[] = [
   {
     id: "11111111-1111-4111-8111-111111111105",
     context:
-      "Искусство плотно вшито в ДНК нашей компании. Автор работы Twitter, размещенной в офисе ГЕРОФАРм в Санкт Петербурге Константин Бенькович. Художник поднимает вопросы о рациональности времяпрепровождения в социальных сетях, размышляет о пользе и вреде от них. Это вторая работа автора в коллекции ГЕРОФАРМ, а первая, тоже выполненная в виде решетки, размещена на заводе ГЕРОФАРМ в Пушкине.",
+      "Искусство плотно вшито в ДНК нашей компании. Автор работы Twitter, размещенной в офисе ГЕРОФАРМ в Санкт-Петербурге – Константин Бенькович. Художник поднимает вопросы о рациональности времяпрепровождения в социальных сетях, размышляет о пользе и вреде от них. Это вторая работа автора в коллекции ГЕРОФАРМ, а первая, тоже выполненная в виде решетки, размещена на заводе ГЕРОФАРМ в Пушкине.",
     prompt: "Что это за работа?",
     options: [
       "Мона Лиза",
@@ -693,7 +695,7 @@ const RAW_QUESTIONS: BankQuestion[] = [
   {
     id: "11111111-1111-4111-8111-111111111149",
     context:
-      "Одна из целей ГЕРОФАРМ в Казахстане — укрепить лидерство в сегменте «Метаболическое здоровье». Для этого компания развивает Семавик и готовит выход Седжаро на рынок.",
+      "Сегодня препараты направления «Метаболическое здоровье» ГЕРОФАРМ представлены уже в 11 странах. Мы находимся в периоде активной международной экспансии: только в 2026 году состоятся восемь лончей в разных странах и регионах мира с выраженной локальной спецификой. Одна из целей ГЕРОФАРМ в Казахстане — укрепить лидерство в сегменте «Метаболическое здоровье».",
     prompt: "Какую цель поставила команда для Семавика в Казахстане?",
     options: [
       "Стать брендом №1 в сегменте семаглутида",
@@ -874,10 +876,27 @@ const RAW_QUESTIONS: BankQuestion[] = [
   },
 ];
 
-export const QUESTIONS_BANK: BankQuestion[] = RAW_QUESTIONS.map((q) => ({
-  ...q,
-  options: q.options.map(capitalizeOption),
-}));
+const FOCUS_PROJECT_HASHTAGS = "#фокусныепроекты #месяц_амбициозности";
+
+function getRawQuestionNumber(image: string): number | null {
+  const match = image.match(/\/questions\/(\d+)\./);
+  if (!match) return null;
+  return Number(match[1]);
+}
+
+export const QUESTIONS_BANK: BankQuestion[] = RAW_QUESTIONS.map((q) => {
+  const number = getRawQuestionNumber(q.image);
+  const withFocusHashtags =
+    number != null && number >= 41 && number <= 55
+      ? { hashtags: FOCUS_PROJECT_HASHTAGS }
+      : {};
+
+  return {
+    ...q,
+    ...withFocusHashtags,
+    options: q.options.map(capitalizeOption),
+  };
+});
 
 export function getBankQuestionById(id: string): BankQuestion | undefined {
   return QUESTIONS_BANK.find((q) => q.id === id);

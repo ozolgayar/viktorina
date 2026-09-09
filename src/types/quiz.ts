@@ -9,6 +9,8 @@ export interface PublicQuestion {
   prompt: string;
   options: string[];
   image: string;
+  /** Хештеги над вариантами ответов */
+  hashtags?: string;
 }
 
 /** Вопрос с правильным ответом — только на сервере */
