@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
-import { SitePreloader } from "@/components/SitePreloader";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -30,7 +29,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#2a1268",
+  themeColor: "#00A88E",
 };
 
 export default function RootLayout({
@@ -40,10 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${roboto.variable} antialiased`}>
-        <SitePreloader />
-        {children}
-      </body>
+      <body className={`${roboto.variable} antialiased`}>{children}</body>
     </html>
   );
 }
