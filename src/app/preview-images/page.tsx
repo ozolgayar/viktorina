@@ -88,14 +88,14 @@ export default function ImageAlignPreviewPage() {
                       <p className="quiz-question-panel__context">{contextText}</p>
                     ) : null}
 
+                    {question.hashtags ? (
+                      <p className="quiz-question-panel__hashtags">
+                        {question.hashtags}
+                      </p>
+                    ) : null}
+
                     <div className="quiz-question-panel__box">
                       <p className="quiz-question-panel__prompt">{promptText}</p>
-
-                      {question.hashtags ? (
-                        <p className="quiz-question-panel__hashtags">
-                          {question.hashtags}
-                        </p>
-                      ) : null}
 
                       <div className="quiz-answer-options quiz-answer-options--panel">
                         {question.options.map((option, index) => (
