@@ -28,6 +28,98 @@ body {
   min-height: 100%;
 }
 
+/* Брендированный прелоадер первого экрана */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 38%, #6e42c9 0%, transparent 58%),
+    radial-gradient(ellipse 100% 90% at 50% 50%, #3a1a78 0%, transparent 70%),
+    linear-gradient(180deg, #27105c 0%, #2a1268 42%, #12072c 100%);
+  color: #fff;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.site-preloader--hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-preloader__glow {
+  position: absolute;
+  width: min(70vw, 420px);
+  height: min(70vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 148, 29, 0.28) 0%, transparent 68%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.site-preloader__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.site-preloader__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.site-preloader__brand {
+  margin: 0;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.site-preloader__caption {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.site-preloader__spinner {
+  width: 34px;
+  height: 34px;
+  margin-top: 0.55rem;
+  border: 3px solid rgba(255, 255, 255, 0.22);
+  border-top-color: #f7941d;
+  border-radius: 50%;
+  animation: site-preloader-spin 0.85s linear infinite;
+}
+
+@keyframes site-preloader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader__spinner {
+    animation: none;
+    border-top-color: #f7941d;
+    opacity: 0.85;
+  }
+
+  .site-preloader {
+    transition: none;
+  }
+}
+
 button,
 .btn-primary,
 .results-home-btn,
